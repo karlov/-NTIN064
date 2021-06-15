@@ -1,0 +1,173 @@
+\section{\texorpdfstring{Věty o rekurzi}{Věty o rekurzi}}
+\vspace{5mm}
+\large
+
+\begin{note}
+	Taky se jmenuji věty o pevném bodě. Používá se self-refrenční trik
+\end{note}
+
+\begin{theorem}[O rekurzi 1]\label{rek_1}
+	Pokud $f$ je ČRF (pro jednoduchost 1 proměnné) $\Rightarrow$ (efektivně z indexů)
+	\[ \exists a\ \forall x: \varphi_a(x) \simeq \varphi_{f(a)} (x) \]
+
+	Jinými slovy: pokud $f(a) \downarrow \Rightarrow \varphi_a$ a $\varphi_{f(a)}$ jsou stejné funkce.
+	Programy nejsou stejné, ale vyčísluji stejnou funkci.
+
+	Pokud ale $f(a) \uparrow \Rightarrow \forall x: \varphi_a(x) \uparrow$.
+\end{theorem}
+\begin{proof}
+	\[ \varphi_{f(s_1(z, z))} (x) \simeq \Psi_2(e, z, n) \]
+	Protože levá strana je efektivně vyčíslitelná. $e$ je program který počítá levou stranu.
+
+	Pak dle s-m-n věty \cref{s_m_n}
+	\[ \varphi_{f(s_1(z, z))} (x) \simeq \Psi_2(e, z, x) \simeq \varphi_{s_1(e, z)} (x) \]
+	polož $z = e$, dostaneme
+	\[ \varphi_{f(s_1(e, e))} (x) \simeq \varphi_{s_1(e, e)} (x) \]
+	Neboli
+	\[ a = s_1(e, e) \]
+
+
+	Který program počítá déle?
+
+	Program $e = f(s_1(z, z))$:
+	\begin{enumerate}
+		\item spočítej $s_1(z, z)$.
+		\item spočítej $f(s_1(z, z))$.\\
+			který ale nemusí konvergovat
+		\item $if(f(s_1(z, z)) \downarrow)$\\
+			spust $e$ na vstup $x$.
+	\end{enumerate}
+
+	Program $a = s_1(z, z)$:
+	\begin{enumerate}
+		\item dostane $x$ na vstupu, kvůli s-m-n přidá $e$ ke vstupu
+		\item spustí program $e$ na vstup $\langle e, x \rangle$.
+		\item spočítej $a = s_1(z, z)$.\\
+			Tady spočítal svůj vlastní index.
+		\item spočítej $f(s_1(z, z))$ tzn $f(a)$.\\
+			který ale nemusí konvergovat
+		\item $if(f(s_1(z, z)) \downarrow)$ then \\
+			spust $f(a)$ na vstup $x$.
+	\end{enumerate}
+
+	Takže $a$ počítá déle.
+\end{proof}
+
+\begin{theorem}[O rekurzi 2]
+	Pokud $f$ je ČRF $(n + 1)$ proměnných $\Rightarrow$ ORF (dokonce PRF)
+	\[ \varphi_{h(y_1, \ldots, y_n)}(x) \simeq \varphi_{f(h(y_1, \ldots, y_n, y_1, \ldots, y_n)} (x) \]
+
+	Pokud smažeme $y$-ny, tak dostaneme právě Větu o rekurzi 1 \cref{rek_1}.
+
+	Pevné body efektivně na parametrech.
+\end{theorem}
+\begin{proof}
+	Analogicky jako důkaz Věty o rekurzi 1 \cref{rek_1}.
+	Jenom aplikujeme s-m-n na větší počet parametrů.
+
+	\[ \varphi_{f(s_{n + 1}(z, z, y_1, \ldots, y_n), y_1, \ldots, y_n)} (x) \simeq \Psi_{n + 2}(e, z, y_1, \ldots, y_n, x) = \simeq \varphi_{s_{n+1}(e, z, y_1, \ldots, y_n)} (x) \]
+	Pak
+	\[ h(y_1, \ldots, y_n) = s_{n+1}(e, e, y_1, \ldots, y_n) \]
+\end{proof}
+
+\begin{theorem}[O rekurzi $\infty$]
+	Pokud $f$ je ČRF $\Rightarrow \exists$ prostá ORF g (dokonce PRF)
+	\[ \varphi_{g(j)}(x) \simeq \varphi_{f(g(j)} (x) \]
+
+	Pak pevných bodů je nekonečno
+	\[ g(0), g(1), \ldots \]
+\end{theorem}
+\begin{proof}
+	\[ \varphi_{f(s_2(z, z, j))} (x) \simeq \Psi_2(e, z, j, x) \simeq \varphi_{s_2(e, z, j)} (x) \]
+	Zvolme
+	\[ g(j) = s_2(e, e, j) \]
+\end{proof}
+
+\begin{theorem}[O rekurzi 3]
+	Pokud $h(x, z_1, \ldots, z_n)$ je ČRF, pak existuje $a \in \N$ t.ž. $a$ je indexem funkce
+	\[ h(a, z_1, \ldots, z_n) \]
+\end{theorem}
+\begin{proof}
+	\[ h(x, z_1, \ldots, z_n) \simeq \Psi_{n + 1}(e, x, z_1, \ldots, z_n) \simeq \varphi_{s_1(e, x)} (z_1, \ldots, z_n) \]
+
+	Pak aplikujeme Větu o rekurzi \cref{rek_1} na funkci $s_1(e, x)$.
+\end{proof}
+
+\begin{note}
+	Věty o rekurzi platí nejen pro ČRF ale taky pro jejich definiční obory.
+	Takže
+	\[ f \in ČRF\ \Rightarrow \exists a: W_a = W_{f(a)} \]
+\end{note}
+
+\begin{theorem}
+	Existuje $n_0$:
+	\[ \varphi_{n_0} (n_0) = n_0 \]
+	Program který vypíše svůj vlastní kod.
+\end{theorem}
+\begin{proof}
+	Pořídíme si pomocnou ORF
+	\[ \alpha(n, w) = n \]
+	použijeme s-m-n \cref{s_m_n}
+	\[ \alpha(n, w) \simeq \varphi_{f(n)} (w) \]
+	Kde
+	\[ \alpha(n, w) = \simeq \Psi(e, n, w) \simeq \phi_{s_1(e, n)} (w) \]
+	Stačí použít Větu o rekurzi \cref{rek_1} k $f$
+	\[ \varphi_{n_0} (n) \simeq \varphi_{f(n_0)} (w) = n_0 \]
+\end{proof}
+
+\begin{theorem}[BD]
+	Existuje ORF $f$:
+	\[ W_{f(y)} = \{ f(0), \ldots, f(y - 1) \]
+\end{theorem}
+\begin{proof}
+	Hint: hledáme index $f$ kterých je spočetně mnoho.
+	Musíme použít Větu o rekurzi na urovně indexů.
+\end{proof}
+
+\begin{theorem}[Rice podruhe]
+	Pokud $F$ je netriviální třída ČRF (nebo r.s množin).
+	Není prázdná, nebo má všechny.
+	Pak indexová množina
+	\[ A = \{ x |\ \varphi(x) \in F \} \]
+\end{theorem}
+\begin{proof}
+	Z netriviálity F
+	\[ \exists a \in A \land b \in \overline{A} \]
+	Nechť sporem $A$ je rekurzivní.
+
+	Uděláme funkci $h$ t.ž
+	\begin{gather*}
+		\forall x \in A: h(x) = b \\
+		\forall y \in \overline{A}: h(y) = a
+	\end{gather*}
+
+	Protože $A$ je rekurzivní, tak $h$ je ORF $\Rightarrow$ existuje pevný bod třeba $n_0$
+	\[ n_0 \in A \Rightarrow h(n_0) \in \overline{A} \]
+
+	Z Věty o rekurzi ale víme
+	\[ \varphi_{n_0} = \varphi_{h(n_0)} \]
+	takže $n_0, h(n_0)$ musí být ve stejné množině.
+
+	Z toho $A$ nené rekurzivní.
+\end{proof}
+
+\begin{theorem}[O rekurzi (BD)]
+	Nechť $f \in ČRF$ pak
+	//TODO
+\end{theorem}
+\begin{proof}
+	\[ \varphi_{\varphi_u(u)} (z) \simeq \Psi_2(a, u, z) \simeq^{s-m-n} \varphi_{s_1(a, u)} (z) \simeq \varphi_{d(u)} (z) \simeq \varphi_{\varphi_e(u)} (z) \]
+	Všimneme si, že
+	\[ \varphi_u(x) \]
+	je \emph{matice} funkci. Implikace nahoře ukazuje, že její diagonála $\varphi_u(u)$ se rovná řádku $\varphi_e$.
+
+	Ukážeme, že $f$ permutuje řádky.
+	\[ \varphi_{f \circ \varphi_u (x)} (z) \simeq \varphi_{\beta(u, x)} \simeq^{s-m-n} \varphi_{\varphi_{H(u)}(x)} (z) \]
+	Kde
+	\[ H(u) = s_1(b, u) \]
+	Z toho u-tý řádek se zobrazí na $H(u)$-tý.
+	Speciálně
+	\[ e \to H(e) \]
+	Z toho $\varphi_e(H(e))$ je pevný bod. Protože:
+	\[ \varphi_{f \circ \varphi_e(H(e))} (z) \simeq \varphi_{\varphi_{H(e)}(H(e))} (z) \simeq^{diagonala} \varphi_{\varphi_e(H(e))} (z) \]
+\end{proof}

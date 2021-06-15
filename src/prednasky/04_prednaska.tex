@@ -1,0 +1,276 @@
+\section{\texorpdfstring{Produktivní množiny}{Produktivní množiny}}
+\vspace{5mm}
+\large
+
+\begin{definition}[Produktivní množina]
+	B je \emph{produktivní} pokud
+	\[ \exists \varphi \in ČRF: W_x \subseteq B \Rightarrow (\varphi(x) \downarrow) \land \varphi(x) \in B \setminus W_x \]
+
+	Jinými slovy: non-rekurzivní spočetnost. Pokud máme uvnitř množinu $W_x$ tak se nemůže rovnat B.
+	Taky máme stroječek který najde $\varphi(x)$ který leží mimo danou $W_x$.
+\end{definition}
+
+\begin{definition}[Kreativní množina]
+	Množina A je \emph{kreativní} pokud A je rekurzivně spočetná a $\overline{A}$ je produktivní.
+\end{definition}
+
+\begin{example}
+	$\overline{K}$ je produktivní funkce je $id$, $K$ je kreativní.
+
+	Protože
+	\[ W_x \subseteq \overline{K} \Rightarrow x \in (\overline{K} - W_x) \]
+\end{example}
+
+\begin{theorem}[Modifikace K]
+	Modifikace předchozího příkladu:\\
+	Nechť máme $f \in ORF$ prostá, pak uvažme množinu:
+	\[ A = \{ f(x)| \ f(x) \in W_x \} \]
+	A je kreativní, $\overline{A}$ produktivní s $f$.
+\end{theorem}
+\begin{proof}
+	Nechť $W_x \subseteq \overline{A}$, kdyby $f(x) \in W_x$ tak
+	\[ f(x) \in \overline{A} \]
+	ale dle definice A
+	\[ f(x) \in A \]
+	Tedy
+	\[ f(x) \notin W_x \]
+	a jelikož je \textbf{prostá} tak
+	\[ f(x) \in \overline{A} - W_x \]
+\end{proof}
+
+\begin{theorem}[Produktivní funkce ORF]
+	Každá produktivní množina má ORF produktivní funkce.
+\end{theorem}
+\begin{proof}
+	Jednoduše dodefinovat ČRF na ORF nejde.
+
+	Chceme najít ORF $h$:
+	\[ W_{h(y)} = \twopartdef { W_y } { \varphi(h(y)) \downarrow } { \emptyset } { \varphi(h(y)) \uparrow }, kde\ \varphi \in ČRF\ prod. \]
+
+	Formálně:
+	\[ \varphi \circ h \in ORF \]
+	Kdyby $\varphi(h(y)) \uparrow$ tak
+	\[ \Rightarrow W_{h(y)} = \emptyset \subseteq B \Rightarrow \varphi(h(y)) \downarrow spor \]
+	Dal
+	\[ \forall y: W_{h(y)} = W_y \]
+	Taky
+	\[ W_y \subseteq B \Rightarrow W_{h(y)} \subseteq B \]
+	Z toho
+	\[ \varphi(h(y)) \in B - W_{h(y)} = B - W_y \]
+
+	Hledaná funkce je $\varphi \circ h$.
+
+	Ziskáme funkci $h$ pomoci věty o rekurzi \cref{rek_1}.
+	Vezmeme pomocnou $f \in ORF$:
+	\[ W_{f(x, y)} = \twopartdef { W_y } { \varphi(x) \downarrow } { \emptyset } { \varphi(x) \uparrow } \]
+	f pomoci s-m-n \cref{s_m_n}
+	\[ f \simeq \alpha(x, y, w) \downarrow \iff w \in W_y \land \varphi(x) \downarrow \]
+	Taky
+	\[ \alpha(x, y, w) \simeq \varphi_{f(x, y)} (w) \]
+	kde
+	\[ f(x, y) = s_2(a, x, y) \]
+\end{proof}
+
+\begin{theorem}[Produktivní funkce ORF prostá(BD)]
+	Každá produktivní množina má dokonce prostou ORF produktivní funkce.
+
+	Dokonce rekurzivní permutace.
+\end{theorem}
+
+\begin{theorem}[Nekonečná množina]\label{product_inf}
+	Každá produktivní množina obsahuje nekonečnou r.s. podmnožinu.
+\end{theorem}
+\begin{proof}
+	Máme $B$ a $f \in ORF$ produktivní.
+
+	Vezmeme takové $z_0$:
+	\[ W_{z_0} = \emptyset \]
+	Množinu vytváříme iterativně, vždy na jeden z bodů co máme aplikujeme $f$ a vezmeme sjednocení.
+
+	Formálně:
+	\[ W_{g(x)} = W_x \cup \{ f(x) \} \]
+	rekurze
+	\begin{align}
+		h(0) = z_0\\
+		h(y + 1) = g(h(y))
+	\end{align}
+	Pak
+	\[ W_{h(y)} = \{ f(z_0), \ldots, f(h(y) - 1) \} \]
+	což je $y$ bodů z B.
+\end{proof}
+
+\begin{note}
+	Imunní a produktivní množiny jsou disjunktní pojmy.
+\end{note}
+
+\begin{amendment}
+	Jak dlouho lze pokračovat v konstrukci množiny popsané ve Větě o nekonečné množině \cref{product_inf}?
+
+	Odpověď: pokud to bude efektivní proces neboli aby množiny byly r.s.
+
+	Můžeme iterovat $\omega, 2 \omega \ldots$ podél tzv rekurzivních ordinálů (viz ordinální číslo v teorii množin).
+\end{amendment}
+
+\begin{lemma}\label{prod_prev}
+	A produktivní a $A \leq_m B$.
+
+	Neboli produktivita se zachovává směrem vzhůru při $\leq_m$.
+\end{lemma}
+\begin{proof}
+	Máme ORF funkce $g$ z převoditelnosti.
+	Pak nechť $W_x \subseteq B$, najdeme její preimage v A
+	\[ P = g^{-1}(W_x) \subseteq A \]
+	Z toho že A je kreativní, pomoci kreativní funkce $f$ najdeme bod $f(y) \notin P$.
+	Zobrazíme pomoci $g(f(y))$, tím dostaneme bod $\in B - W_x$.
+
+	Formálně:
+	\[ W_{h(x)} = g^{-1}(W_x) = \{ y |\ g(y) \in W_x \} \]
+	Pak
+	\[ W_x \subseteq B \Rightarrow W_{h(x)} \subseteq A \]
+	Poslední krok
+	\[ g \circ f \circ g^{-1} (x) \in B - W_x \]
+
+\end{proof}
+
+\begin{theorem}[Ekvivalence Kreativní]
+	Nechť $M$ množina.
+	Následující tvrzení jsou ekvivalentní:
+	\begin{enumerate}[label=(\alph*)]
+	    	\item $M$ je kreativní $\iff \overline{M}$ produktivní.
+		\item $M$ je 1-úplná $\iff \overline{K} \leq_1 \overline{M}$
+		\item $M$ je m-úplná $\iff \overline{K} \leq_m \overline{M}$
+	\end{enumerate}
+	Každý z pojmu zahrnuje rekurzivní spočetnost.
+
+	Ekvivalence mezi totálně různými pojmy. 1-úplnost jako u NP znamená, že je to nejtěžší ze všech takových množin.
+\end{theorem}
+\begin{proof}
+	$(b) \Rightarrow (c)$ z vlastnosti 1 a $m$ převoditelnosti.
+
+	$(c) \Rightarrow (a)$ \\
+	Z vlastnosti převoditelnosti
+	\[ K \leq_m M \iff \overline{K} \leq_m \overline{M} \]
+	pak použijeme lemma \cref{prod_prev}.
+	Víme že $\overline{K}$ je produktivní, takže i $\overline{M}$.
+	Pak dle definice, $M$ je kreativní.
+
+	$(a) \Rightarrow (b)$ ($\overline{M}$ produktivní $\Rightarrow \overline{K} \leq_1 \overline{M}$)
+
+	Cil
+	\[ W_{h(y)} = \twopartdef { \{ f \circ h(y) \} } { y \in K } { \emptyset } { y \notin K } \]
+	kde $f$ je ORF prostá, produktivní pro $\overline{M}$.
+
+	Konstrukce funkce $h$
+	\[ W_{g(x, y)} = \twopartdef { \{ f(x) \} } { y \in K } { \emptyset } { y \notin K } \]
+	$g$ dostaneme pomoci s-m-n věty \cref{s_m_n}:
+	\[ \alpha(x, y, w) \simeq \varphi_{g(x, y)} (w) \downarrow \iff y \in K \land w = f(x) \]
+	Strojil skripta chyba, rovnice č. 57.
+
+	Pak použijeme větu o rekurzi
+	\[ W_{h(y)} = W_{g(h(y), y)} \]
+
+	Z toho platí
+	\begin{gather*}
+		y \notin K \Rightarrow W_{h(y)} = \emptyset \subseteq \overline{M} \Rightarrow f \circ h(y) \in \overline{M} \\
+		y \in K \Rightarrow W_{h(y)} = \{ f \circ h(y) \}
+	\end{gather*}
+	kdyby $f \circ h(y) \in \overline{M}$ tak
+	\[ W_{h(y)} \subseteq \overline{M} f \circ h(y) \in \overline{M} - W_{h(y)} \]
+	což je spor.
+
+	Neboli
+	\[ f \circ h(y) \in M \Rightarrow \overline{K} \leq_1 \overline{M} \]
+\end{proof}
+
+\begin{consequence}
+	$\overline{K}$ je nejjednodušší produktivní množinou při $\leq_1$ nebo $\leq_m$.
+	Protože všechny produktivní množiny jsou
+	\[ \{ B |\ \overline{K} \leq_m B \} \]
+\end{consequence}
+
+\begin{definition}
+	B je úplně produktivní když existuje ORF $f$ tž:
+	\[ f(x) \in B - W_x \lor f(x) \in W_x - B \]
+\end{definition}
+
+\begin{example}
+	$\overline{K}$ je úplně produktivní dle definice K.
+	\[ x \in \overline{K} - W_x \lor x \in W_x - \overline{K}\]
+	neboli funkce je $id$.
+\end{example}
+
+\begin{theorem}[Uplna produktivita]
+	B je úplně produktivní $\iff$ B je produktivní.
+\end{theorem}
+\begin{proof}
+	$\Rightarrow$ triviálně z definice.
+
+	$\Leftarrow$ lze dokázat 2ma způsoby.
+	První je inspekci minulého důkazu.
+	Uděláme
+	\begin{enumerate}
+		\item $g^{-1}(W_x)$
+		\item $f(\ldots)$
+		\item $g \circ f \circ g^{-1}$.
+	\end{enumerate}
+	Jen se musí ověřit o 1 disjunkci víc.
+
+	Druhý pomoci věty o rekurzi:
+	\[ W_{h(y)} = \twopartdef { \{ f \circ h(x) \} } { f \circ h(x) \in W_y } { \emptyset } { f \circ h(x) \notin W_y } \]
+	f je ORF produktivní funkce, $h$ dostaneme pomoci věty o rekurzi a s-m-n věty. Pak
+	\[ f \circ h(x) \notin W_y \Rightarrow W_{h(y)} = \emptyset \Rightarrow f \circ h(x) \in B \Rightarrow f \circ h(x) \in B - W_y \]
+	\[ f \circ h(x) \in W_y \Rightarrow W_{h(y)} = \{ f \circ h(x) \} \]
+	Kdyby $f \circ h(x) \in B$ tak
+	\[ \Rightarrow W_{h(y)} \in B \Rightarrow f \circ h(x) \in B - W_{h(y)} \]
+	Z toho
+	\[ f \circ h(x) \in W_y - B \]
+\end{proof}
+
+\begin{definition}[Totální množina]\label{tot_mn}
+	\[ Tot = \{ x |\ \varphi_x\ \text{totální} \} = \{ x |\ \exists y \varphi_x(y) \downarrow \} \]
+\end{definition}
+\begin{lemma}[Totalni je produktivni]
+	Totální množina je produktivní.
+\end{lemma}
+\begin{proof}
+	Pomoci $m$-převodu na $\overline{K}$.
+
+	\[ \varphi_{h(x)} (y) \downarrow \iff x \notin K_j \]
+	Kde $x \notin K_j$ znamená, že $x \notin K$ za $j$ kroků.
+
+	\[ x \notin K \iff h(x) \in Tot \]
+	Pokud $x$ není v $K$, tak tam nebude za žádný počet kroků. Pak i $h(x)$ je všude definovaná.
+
+	Jinak
+	\[ x \in K \Rightarrow dom(\varphi_{h(x)}) < \infty \]
+	Definiční obor je konečný a rovna se nějakému $\{ 0, ..., j_0 \}$, což je počet kroků za který $x$ vstoupí do $K$.
+
+	Problém ale je, že dostáváme nový program, ale ne zaručeně novou funkci.
+
+	Dokážeme silnější tvrzení a konkretně vytvoříme novou funkci.
+	Máme
+	\[ W_y \in Tot \]
+	uděláme novou $F \in ORF$ která roste rychleji než $\varphi_a: \forall a \in W_y$.
+	Jinými slovy
+	\[ \forall a \in W_y \exists z_0 \forall z \geq z_0: F(x) \geq \varphi_a(z) \]
+	$F$ majorizuje $\varphi_a: \forall a \in W_y$.
+
+	BUNO: $W_y$ je nekonečná, jinak přidáme nekonečně indexů prázdného programu.
+	Kvůli enumeratoru, můžeme $W_y$ efektivně generovat, neboli vypisovat
+	\[ a_0, a_1, \ldots \]
+
+	Pak
+	\[ F(x) = \max_{j \in \{ 1, \ldots, x \} } (\varphi_{a_j}(x)) + 1 \]
+\end{proof}
+
+\begin{consequence}
+	Z věty plyne omezení logiky.
+
+	Vezmeme třeba Peano aritmetiku (PA).
+	Můžeme efektivně generovat sentence které PA dokazuje, tudíž lze efektivně generovat ty $a: \varphi_a$ totální.
+
+	Pak můžeme dle předchozí věty můžeme najít $F$ která roste rychleji, než cokoliv co PA dokazuje.
+
+	Libovolná efektivně zadaná teorie má jen r.s. množinu dokazatelných sentenci.
+	Pokud z nich vybereme ty, co dokazuji o nějakém programu že je všude definovaný, tak vyrobíme sentenci na kterou daná teorie nestačí.
+\end{consequence}

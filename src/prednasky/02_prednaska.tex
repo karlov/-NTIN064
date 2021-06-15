@@ -1,0 +1,229 @@
+\section{\texorpdfstring{Rekurzivně spočetné množiny a predikáty}{Rekurzivně spočetné množiny a predikáty}}
+\vspace{5mm}
+\large
+
+\begin{note}
+	R.s. množiny a predikáty je jedno a totéž protože obor pravdivostí predikátu je množina a naležení do množiny je predikát.
+\end{note}
+
+\begin{lemma}
+	Pokud $Q$ je rekurzivní $\Rightarrow \exists y Q(...)$ je rekurzivně spočetný.
+\end{lemma}
+\begin{proof}
+	Uvažme charakteristickou funkci $C_Q$ predikátu $Q$.
+	Je všude definovaná, čili je ORF.
+
+	Pak následující je ČRF:
+	\[ \mu_y Q(...) \simeq \mu_y (C_Q(...) = 1) \]
+\end{proof}
+
+\begin{theorem}[Univerzální Kleeneho r.s. predikát]\label{univ_predic}
+	Každý rekurzivně spočetní predikát je tvaru:
+	\[ \exists y Q(...) \]
+
+	Pak r.s. množiny jsou definiční obory ČRF.
+
+	Dokonce máme univerzální rekurzivně spočetný predikát
+	\[ \exists y T_n(e, x_1, \ldots, x_n, y) \]
+\end{theorem}
+
+\begin{consequence}
+	Lze definovat index rekurzivně spočetných predikátů.
+\end{consequence}
+
+\begin{note}
+	s-m-n věta \cref{s_m_n} platí i pro predikáty $T_n$.
+\end{note}
+
+\begin{theorem}
+	Rekurzivní spočetnost je uzavřená na $\cup, \cap$.
+	Dokonce efektivně z indexu.
+
+	Máme ORF(dokonce PRF)
+	\[ W_{\alpha(a, b)} = W_a \cap W_b \]
+\end{theorem}
+\begin{proof}
+	Formálně pro $\cap$:
+	\[ \exists s_1 T_1(a, x, s_1) \land \exists s_2 T_1(a, x, s_2) \iff \exists w(T_1(a, x, (w)_{2,1}) \land T_1(b, x, (w)_{2,2}) \]
+	kde $w$ koduje dvojici $s_1, s_2$.
+	\[ (w)_{2,1} \]
+	říká, že $w$ je n-tice velikosti 2, vezmi 1. složku.
+
+	\[ \exists s_1 T_1(a, z, s_1) \]
+	je reprezentace množiny $W_a$ pomoci univerzálního predikátu.
+
+	Dohromady máme rekurzivně spočetný predikát. Takže
+	\[ \exists z T_3(e, a, b, x, z) \]
+	Což je program, který pouští oba dva programy a čeká až se jeden z nich zastaví.
+	Použijeme s-m-n \cref{s_m_n} pro predikáty
+	\[ \exists z T_3(e, a, b, x, z) \iff \exists z T_1(s_2(e, a, b), x , z) \]
+	Pak definujme
+	\[ \alpha(a, b) := s_2(e, a, b) \]
+
+	Analogicky pro $\cup$.
+\end{proof}
+
+Otázka: pokud všude použijeme omezené kvantifikátory s $y =$ velikost částic ve vesmíru, dostaneme upravenou logiku pro počítače?
+
+\begin{definition}
+	Omezený existenční kvantifikátor
+	\[ \exists_{y < z} Q \]
+	Jmenuje se konečná dizjunkce.
+\end{definition}
+
+\begin{definition}
+	Omezený všeobecný kvantifikátor
+	\[ \forall_{y < z} Q \]
+	Jmenuje se konečná konjunkce.
+\end{definition}
+
+\begin{theorem}[Omezená kvantifikáce]\label{omez_kvant}
+	Rekurzivní spočetnost je uzavřená na omezené kvantifikáce.
+
+	Dokonce efektivně na indexech, ale toto dělat nebudeme.
+\end{theorem}
+\begin{proof}
+	Pro existenční spustíme $z$ programů paralelně a čekáme až jeden přijme.
+
+	Pro všeobecný spustíme paralelně a čekáme jestli všechny přijmou.
+\end{proof}
+
+\begin{theorem}[Neomezená kvantifikáce]\label{neomez_kvant}
+	Rekurzivní spočetnost je uzavřená na existenční kvantifikáce.
+\end{theorem}
+\begin{proof}
+	Analogicky jako důkaz pro $\cap$, nahradíme dva existenční kvantifikátory jediným s dvojici.
+	\[ \exists y \exists s: T_n(...) \simeq \exists k = \langle y, s \rangle ... \]
+\end{proof}
+
+\begin{note}
+	Pro všeobecnou již neplatí (ani pro částečně rozhodnutelné).
+	Protipříkladem je $\overline{K}$ která není č.r.
+	Již lze zapsat pomoci všeobecného kvantifikátory
+	\[ x \in \overline{K} \iff \forall s \neg T_1(x, x, s) \]
+	Kde $T_1$ je částečně rozhodnutelný predikát, negace taky.
+\end{note}
+
+\subsection{10 Hilbertův problém}
+
+V moderní terminologií 10. Hilbertův problém zni: "zda existuje algoritmus, který by pro libovolný celočíselný polynom rozhodnul jestli existuje řešení v celých číslech.
+
+Libovolný celočíselný polynom je ekvivalentní 2 polynomům v $\N$, řešení pak taky hledáme v $\N$.
+Nejprve dáme záporné koeficienty na pravou stranu, pak aplikujeme Lagrangeovou větu o 4 $\square$.
+
+\begin{theorem}[RDPM (BD)]\label{rdpm}
+	Predikát Q je rekurzivně spočetný $\iff$ je tzv diofantický:
+		\[ \exists x_1, \ldots, x_k \in \N: (p_1(x_1, \ldots, x_k, y_1, \ldots, y_n) = p_2(x_1, \ldots, x_k, y_1, \ldots, y_n)) \]
+\end{theorem}
+
+\begin{consequence}
+	10. Hilbertův problém má negativní odpověď.
+
+	Protože máme množiny které nejsou rozhodnutelné, třeba DIAG.
+\end{consequence}
+
+\begin{amendment}\label{rdpm_am}
+	Jako byprodukt dostáváme ekvivalenci:
+
+	\[ \exists(PRP) \iff \exists(p_1(\ldots) = p_2(\ldots)) \]
+	Bez existenčního kvantifikátoru vůbec není pravda.
+	V aritmetice lze vytvořit i superexponenxielu $e^{n^n}$ atd, polynomy jsou ale omezené.
+	Taky polynomy lze elementárně vyjádřit pomoci Robinsonové aritmetiky.
+\end{amendment}
+
+\subsection{Selektory}
+
+Obecné, Selektor je definovaný pro "hezké relace", např $Q(x, y)$.
+Pak selektor vybírá $y$ pro $\forall x$.
+
+\begin{theorem}[O selektoru]\label{selector}
+	Nechť $Q(x, y)$ je rekurzivně spočetný $($resp $Q(x_1, \ldots, x_n, y))$, pak $\exists \varphi \in$ CŘF:
+	\[ \varphi(x) \downarrow \iff \exists y: Q(x, y) \]
+		\[ \varphi(x) \downarrow \Rightarrow Q(x, \varphi(x)) \]
+	Jinými slovy vybere $y$ pokud existuje.
+\end{theorem}
+\begin{proof}
+	Pozor, nemůžeme vzít nejmenší, musíme vzít první protože lepší už třeba nebude.
+
+	Q je r.s. $\Rightarrow$ má index $e$, napíšeme pomoci univerzálního predikátu
+	\[ \exists s: T_2(e, x, y, s) \]
+	Predikát zapíšeme jako množinu
+	\[ dom(\varphi_e(x, y)) \]
+	Pak pro dáne $x$ probereme všechny $\langle y, s \rangle$ a hledáme nejmenší dvojici tž platí
+	\[ T_2(e, x, y, s) \]
+	Neboli hledáme první $\langle y, s \rangle$ tž za $s$ kroků $\varphi_e(x,y) \downarrow$.
+
+	Formálně:
+	\[ \varphi(x) \simeq (\mu_{\langle y, s \rangle} T_2(e, x, y, s))_{2,1} \]
+	indexy vydělí $y$.
+\end{proof}
+
+\begin{definition}
+	Graf ČRF je
+	\[ graph(\varphi) = \{ \langle x, y \rangle |\ \varphi(x) = y \} \]
+\end{definition}
+\begin{consequence}
+	$\varphi$ je ČRF $\iff graph(\varphi)$ je r.s.
+\end{consequence}
+\begin{proof}
+	"$\Rightarrow \langle x, y \rangle \in graph(\varphi) \Rightarrow \exists s$ (za $s$ kroků $\varphi(x) = y$).
+
+	Což je r.s. predikát.
+
+	"$\Leftarrow$" Aplikuj selektor. Volba v totalitním režimu, buď jeden kandidát nebo nic.
+\end{proof}
+
+\begin{note}
+	Při zobecněních vyčíslitelnost do vyšších hierarchii, definujme vyčíslitelnost tak, že graf je rozumný.
+\end{note}
+
+\begin{theorem}[Postova podruhe]
+	\[ Q(x,y) = (x \in M \land y = 1) \lor (x \in \overline{M} \land y = 0) \]
+
+	Neboli $\varphi$ je charakteristická funkce množiny $M$.
+\end{theorem}
+
+\subsection{Imunní množiny}
+
+\begin{definition}
+	A je \emph{imunní} pokud je nekonečná a neobsahuje nekonečnou rekurzivní spočetnou podmnožinu.
+	\[ W_x \subseteq A \Rightarrow |W_x| < \infty \]
+
+	Je nekonečná, ale nemůžeme to efektivně zkontrolovat.
+	Protože veškeré algoritmický zkontrolovatelné podmnožiny jsou konečné.
+\end{definition}
+
+\begin{definition}
+	A je \emph{simple} pokud je rekurzivní spočetná a $\overline{A}$ je imunní.
+\end{definition}
+
+\begin{note}
+	Postův problém: co je mezí Rekurzivní množiny a nerekurzivní množinou K?
+
+	Definoval Simple, hypersimple, hyper-hyper ... atd až do Maximalní.
+	Ale tato klasifikace neuspěla.
+\end{note}
+
+\begin{theorem}[Existence Simple]
+	Existuje Simple množina.
+\end{theorem}
+\begin{proof}
+	Uděláme predikát
+	\[ Q(x, y) \iff y \in W_x \land y > 2x \]
+	je rekurzivně spočetný protože nalezení je r.s. a druhá podmínka taky.
+	Nechť $\varphi \in $ CŘF je selektor pro Q.
+	Pak
+	\[ A = range(\varphi) \]
+
+	Podrobněji:
+	\[ W_x \subseteq \overline{A} \Rightarrow W_x \subseteq \{ 0, \ldots, 2x \} \]
+	Neboli $\overline{A}$ neobsahuje nekonečnou r.s. množinu.
+
+	$\overline{A}$ nekonečná? \\
+	Do $\{ 0, \ldots, 2x \}$ mohou přispět nejvýše $W_0, \ldots, W_{x - 1}$ množin.
+	Neboli nejvýše $x$ čísel.
+	Pak ale v $\overline{A}$ zůstane nejméně $(x + 1)$ čísel, neboli $\overline{A}$ je nekonečná.
+
+	Dohromady $\overline{A}$ je imunní.
+
+\end{proof}

@@ -1,0 +1,386 @@
+\section{\texorpdfstring{Aritmetická hierarchie}{Aritmetická hierarchie}}
+\vspace{5mm}
+\large
+
+\begin{note}
+	Aritmetická hierarchie je v jistém smyslu efektivní verzi \href{https://en.wikipedia.org/wiki/Borel_hierarchy}{Borelovské hierarchie}.
+
+	$\cup$ odpovídá $\exists$ a $\cap - \forall$.
+\end{note}
+
+\begin{note}
+	Podobná konstrukce jako polynomiální hierarchie v teorii složitosti.
+\end{note}
+
+\begin{definition}[$\Sigma_n, \Pi_n$]
+	$\Sigma_n$ resp $\Pi_n$ prefix je skupina (aritmetických kvantifikátoru). $\Sigma_n$ začíná $\exists$, $\Pi_n$ naopak $\forall$.
+
+	Každá ze skupin je homogenní - několik kvantifikátoru stejného typu, např $\exists\exists\exists$ nebo $\forall\forall$.
+\end{definition}
+
+\begin{definition}[Redukovaný prefix]
+	Každá ze skupin obsahuje pouze jeden kvantifikátor.
+\end{definition}
+
+\begin{example}
+	$\exists\exists\forall\exists\exists$ je $\Sigma_3$.
+
+	$\exists\forall\exists$ je redukovaný $\Sigma_3$.
+\end{example}
+
+\begin{note}
+	Aritmetická hierarchie se označuje $\Sigma_n^0, \Pi_n^0$ protože kvantifikace je přes $\N$ (aritmetická).
+	Dolní index označuje počet střídavých kvantifikátoru.
+
+	$\Sigma_n^1, \Pi_n^1$ by byla kvantifikace navíc přes funkce $f:\N \to \N$.
+\end{note}
+
+\begin{definition}
+	Predikát (resp množina) je ve třídě $\Sigma_n (\Pi_n)$ jestliže je vyjadřítelný ve tvaru $\Sigma_n (\Pi_n)$ prefix na rekurzivní základ (ORP).
+
+	Podobně pro relativní: \\
+	$ \Sigma_n^{0, A}$, predikáty jsou $A$-ORP.
+\end{definition}
+
+\begin{observation}
+	$\Sigma_0^0 = \Pi_0^0$ jsou právě rekurzivní predikáty.
+
+Q: rovnost plyne z toho, že můžeme prohodit kvantifikace?
+Na vyšších úrovních neplatí protože...??
+\end{observation}
+
+\begin{definition}[Aritmetický predikát]
+	Predikát je \emph{aritmetický} právě když ho lze vyjádřít pomoci logiky 1. řádu, kde atomické části jsou rekurzivní.
+\end{definition}
+
+\begin{observation}
+	Predikát je aritmetický právě když patří do $\Sigma_n$ nebo $\Pi_n$.
+\end{observation}
+\begin{proof}
+	"$\Leftarrow$" zřejmé.
+
+	"$\Rightarrow$" Úpravou výrazu do \href{https://en.wikipedia.org/wiki/Prenex_normal_form}{prenexního normálního tvaru}.
+	Z logiky, libovolnou formuli lze do tohoto tvaru převést.
+\end{proof}
+
+\begin{note}
+	Pokračováním do rekurzívních ordinálu lze studovat hyperaritmetickou hierarchii. Dal analytická hierarchie.
+
+	V rámci kurzu končíme u konečných, neboli $\omega$.
+\end{note}
+
+\begin{example}\label{tot_pi2}
+	Množina Tot \cref{tot_mn} je v $\Pi_2^0$.
+\end{example}
+\begin{proof}
+	\[ x \in Tot \iff \forall y \exists x: \varphi_{x, s}(y) \downarrow \]
+	Máme 2 střídavé kvantifikátory, $\varphi_{x, s}(y) \downarrow$ je rekurzivní.
+\end{proof}
+
+\begin{theorem}[Omezené kvantifikátory]
+	Omezené kvantifikátory nezvyšují složitost (lze prohodit doprava).
+\end{theorem}
+\begin{proof}
+	Rozebereme 2 případy dle typu omezeného kvantifikátoru na začátku formule ($\forall_{x \leq t}, \exists_{x \leq t}$).
+
+	BUNO máme formuli v PNF:
+	\[ \forall_{x \leq t} \exists y (\ldots) \]
+	vezmeme $w$ jako kodovaní $(t + 1)$-tice, pak formuli lze ekvivalentně upravit na následující tvar
+	\[ \exists w \forall_{x \leq t}(\ldots (w)_{t + 1, x} \ldots)\]
+	Protože existence svědka pro všechny $x \leq t$ je stejný jako říct, že existuje skupina $(t + 1)$ svědků.
+
+	Pak existenční kvantifikátor, BUNO máme formuli:
+	\[ \exists_{x \leq t} \forall y (\ldots) \]
+	Použijeme negaci a předchozí případ:
+	\[ \forall_{x \leq t} \exists y \neg(\ldots) \]
+	\[ \exists w \forall_{x \leq t}\neg(\ldots (w)_{t + 1, x} \ldots)\]
+	Teď odstraníme negaci:
+	\[ \forall w \exists_{x \leq t} (\ldots)\]
+	V libovolné formuli můžeme postupem popsaném nahoře posunout omezené kvantifikátory doprava.
+	Pak dle věty o omezené kvantifikace \cref{omez_kvant} ORP a omezený kvantifikátor jsou dohromady ORP.
+	Omezený kvantifikátor lze nahradit konečnou disjunkce/konjunkce.
+
+\end{proof}
+
+\begin{theorem}[Redukovaný prefix]
+	Libovolnou formuli lze převést do redukovaného prefixu.
+\end{theorem}
+\begin{proof}
+	Znovu 2 případy dle typu kvantifikátoru.
+
+	Podobně jako ve větě o neomezené kvantifikace \cref{neomez_kvant} nahradíme $n$ kvantifikátoru jediným kvantifikátorem $n$-tice.
+	\[ \exists x \exists y \to \exists w ((w)_{2, 1} \ldots  (w)_{2, 2}) \]
+	Analogicky pro $\forall$.
+\end{proof}
+
+\begin{example}
+	Množina Rec $= \{ x : W_x\ \text{je rekurzivní}\ \} \in \Sigma_3^0$.
+\end{example}
+\begin{proof}
+	Dle Postové věty \cref{post}:
+	\[ x \in Rek \iff \exists y(W_x \cup W_y = W \land W_x \cap W_y = \emptyset) \]
+	Neboli $W_y = \overline{W_x}$, dohromady vyplní celý prostor, ale průnik je prázdný.
+
+	Přepíšeme formuli:
+	\[ \forall y(\forall z (z \in W_x \cup W_y) \land \forall z (z \notin W_x \cap W_y)) \]
+	Po krocích:
+	\[ \forall y(\forall z \exists s(z \in W_{x, s} \cup W_{y, s}) \land \forall z \forall s(z \notin W_{x, s} \cap W_{y, s})) \]
+	Pak šikovně vytáhneme jeden všeobecný kvantifikátor z levé části a 2 všeobecné z pravé části.
+	V posledním kroku vytáhneme existenční kvantifikátor z levé části. Čímž dostaneme
+	\[ \exists \forall \exists (\ldots) \in \Sigma_3^0 \]
+\end{proof}
+
+\begin{theorem}[Základní vlastnosti hierarchie]\label{aritm_hier_prop}
+	\begin{enumerate}
+		\item $A \in \Sigma_n \iff \overline{A} \in \Pi_n$
+		\item $B \in \Sigma_n (\Pi_n) \Rightarrow \forall m > n: B \in \Sigma_m \cup \Pi_m$.
+		%\item $\forall m \leq n: \Sigma_n \cup \Pi_n \subseteq \Sigma_m \cap \Pi_m$
+		\item $A \leq_m B \land B \in \Sigma_n(\Pi_n) \Rightarrow A \in \Sigma_n(\Pi_n)$
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	\begin{enumerate}
+		\item Plyne z De Morgan pravidla. Negace mění kvantifikátor na opačný.
+		\item Přidáme redundantní kvantifikátory přes fiktivní proměnné.
+
+			Pokud jdeme směrem $\Sigma_n \to \Sigma_{n + 1}$, tak přidáme kvantifikátor na konec prefixe.
+			Opačně $\Sigma_n \to \Pi_{n + 1}$, přidáme kvantifikátor na začátek prefixe.
+		\item dle definice $\leq_m \exists f \in ORF$:
+			\[ x \in A \iff f(x) \in B \]
+			$f(x)$ můžeme jednodušé kvantifikovat.
+	\end{enumerate}
+\end{proof}
+
+\subsection{Numerace}
+
+\begin{theorem}
+	Třída $\Sigma_0^0 = \Pi_0^0$ nemá univerzální ORP (rekurzivní numerace).
+\end{theorem}
+\begin{proof}
+	Pomoci Cantorové diagonální metody.
+	Nechť $R(e, x)$ je ORP.
+
+	Pak musí platit:
+	\[ \neg R(e, e) = R(a_0, e) \]
+	položme $a_0 = e$ a dostáváme spor.
+\end{proof}
+
+\begin{note}
+	Univerzální ČRF, neboli univerzální r.s. predikát \cref{univ_predic} je univerzální $\Sigma_1^0$ 2 proměnných pro třídu $\Sigma_1^0$ 1 proměnné.
+\end{note}
+
+\begin{theorem}[O numeraci, univerzálním predikátu]\label{aritm_numer}
+	Pro $(n \geq 1)$ třída $\Sigma_n(\Pi_n)$ má univerzální $\Sigma_n(\Pi_n)$ predikát.
+
+	Tedy máme $\Sigma_n(\Pi_n)$-indexu.
+\end{theorem}
+\begin{proof}
+	Pro $\Sigma_n$, $\Pi_n$ analogicky.
+
+	Nechť máme $\Sigma_n$ predikát.
+	Nechť $n$ liché. Pak je tvaru
+	\[ \exists \forall \ldots \exists Q(\ldots) \]
+	Ořízneme poslední existenční kvantifikátor a predikát, dle věty o univerzálním r.s. predikátu \cref{univ_predic}:
+	\[ \exists y_n Q(\ldots, y_n) = \exists y_n T_n(e, \ldots, y_n) \]
+	Tím dostaneme vyjádření přes univerzální predikát:
+	\[ \exists y_1, \forall y_2, \ldots \exists y_n T_n(e, y_1, y_2, \ldots, y_n) \]
+
+	Pokud $n$ je sudé, tak máme predikát:
+	\[ \exists \forall \ldots \forall Q(\ldots) \]
+	Znovu použijeme negaci na
+	\[ \forall Q(\ldots) = \exists \neg Q(\ldots) \]
+	Což je r.s., proto se rovná univerzálnímu predikátu:
+	\[ \exists \neg Q(\ldots) = \exists T_n(e, \ldots) \]
+	zpět negace:
+	\[ \exists T_n(e, \ldots) = \forall y_n \neg T_n(e, \ldots) \]
+	Dohromady:
+	\[ \exists y_1, \ldots, \forall y_n \neg T_n(e, y_1, \ldots, y_n) \]
+\end{proof}
+
+\begin{note}
+	Ve třídě složitosti nemáme univerzální polynom, proto $P \neq NP$ problém.
+\end{note}
+
+\begin{consequence}
+	Pro $(n \geq 1) \Sigma_n^0 - \Pi_n^0 \neq \emptyset$.
+\end{consequence}
+\begin{proof}
+	Pro $n = 1$ máme $K \in \Sigma_1^0 - \Pi_1^0$.
+
+	Pro ostatní $n$ stejný důkaz.
+	Nechť $U(e, x)$ je univerzální predikát pro $\Sigma_n^0$. Kdyby $U(e, e) \in \Pi_n^0 \Rightarrow \neg U(e, e) \in Sigma_n^0$.
+	Z existenci univerzálního $\neg U(e, e)$ má index $i$.
+	Dosadíme index, dostaneme spor
+	\[ U(i, i) = \neg U(i, i) \]
+	Tedy $U(i, i) \notin \Pi_n^0$.
+\end{proof}
+
+\begin{definition}[$\Delta_n$]
+	\[ \Delta_n = \Sigma_n \cap \Pi_n \]
+\end{definition}
+
+\begin{definition}[$\Sigma_n^0$-úplnost]
+	$B$ je $\Sigma_n^0$-úplná právě když $B \in \Sigma_n^0$ a
+	\[ \forall A \in \Sigma_n^0: A \leq_1 B \]
+\end{definition}
+
+\begin{theorem}[O aritmetické hierarchii]
+	\begin{enumerate}
+		\item $\emptyset^{(n)}$ je $\Sigma_n^0$-úplná pro $(n \geq 1)$.
+		\item $A$ je r.s. v $\emptyset^{(n)} \iff A \in \Sigma_{n + 1}^0$.
+		\item $A \leq_T \emptyset^{(n)} \iff A \in \Delta_{n + 1}$.
+	\end{enumerate}
+
+	Tato věta propojuje skok \cref{jump} s aritmetickou hierarchii a vyjádřitelnosti v PA.
+\end{theorem}
+\begin{proof}
+	Indukci, pro $n = 0$ platí, protože
+	\[ A\ \text{je r.s.} \iff A \in \Sigma_1^0 \]
+	\begin{enumerate}
+		\item z vlastnosti operace skoku \cref{jump} je $\emptyset^{(n + 1)}$ r.s. v $\emptyset^{(n)}$.
+			Podle 2) $\emptyset^{(n + 1)} \in \Sigma_{n + 1}^0$.
+			Pak $\emptyset^{(n + 1)}$ je $\Sigma_{n + 1}^0$-úplná.
+		\item "$\Leftarrow$" Jelikož
+			\[ A \in \Sigma_{n + 1}^0 \]
+			$A$ Lze vyjádřit jako
+			\[ \exists \forall \ldots Q(\ldots) \]
+			Ořízneme od prvního kvantifikátoru
+			\[ \forall \ldots Q(\ldots) \in \Pi_n^0 \]
+			Použijeme trik s negaci jako ve větě o numeraci \cref{aritm_numer}.
+			Čímž dostaneme predikát $P \in \Sigma_{n}^0$ který je dle i.p. $P \leq_1 \emptyset^{(n)}$.
+			Tedy i $P \leq_T \emptyset^{(n)}$.
+			Dáme zpět negace a dostaneme predikát tvaru
+			\[ \exists (\emptyset^{(n)}\ \text{rekurzivní relace}) \]
+			Z toho $A$ je r.s. v $\emptyset^{(n)}$.
+
+		"$\Rightarrow$". Lze dokázat 2ma způsoby:
+
+			a) Jelikož $A$ je r.s. v $\emptyset^{(n)}$. Tak
+			\[ A = dom(\varphi) \]
+			Kde $\varphi$ je $\emptyset^{(n)}$-ČRF.
+			Dále
+			\[ x \in A \iff \varphi(x) \downarrow \Rightarrow \Phi(\emptyset^{(n)})(x) \downarrow \]
+			Kde $f = \Phi(\emptyset^{(n)})$ je %TODO
+			Je to ekvivalentní
+			\[ \exists \sigma \exists y(\Phi(\sigma)(x) \simeq y \land \sigma \prec \emptyset^{(n)}) \]
+			Máme následující kvantifikátory:
+			\[ \exists (\exists \land \sigma \prec \emptyset^{(n)}) \]
+			Tvrdíme, že $\sigma \prec \emptyset^{(n)})$ je $\Sigma_n^0 \land \Pi_n^0$.
+			Protože pro $j \leq |\sigma|$:
+			\[ \sigma(j) = 1 \Rightarrow j \in \emptyset^{(n)} \]
+			což dle i.p. je $\Sigma_n^0$.
+			Opačně:
+			\[ \sigma(j) = 0 \Rightarrow j \notin \emptyset^{(n)} \]
+			což dle i.p. je $\Pi_n^0$.
+
+			Dohromady:
+			\[ \exists(\Sigma_n^0 \land \Pi_n^0)\]
+			Vytáhneme existenční kvantifikátor
+			\[\exists(\Pi_{n - 1}^0 \land \Pi_n^0) = \Sigma_{n + 1}^0 \]
+
+			b) Jelikož $A$ je r.s. v $\emptyset^{(n)}$. Tak
+			\[ A = dom(\varphi) \]
+			Kde $\varphi$ je $\emptyset^{(n)}$-ČRF.
+
+			Dle věty o limitní vyčíslitelnosti %todo link
+			\[ \varphi(x) \simeq \lim_s F(x, s) \]
+			kde $F$ je $\emptyset^{(n - 1)}$-ORF. Pak
+			\[ x \in A \iff \varphi(x) \downarrow = \exists \lim_s F(x, s) \]
+			Existenci limity lze zapsat:
+			\[ \exists s_0 \forall t \geq s_0: F(x, t) = F(x, s_0) \]
+			Protože jsme v diskretním prostoru, limita existuje když hodnota funkce se stabilizuje.
+			Navíc $F(x, t) = F(x, s_0)$ je $\emptyset^{(n - 1)}$-ORF.
+			Dle i.p. je $\Pi_n^0$ a $\Sigma_n^0$.
+			Vezmeme jen $\Pi_n^0$ a dostaneme predikát:
+			\[ \exists \forall(\Pi_n^0) \in \Sigma_{n + 1}^0 \]
+
+		\item "$\Leftarrow$". Podle 2) $A$ je r.s. v $\emptyset^{(n)}$.
+			Pak z vlastnosti hierarchie \cref{aritm_hier_prop}: $\overline{A} \in \Pi_n$.
+			Takže $\overline{A}$ je r.s. v $\emptyset^{(n)}$.
+			Dohromady dle Postové Věty \cref{rel_prop} A je rekurzivní v $\emptyset^{(n)}$.
+
+			% TODO kde formálně indukční předpoklad?
+			"$\Rightarrow$". Pokud $A \leq_T \emptyset^{(n)}$ tak podle indukčního předpokladu $A, \overline{A}$ je r.s. v $\emptyset^{(n)}$.
+			Tedy $A \in \Delta_{n + 1}$.
+	\end{enumerate}
+\end{proof}
+
+\begin{note}
+	Předchozí věta souvisí s elementární aritmetikou, protože dle RDPM věty \cref{rdpm}:
+	\[ \Sigma_1^0 \models_{\N} \Sigma_1-\text{formule} \]
+	Což je taky rovnost dvou polynomů.
+\end{note}
+
+Z 1) bodů předchozí věty:
+\begin{properties}
+	\begin{enumerate}
+		\item $K, \emptyset^{\prime}$ jsou 1-úplné neboli $\Sigma_1^0$-úplné.
+		\item $\overline{K}, \overline{\emptyset^{\prime}}$ jsou 1-úplné neboli $\Pi_1^0$-úplné.
+	\end{enumerate}
+\end{properties}
+
+\begin{theorem}[Tot úplnost]
+	Množina Tot \cref{tot_mn} je $\Pi_2^0$-úplná.
+\end{theorem}
+\begin{proof}
+	$Tot \in \Pi_2^0$, viz \cref{tot_pi2}.
+
+	Nechť $B \in \Pi_2^0$ libovolná.
+	Pak
+	\[ x \in B \iff \forall y \exists s: Q(x, y, s) \]
+	Kde $Q$ je rekurzivní predikát.
+	Uděláme program:
+	\[ \varphi_{\alpha(x)}(y) \simeq \mu_s Q(x, y, s) \]
+	Pak
+	\[ x \in B \Rightarrow \alpha(x) \in Tot \]
+	Protože program najde $s$ pro všechna $y$.
+	Opačně:
+	\[ x \notin B \Rightarrow \alpha(x) \in Tot \]
+	Protože $\exists y \forall s: \neg Q(x, y, s)$.
+	Dokonce $\alpha$ lze udělat prostou.
+
+	Z toho
+	\[ B \leq_1 Tot \]
+\end{proof}
+
+\begin{definition}[Fin]
+	\[ Fin = \{ x: |W_x| < \infty \} \]
+\end{definition}
+
+\begin{definition}[Inf]
+	\[ Inf = \{ x: |W_x| = \infty \} \]
+\end{definition}
+
+\begin{theorem}[Fin úplnost]
+	Množina Fin je $\Sigma_2^0$-úplná.
+\end{theorem}
+\begin{proof}
+	\[ x \in Fin \iff \exists y \forall z, s (z \notin W_x \land z > y) \]
+	Pokud je konečná, tak od určitého místa do ní nepadne žádný prvek.
+	$y$ je buď maksimalní, nebo větší než max.
+
+	Formule je $\Sigma_2^0$.
+
+	Dokážeme přes komplement
+	\[ \varphi_{\beta(x)}(y) \downarrow \iff \forall j \leq y (\varphi_x(j) \downarrow) \]
+	Pak
+	\[ x \in Tot \iff \beta(x) \in Inf \]
+	Protože pokud není nekonečná, tak na nějakém vstupu nekonverguje a totiž není všude definováná.
+	Taky opačně:
+	\[ x \notin Tot \iff \beta(x) \notin Inf \]
+	Alternativně:
+	\[ \varphi_{\gamma(x)} (j) \downarrow \iff \exists j-\text{prvků}\ \in W_x \]
+	Pak platí
+	\[ x \in Tot \iff \gamma(x) \in Inf \]
+	a i opačně.
+	Dohromady:
+	\[ Inf \equiv_1 Tot \]
+\end{proof}
+
+\begin{definition}[Rek]
+	\[ Rek = \{ x: W_x\ \text{je rekurzivní}\ \} \]
+\end{definition}
+
+\begin{theorem}[Rek úplnost (BD)]
+	Množina Rek je $\Sigma_3^0$-úplná.
+\end{theorem}

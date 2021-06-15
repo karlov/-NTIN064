@@ -1,0 +1,299 @@
+\section{\texorpdfstring{Zkratky}{Zkratky}}
+\vspace{5mm}
+\large
+
+\begin{enumerate}
+	\item ČRF - částečně rekurzivní funkce.
+	\item ORF - obecně rekurzivní funkce.
+	\item PRF - primitivně rekurzivní funkce.
+	\item r.s. - rekurzivně spočetná.
+	\item ZAS - zakladní aritmetika síla.
+	\item PA - Peano Aritmetika.
+	\item ORP - obecně rekurzivní predikát.
+	\item PNF - prenexní normální tvar.
+\end{enumerate}
+
+\section{\texorpdfstring{Uvod}{Uvod}}
+\vspace{5mm}
+\large
+
+
+\subsection{Historická vsuvka}
+
+Hilbertův 10. problém, úplnost aritmetiky 1900.
+G\"{o}del dokázal že nejde. V prvním větě použil \emph{Primitivně rekurzivní funkce}.
+
+\begin{definition}
+	Primitivně rekurzivní funkce - podmnožina efektivně vyčíslitelných funkci, jsou všude definované.
+\end{definition}
+
+Tyto ale nestačí pro hlavní problém dokazatelnosti.
+
+Při dalším vývoje se vyvinul kalkulus tzv obecně rekurzivních funkci ORF a částečně rekurzivních funkci ČRF.
+
+\begin{definition}
+	Částečně rekurzivní funkce - efektivně vyčíslitelné funkce.
+\end{definition}
+
+\begin{definition}
+	Obecné rekurzivní funkce - ČRF které jsou všude definované.
+\end{definition}
+
+\begin{note}[Church-Turing teze]
+	Historický vývoj:
+	\begin{itemize}
+		\item A. Church vyvinul $\lambda$-konverze ($\lambda$-calculus) a dokázal, že neexistuje algoritmus tzv "rozhodovací".
+		Lambda konverze jsou poměrně obtížné.
+		\item Turing, nezávislé na Churchoví v roce 36 vyvinul Turing Machines a dokázal nevyčíslitelnost Halting problému.
+	\end{itemize}
+
+	Pak ostatní prohlásili Church-Turing teze, že všechno co je efektivně vyčíslitelné je Turingovský nebo $\lambda$-konverzi vyčíslitelné.
+\end{note}
+
+\begin{definition}
+	$\lambda$-calculus:
+
+	Nechť $C$ je množina konstant, nechť $V$ je (spočetná) množina proměnných.
+	Množina tzv $\lambda$ terms $\Lambda$ je nejmenší množina tž:
+	\begin{itemize}
+		\item $C \subseteq \Lambda$.
+		\item $V \subseteq \Lambda$
+		\item nechť $t_1, t_2 \in \Lambda$ termy, pak aplikace $t_1\ t_2$ jako v Haskellu je taky term
+		\item $t \in \Lambda, x \in V \Rightarrow \lambda x . t \in \Lambda$.
+			V Haskellu:\\ $(\textbackslash x \to t)$
+
+			Což je funkce s parametrem $x$ a vrací $t$.
+	\end{itemize}
+\end{definition}
+
+Jako závěr, formální, efektivně dokazovací systém nemůže uplně popsat pravdu. Je mnohem složitější.
+
+\begin{note}[System PRF(odbočka)]
+	Funkcionální systém, postavený na axiomech:
+	\begin{itemize}
+		\item Základní funkce: 0, +1, id (resp vydělení i-té složky)
+		\item 2 Odvozovací pravidla:\\
+			1) substituce \\
+			2) operátor primitivní rekurze.
+			Jednoduše řečeno, výpočet v bode $(y + 1)$ uděláme rekurzivně z bodu "$y$".
+	\end{itemize}
+
+	Pak se vezme \emph{tranzitivní uzávěr} - všechno co jde odvodit ze základních funkci pomoci odvozovacích pravidel.
+	Na rozdíl od ČRF nemáme \textbf{while}, čímž dostaneme jenom podmnožinu ČRF.
+
+	Substituce:
+	\[ S(f, g_1, \ldots, g_n) = f(g_1(y_1, \ldots, y_n), \ldots, g_n(y_1, \ldots, y_n)) \]
+
+	Primitivní rekurze:
+	%todo 2nd lecture od 09:00
+
+\end{note}
+
+\begin{note}[Kleeneho system ČRF]
+	Pak přidáním operátoru $\mu$ a \textbf{while} k předchozímu systému dostaneme ČRF (znovu \emph{tranzitivní uzávěr}).
+	Je komplikovaný, je lepší používat nějaké dokazování.
+\end{note}
+
+Q: je možné, že existuje mnohem komplikovanější systém než všechny které máme v Church-Turingové téze, který by byl silnější z pohledu vyčíslitelnosti?
+
+\subsection{Terminologie}
+
+Přibližně do roku 1990 převládala terminologie ORF, ČRF zavedená Kleene.
+Pak byla snaha změnit na \textbf{computable functions} - efektivně vyčíslitelné.
+\begin{definition}
+	Množina je rekurzivní, neboli rozhodnutelná (decidable, computable) - efektivně rozhodnutelná.
+	Jednoduše řečeno, máme program, který na každém vstupu se vždy zastaví a rozhodne ANO nebo NE (jestli slovo patří do ni).
+\end{definition}
+
+\begin{definition}
+	Množina je rekurzivní spočetná (částečně rozhodnutelná), nebo computably enumerable.
+	Formálně je definičním oborem nějakého programu (tzn částečně rekurzivní funkce, TS etc.).
+\end{definition}
+
+\begin{note}
+	Na rozdíl od kurzu ZSV, kde jsme definovali funkce $f:\{0, 1\}^n \to \{0, 1\}^n$,
+	budeme zkoumat funkce aritmetické.
+
+	\[ f:\N \to \N, f:\N^k \to \N \]
+	Nemusí být všude definované.
+
+	Přístupy jsou ekvivalentní, protože můžeme očíslovat slova.
+\end{note}
+
+\begin{note}
+	Formálně nemáme klasické k-tice jako vektory, ale kodujeme všechno do přirozených čísel.
+	Je znamá jako \href{https://en.wikipedia.org/wiki/Pairing_function}{Cantorová metoda parovaní}.
+\end{note}
+
+\begin{notation}
+	Program \textbf{konverguje} - znamená že se zastaví za konečný počet kroků.
+\end{notation}
+
+\begin{reminder}
+	Rekurzivita, rekurzivní spočetnost se zachovává na $\cup, \cap$.
+
+	Rekurzivita je taky zachovaná při $\neg$ (doplněk).
+	Rekurzivní spočetnost nikoliv.
+\end{reminder}
+
+\begin{theorem}[Postova]\label{post}
+	$L$ je rozhodnutelný $ \iff L \land \bar{L} $ jsou c.r.
+\end{theorem}
+\begin{proof}
+$ \Rightarrow $. Z TS pro $L$ sestavíme pro doplněk znegovaním všech odpovědi. \\
+$ \Leftarrow $. Nechť $L(M) = L \land L(B) = \bar{L} $, pak sestavíme TS pro rozhodnutí $L$.
+
+\begin{alltt}
+1. Pust B, M paralelně
+2. if(Acc(M, x))
+3. \tab accept
+4. if(Acc(B, x))
+5. reject
+\end{alltt}
+
+Pokud se aspoň 1 zacykli - reject. Paralelní spuštění lze implementovat pomoci 2 pasek, případně je slepit do 1.
+\end{proof}
+
+\begin{definition}
+	G\"{o}delové číslo - index programu.
+	Nechť $\varphi$ je ČRF, $P_e$ je program který ji vyčísluje.
+	Pak index funkce $\varphi$ je $e$.
+\end{definition}
+
+\begin{note}
+	Každá ČRF má nekonečně mnoho programu, takže i nekonečně mnoho indexu.
+	Očíslovaní programu generuje očíslovaní funkci.
+
+	V jistém smyslu, nezáleží na konkretním očíslovaní pokud je efektivní (nemáme čas toto dokazovat).
+	2 různé indexace jsou \emph{efektivně ekvivalentní}.
+\end{note}
+
+Q: pokud zafixujeme "jazyk programování" má program jednoznačné očíslovaní?
+Q: jaký z jazyků programování" je nejbližší k ČRF? Asi $\lambda$-calculus.
+
+\begin{reminder}
+	Univerzální TS - dostane program $M$ a data $x$, simuluje výpočet $M(x)$.
+
+	Pro nás to bude \emph{univerzální ČRF}.
+\end{reminder}
+
+\begin{definition}
+	Univerzální ČRF je
+	\[ \Psi_n(e, x_1, x_2, \ldots, x_n) \]
+	kde $e$ je index programu, $x_i$ jsou data.
+
+	Občas se značí
+	\[ \varphi_e^n(x_1, \ldots, x_n) \simeq {e}(x_1, \ldots, x_n) \]
+\end{definition}
+
+\begin{notation}
+	\[ \varphi_e^n(x_1, \ldots, x_n) \simeq U(\mu_y T_n(x_1, \ldots, x_n, y)) \]
+
+	\begin{itemize}
+		\item Kde $T_n$ je primitivně rekurzivní predikát, který říká "za $n$ kroků".
+		\item $U$ je primitivně rekurzivní funkce 1 proměnné.
+			Který "vydělí" výsledek z mezivýsledků (jelikož máme všechno zakodované jako přirozená čísla).
+		\item $\mu_y$ říká "nejmenší $y$".
+	\end{itemize}
+\end{notation}
+
+\begin{theorem}[s-m-n (BD)]\label{s_m_n}
+	\[ \varphi_e^{m + n}(x_1, \ldots, x_n, y_1, \ldots, y_m) \simeq \varphi_{s_n^m(e, y_1, \ldots, y_m)}^n(x_1, \ldots, x_n) \]
+	V $\Psi$ notace
+	\[ \Psi_{n + m}(e, \bar{x}, \bar{y}) \simeq \Psi_m(s_n^m(e, \bar{x}, \bar{y})) \]
+	kde $\bar{x}, \bar{y}$ jsou vektory pro kratší zápis.
+
+	Funkce $s_n^m: e, x_1, \ldots, x_n$ vyrobí nový program.
+	Ten čeká na vstup $y_1, \ldots, y_m$, k tomu přidá zahardkodované data $x_1, \ldots, x_n$ a spustí na to $e$.
+	Je to pouze syntaktická manipulace dat.
+\end{theorem}
+
+\begin{notation}
+	$dom(\varphi)$ - definiční obor.
+\end{notation}
+\begin{notation}
+	$range(\varphi)$ - obor hodnot.
+\end{notation}
+
+\begin{definition}
+	$e$-ta rekurzivně spočetná množina.
+	\[ W_e = dom(\varphi_e) = \{ x: \varphi_e(x) \downarrow \} = \{ \Psi_1(e, x) \downarrow \} \]
+\end{definition}
+
+\begin{note}
+	Rekurzivní spočetné funkce se definuji jako obor hodnot ČRF.
+
+	$M$ je rekurzivní množina $\iff$ je oborem hodnot \textbf{rostoucí} ČRF.
+
+	$M$ je rekurzivně spočetná množina $\iff$ je oborem hodnot \textbf{prosté} ČRF.
+
+	Rozdíl v definici souvisí s Halting problémem.
+\end{note}
+
+\begin{definition}
+	$A \leq_1 B \iff \exists$ ORF $f$ (všude definovaná, efektivně vyčíslitelná):
+	\[ x \in A \iff f(x) \in B \]
+\end{definition}
+
+\begin{notation}
+	\[ K = \{ x: s \in W_x \} = \{ s: \varphi_x(x) \downarrow \} \]
+	Taky
+	\[ K_0 = \{ \langle x, y \rangle: \varphi_x(y) \downarrow \} \]
+	Značení z ZSV
+	\[ DIAG = \{ \langle M \rangle: M \in L(M) \} = \{ \langle M \rangle: M(\langle M \rangle) \} \]
+\end{notation}
+
+\begin{note}
+	DIAG je rekurzivně spočetný (částečně rozhodnutelný) ale není rekurzivní (rozhodnutelný).
+
+	Důkaz pomoci Cantorové diagonální metody.
+\end{note}
+\begin{proof}
+	\[ \overline{K} = \{ x: x \notin W_x \} \]
+	$W_x$ ale jsou všechny rekurzivně spočetné.
+	Z toho
+	\[ \forall W_x: \overline{K} \neq W_x \]
+	Takže $\overline{K}$ není částečně rekurzivní.
+	Dle Postové věty \cref{post} K není rozhodnutelná.
+\end{proof}
+
+\begin{theorem}[K 1-complete]
+	K (taky $K_0$) je 1-úplná.
+\end{theorem}
+\begin{proof}
+	Zavedeme ČRF
+	\[ \alpha(x, y, w) \downarrow \iff \varphi_x(y) \downarrow\]
+	kde $w$ je fiktivní proměnná.
+	Je to ekvivalentní
+	\[ \Psi_1(e, x, y, w) \]
+	použijeme \cref{s_m_n}
+	\[ \Psi_1(e, x, y, w) \simeq \Psi_1(s_2^1(e, x, y), w) \simeq \varphi_{s_2^1(e, x, y)}(w) \]
+	dosadíme za $w = s_2^1(e, x, y)$.
+
+	Pomoci $w$ se dostáváme na diagonálu. Pak
+	\[ x \in W_y \iff s_2^1(e, x, y) \in K \]
+\end{proof}
+
+\begin{theorem}
+	$\Psi_n$ nemá obecně rekurzivní rozšíření.
+	Jinými slovy neexistuje ORF $h$ rozšíření $\Psi$ tž
+	$\Psi_n(x) = h(x)$ pro $x \in dom(\Psi_n)$ a $h$ je definovaná pro vstupy mimo $dom(\Psi_n)$.
+
+	Dokonce, pokud $\alpha$ částečně rekurzivně rozšiřuje $\Psi_n$, tak najdeme vstup na kterém diverguje
+	\[ \exists x_1: \alpha(x_1, x_1) \uparrow \]
+\end{theorem}
+\begin{proof}
+	Použijeme Cantorovou diagonální metodu.
+	Definujme pomocnou ČRF:
+	\[ \beta(x) \simeq 1 \dotminus \alpha(x, x) \]
+	Kde $\dotminus$ je dodefinovaná operace odečítaní pro přirozená čísla.
+	Např $1 \dotminus 100 = 0$.
+	Jelikož je ČRF $\Rightarrow$ má index $e_{\beta}$, neboli
+	\[ \beta(e_{\beta}) \simeq \Psi_1(e_{\beta}, e_{\beta}) \simeq 1 \dotminus \alpha(e_{\beta}, e_{\beta}) \]
+	Nechť sporem $\alpha(e_{\beta}, e_{\beta}) \downarrow$, pak
+	\[ \Psi_n(e_{\beta}, e_{\beta}) \downarrow \]
+	Protože $\alpha$ je rozšíření
+	\[ \Psi_n(e_{\beta}, e_{\beta}) = \alpha(e_{\beta}, e_{\beta})\]
+	což je spor protože
+	\[ 1 \dotminus \alpha(e_{\beta}, e_{\beta}) = \Psi_n(e_{\beta}, e_{\beta}) = \alpha(e_{\beta}, e_{\beta})\]
+\end{proof}
