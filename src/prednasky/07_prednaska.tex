@@ -16,14 +16,14 @@ Zobecnění 1-převoditelnosti na relativný výpočet (s Orákulem).
 		\right.
 	\]
 	Pro niž platí:
-	\[ C_A(x) = \alpha_x(C_B(y_1), \ldots, C_b(y_n))\]
+	\[ C_A(x) = \alpha_x(C_B(y_1), \ldots, C_B(y_n))\]
 	Kde $C_i$ je charakteristická funkce.
 
 	Neboli
 	\[ x \in A \iff \alpha_x(\ldots) = 1 \]
 
 	Značení:
-	\[ A \leq_tt B \]
+	\[ A \leq_{tt} B \]
 \end{definition}
 
 \begin{note}
@@ -49,15 +49,15 @@ Existuje několik možnosti formalizace:
 
 	Důležité je, že množina konečných větví je r.s.
 	Každou z větvi lze charakterizovat pomoci
-	\[ \langle x, z, y, n \rangle \]
-	Kde $x$ je vstup, $y$ je vystup, $y$ je index konečné množiny kladně zodpovězených orákulem dotazů, $n$ je index množiny negativních dotazů.
+	\[ \langle x, v, y, n \rangle \]
+	Kde $x$ je vstup, $v$ je vystup, $y$ je index konečné množiny kladně zodpovězených orákulem dotazů, $n$ je index množiny negativních dotazů.
 	Přitom
 	\[ D_y \subseteq B, D_n \subseteq \overline{B} \]
 
 	Předpokládáme, že jazyk orákula je korektní, neboli
 	\[ D_y \cap D_n = \emptyset \]
 
-	Tento přistup formalizace není nejvýhodnější, protože body na které se práme netvoří souvislý počátek přirozených čísel.
+	Tento přistup formalizace není nejvýhodnější, protože body na které se ptáme netvoří souvislý počátek přirozených čísel.
 \end{note}
 
 \begin{agreement}
@@ -84,13 +84,14 @@ Existuje několik možnosti formalizace:
 
 	Funkcionál je funkce vyššího řadu, vrací funkce.
 \end{definition}
+Q: co přesně znamená $y^{\ast}$.
 
 \begin{note}
 	Přístupy jsou ekvivalentní, protože v případě Částečně rekurzívního funkcionálu číslo na které se orákula neptáme označíme nulou v řetízku.
 \end{note}
 
 \begin{example}
-	Program má na vstupu $x$, na vystup vypíše $y$ s použití $\alpha < B$.
+	Program má na vstupu $x$, na vystup vypíše $y$ s použití $\alpha \preccurlyeq B$.
 \end{example}
 
 \begin{definition}
@@ -315,7 +316,7 @@ Q: co je $B$-rekurzívní podmínka? Zahrnuje taky $y \in B$?
 			Dosadíme za fiktivní proměnnou $w = h(x, y)$.
 			Pak
 			\[ h(x, y) \in K \iff y \in W_x \]
-			% todo nechapu tento krok
+			% todo nechapu tento krok, proč potřebujeme x_0??
 			Zvolme $x = x_0$, pak $h(x_0, y)$ 1-převádí $W_x$ na $K$.
 
 			V relatívném případě máme $W_x^A$ a $A^{\prime}$ místo $K$.
@@ -365,7 +366,7 @@ Q: co je $B$-rekurzívní podmínka? Zahrnuje taky $y \in B$?
 \begin{definition}[Jump na T-stupních]\label{jump_T}
 	$\underline{a}^{\prime}$ skok T-stupně $\underline{a}$ je třída
 	\[ \{ B: B \geq_T A^{\prime}, A \in a \} \]
-	Na volbě $A$ nezáleží protože je to ekvivalence.
+	Na volbě $A$ nezáleží protože relace $\equiv_T$ je ekvivalence.
 \end{definition}
 
 \begin{note}
