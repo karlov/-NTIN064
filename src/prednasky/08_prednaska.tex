@@ -23,9 +23,9 @@
 	"$\Leftarrow$" Nechť
 	\[ \exists f \in ORF, \forall x: A(x) = \lim_s f(x, s) \]
 	Hledáme místo, od kterého se hodnota funkce nemění:
-	\[ \mu_s(\forall j \geq s(f(x, j) = f(x, y))) \]
-	$\forall j \geq s(f(x, j) = f(x, y)$ je $\emptyset^{\prime}$-rekurzívní, protože negace je
-	\[ \exists j \geq s(f(x, j) \neq f(x, y) \]
+	\[ \mu_s(\forall j \geq s:(f(x, j) = f(x, y))) \]
+	$\forall j \geq s:(f(x, j) = f(x, y)$ je $\emptyset^{\prime}$-rekurzívní, protože negace je
+	\[ \exists j \geq s:(f(x, j) \neq f(x, y)) \]
 	Vnitřek je rekurzívní + existenční kvantifikátor dává r.s. (while cyklus).
 	R.S. jsou $\geq_1 \empPr$, což implikuje taky $\geq_T \emptyset^{\prime}$.
 	Pokud vrátíme negaci, tak je formule je r.s. (rekurzivita je uzavřená na negaci).
@@ -37,7 +37,7 @@
 	Nejmenší $s$ hledáme ve while cyklu.
 
 	Jelikož $A(x) = C_A(x)$ je všude definovaná, tak existuje příslušná limita:
-	\[ \exists s \forall j \geq s(f(x, j) = f(x, s)) \]
+	\[ \exists s \forall j \geq s:(f(x, j) = f(x, s)) \]
 	Neboli je to dokonce $\empPr$-ORF, z čehož
 	\[ A \leq_T \empPr \]
 
@@ -166,7 +166,7 @@
 
 \begin{theorem}[Limitní vyčíslitelnost relativní nejobecnější (P)]
 	Pokud $h \in ORF$:
-	\[ \Phi_z(\emptyset^{(n + 1)}(x) \simeq \lim_{s_0} \ldots \lim_{s_n} h(z, x, s_0, \ldots, s_n) \]
+	\[ \Phi_z(\emptyset^{(n + 1)})(x) \simeq \lim_{s_0} \ldots \lim_{s_n} h(z, x, s_0, \ldots, s_n) \]
 \end{theorem}
 
 \begin{note}[R.S. limitní hierarchie]
@@ -178,7 +178,7 @@
 	\item 2-r.s. (2 změny) bude rozdílem dvou r.s. množin.
 	\item analogicky $n$-r.s. je booleovským rozdílem $n$ množin.
 	\item $\omega$-r.s. nejvýš $\omega$ změn v každém sloupci.
-		Ekvivalentně: $\exists h \in ORF: \leq h(x)$ změn.
+		Ekvivalentně: $\exists h \in ORF:$ \# změn $\leq h(x)$.
 		Obecně limita existuje, ale nejde udělat žadný odhad počtu změn ve sloupci.
 	\end{itemize}
 \end{note}

@@ -55,7 +55,7 @@
 
 \begin{theorem}[O rekurzi 2]
 	Pokud $f$ je ČRF $(n + 1)$ proměnných $\Rightarrow$ ORF (dokonce PRF)
-	\[ \varphi_{h(y_1, \ldots, y_n)}(x) \simeq \varphi_{f(h(y_1, \ldots, y_n, y_1, \ldots, y_n)} (x) \]
+	\[ \varphi_{h(y_1, \ldots, y_n)}(x) \simeq \varphi_{f(h(y_1, \ldots, y_n, y_1, \ldots, y_n))} (x) \]
 
 	Pokud smažeme $y$-ny, tak dostaneme právě Větu o rekurzi 1 \cref{rek_1}.
 
@@ -63,16 +63,16 @@
 \end{theorem}
 \begin{proof}
 	Analogicky jako důkaz Věty o rekurzi 1 \cref{rek_1}.
-	Jenom aplikujeme s-m-n na větší počet parametrů.
+	Jenom aplikujeme s-m-n \cref{s_m_n} na větší počet parametrů.
 
-	\[ \varphi_{f(s_{n + 1}(z, z, y_1, \ldots, y_n), y_1, \ldots, y_n)} (x) \simeq \Psi_{n + 2}(e, z, y_1, \ldots, y_n, x) = \simeq \varphi_{s_{n+1}(e, z, y_1, \ldots, y_n)} (x) \]
+	\[ \varphi_{f(s_{n + 1}(z, z, y_1, \ldots, y_n), y_1, \ldots, y_n)} (x) \simeq \Psi_{n + 2}(e, z, y_1, \ldots, y_n, x) \simeq \varphi_{s_{n+1}(e, z, y_1, \ldots, y_n)} (x) \]
 	Pak
 	\[ h(y_1, \ldots, y_n) = s_{n+1}(e, e, y_1, \ldots, y_n) \]
 \end{proof}
 
 \begin{theorem}[O rekurzi $\infty$]
 	Pokud $f$ je ČRF $\Rightarrow \exists$ prostá ORF g (dokonce PRF)
-	\[ \varphi_{g(j)}(x) \simeq \varphi_{f(g(j)} (x) \]
+	\[ \varphi_{g(j)}(x) \simeq \varphi_{f(g(j))} (x) \]
 
 	Pak pevných bodů je nekonečno
 	\[ g(0), g(1), \ldots \]
@@ -102,7 +102,7 @@
 \begin{theorem}
 	Existuje $n_0$:
 	\[ \varphi_{n_0} (n_0) = n_0 \]
-	Program který vypíše svůj vlastní kod.
+	Program který vypíše svůj vlastní kód.
 \end{theorem}
 \begin{proof}
 	Pořídíme si pomocnou ORF
@@ -110,7 +110,7 @@
 	použijeme s-m-n \cref{s_m_n}
 	\[ \alpha(n, w) \simeq \varphi_{f(n)} (w) \]
 	Kde
-	\[ \alpha(n, w) = \simeq \Psi(e, n, w) \simeq \varphi_{s_1(e, n)} (w) \]
+	\[ \alpha(n, w) \simeq \Psi(e, n, w) \simeq \varphi_{s_1(e, n)} (w) \]
 	Stačí použít Větu o rekurzi \cref{rek_1} k $f$
 	\[ \varphi_{n_0} (n) \simeq \varphi_{f(n_0)} (w) = n_0 \]
 \end{proof}
@@ -121,7 +121,7 @@
 \end{theorem}
 \begin{proof}
 	Hint: hledáme index $f$ kterých je spočetně mnoho.
-	Musíme použít Větu o rekurzi na urovně indexů.
+	Musíme použít Větu o rekurzi na úrovně indexů.
 \end{proof}
 
 \begin{theorem}[Rice podruhe]
@@ -129,6 +129,7 @@
 	Není prázdná, nebo má všechny.
 	Pak indexová množina
 	\[ A = \{ x |\ \varphi(x) \in F \} \]
+	// TODO missing condition, probably je r.s.
 \end{theorem}
 \begin{proof}
 	Z netriviálity F
@@ -156,18 +157,18 @@
 	//TODO
 \end{theorem}
 \begin{proof}
-	\[ \varphi_{\varphi_u(u)} (z) \simeq \Psi_2(a, u, z) \simeq^{s-m-n} \varphi_{s_1(a, u)} (z) \simeq \varphi_{d(u)} (z) \simeq \varphi_{\varphi_e(u)} (z) \]
+	\[ \varphi_{\varphi_u(u)} (z) \simeq \Psi_2(a, u, z) \stackrel{\text{s-m-n}}{\simeq} \varphi_{s_1(a, u)} (z) \simeq \varphi_{d(u)} (z) \simeq \varphi_{\varphi_e(u)} (z) \]
 	Všimneme si, že
 	\[ \varphi_u(x) \]
 	je \emph{matice} funkci. Implikace nahoře ukazuje, že její diagonála $\varphi_u(u)$ se rovná řádku $\varphi_e$.
 
 	Ukážeme, že $f$ permutuje řádky.
-	\[ \varphi_{f \circ \varphi_u (x)} (z) \simeq \varphi_{\beta(u, x)} \simeq^{s-m-n} \varphi_{\varphi_{H(u)}(x)} (z) \]
+	\[ \varphi_{f \circ \varphi_u (x)} (z) \simeq \varphi_{\beta(u, x)} \stackrel{\text{s-m-n}}{\simeq} \varphi_{\varphi_{H(u)}(x)} (z) \]
 	Kde
 	\[ H(u) = s_1(b, u) \]
 	Z toho u-tý řádek se zobrazí na $H(u)$-tý.
 	Speciálně
 	\[ e \to H(e) \]
 	Z toho $\varphi_e(H(e))$ je pevný bod. Protože:
-	\[ \varphi_{f \circ \varphi_e(H(e))} (z) \simeq \varphi_{\varphi_{H(e)}(H(e))} (z) \simeq^{diagonala} \varphi_{\varphi_e(H(e))} (z) \]
+	\[ \varphi_{f \circ \varphi_e(H(e))} (z) \simeq \varphi_{\varphi_{H(e)}(H(e))} (z) \stackrel{\text{diagonála}}{\simeq} \varphi_{\varphi_e(H(e))} (z) \]
 \end{proof}

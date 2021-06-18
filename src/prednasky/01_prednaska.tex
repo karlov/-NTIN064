@@ -189,7 +189,7 @@ Q: jaký z jazyků programování" je nejbližší k ČRF? Asi $\lambda$-calculu
 \end{definition}
 
 \begin{notation}
-	\[ \varphi_e^n(x_1, \ldots, x_n) \simeq U(\mu_y T_n(x_1, \ldots, x_n, y)) \]
+	\[ \varphi_e^n(x_1, \ldots, x_n) \simeq U(\mu_y(T_n(x_1, \ldots, x_n, y))) \]
 
 	\begin{itemize}
 		\item Kde $T_n$ je primitivně rekurzivní predikát, který říká "za $n$ kroků".
@@ -238,7 +238,7 @@ Q: jaký z jazyků programování" je nejbližší k ČRF? Asi $\lambda$-calculu
 \end{definition}
 
 \begin{notation}
-	\[ K = \{ x: s \in W_x \} = \{ s: \varphi_x(x) \downarrow \} \]
+	\[ K = \{ x: x \in W_x \} = \{ x: \varphi_x(x) \downarrow \} = \{ x: \Psi_1(x, x) \downarrow \} \]
 	Taky
 	\[ K_0 = \{ \langle x, y \rangle: \varphi_x(y) \downarrow \} \]
 	Značení z ZSV

@@ -210,7 +210,7 @@ Na vyšších úrovních neplatí protože...??
 	Pro $n = 1$ máme $K \in \Sigma_1^0 - \Pi_1^0$.
 
 	Pro ostatní $n$ stejný důkaz.
-	Nechť $U(e, x)$ je univerzální predikát pro $\Sigma_n^0$. Kdyby $U(e, e) \in \Pi_n^0 \Rightarrow \neg U(e, e) \in Sigma_n^0$.
+	Nechť $U(e, x)$ je univerzální predikát pro $\Sigma_n^0$. Kdyby $U(e, e) \in \Pi_n^0 \Rightarrow \neg U(e, e) \in \Sigma_n^0$.
 	Z existenci univerzálního $\neg U(e, e)$ má index $i$.
 	Dosadíme index, dostaneme spor
 	\[ U(i, i) = \neg U(i, i) \]
@@ -357,7 +357,7 @@ Z 1) bodů předchozí věty:
 	Množina Fin je $\Sigma_2^0$-úplná.
 \end{theorem}
 \begin{proof}
-	\[ x \in Fin \iff \exists y \forall z, s (z \notin W_x \land z > y) \]
+	\[ x \in Fin \iff \exists y \forall z, s (z \notin W_{x, s} \land z > y) \]
 	Pokud je konečná, tak od určitého místa do ní nepadne žádný prvek.
 	$y$ je buď maksimalní, nebo větší než max.
 

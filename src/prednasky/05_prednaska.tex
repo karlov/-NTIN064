@@ -14,7 +14,8 @@
 
 \begin{definition}[Efektivní neoddělitelnost]
 	Disjunktní dvojice množin $A, B$ jsou \emph{efektivně neoddělitelné} když existuje $f \in ČRF$ t.ž.
-	\[ A \subseteq W_x \land B \subseteq W_y \land W_x \cap W_y = \emptyset \Rightarrow f(x, y) \downarrow \notin W_x \cup W_y \]
+	% todo check quantifier
+	\[ \forall x, y: A \subseteq W_x \land B \subseteq W_y \land W_x \cap W_y = \emptyset \Rightarrow f(x, y) \downarrow \notin W_x \cup W_y \]
 	Efektivně můžeme nejít bod který leží mimo obaly A, B.
 \end{definition}
 
@@ -72,7 +73,7 @@
 	a tedy by muselo $\alpha(x, y)$ padnout do $B$. To nelze.
 
 	Symetricky $\alpha(x, y)$ nemůže padnout do $W_y$ neboli
-	\[ \alpha(x, y) \notin W_y \cup W_y \]
+	\[ \alpha(x, y) \notin W_x \cup W_y \]
 
 \end{proof}
 
@@ -81,7 +82,7 @@
 	Používá self-referenci.
 
 	Ten ale operuje s pojmem pravdy, který není matematický.
-	Můžeme ale podobný trik provést s např pojmem dokazatelnosti (viz Godelová 1. věta o neúplnosti).
+	Můžeme ale podobný trik provést s např pojmem dokazatelnosti (viz Godelová 1. věta o neúplnosti \cref{godel}).
 \end{note}
 
 \begin{definition}[1-převoditelnost dvojic]
@@ -130,7 +131,7 @@
 	Taky funkce $f$ dá bod
 	\[ new = f(\alpha(x), \alpha(y)): new \notin W_{\alpha(x)} \cup W_{\alpha(y)} \]
 	Zobrazíme $new$ pomoci $g$ zpátky. Pak
-	\[ g(new) = f \circ g(\alpha(x), \alpha(y) \notin W_x \cup W_y\]
+	\[ g(new) = f \circ g(\alpha(x), \alpha(y)) \notin W_x \cup W_y\]
 	Z čehož, $(A, B)$ je efektivně neoddělitelná.
 
 	% obrazek, 5. lekce 53:29
