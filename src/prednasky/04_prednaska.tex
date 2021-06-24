@@ -14,7 +14,7 @@
 	Množina A je \emph{kreativní} pokud A je rekurzivně spočetná a $\overline{A}$ je produktivní.
 \end{definition}
 
-\begin{example}
+\begin{example}[K]
 	$\overline{K}$ je produktivní funkce je $id$, $K$ je kreativní.
 
 	Protože
@@ -111,8 +111,8 @@
 	Můžeme iterovat $\omega, 2 \omega \ldots$ podél tzv rekurzivních ordinálů (viz ordinální číslo v teorii množin).
 \end{amendment}
 
-\begin{lemma}\label{prod_prev}
-	A produktivní a $A \leq_m B$.
+\begin{lemma}[Produktivita a $\leq_m$]\label{prod_prev}
+	A produktivní a $A \leq_m B \Rightarrow B$ je produktivní.
 
 	Neboli produktivita se zachovává směrem vzhůru při $\leq_m$.
 \end{lemma}
@@ -182,13 +182,13 @@
 	\[ f \circ h(y) \in M \Rightarrow \overline{K} \leq_1 \overline{M} \]
 \end{proof}
 
-\begin{consequence}
+\begin{consequence}[$\overline{K}$ produktivní]
 	$\overline{K}$ je nejjednodušší produktivní množinou při $\leq_1$ nebo $\leq_m$.
 	Protože všechny produktivní množiny jsou
 	\[ \{ B |\ \overline{K} \leq_m B \} \]
 \end{consequence}
 
-\begin{definition}
+\begin{definition}[Úplně produktivní]
 	B je úplně produktivní když existuje ORF $f$ tž:
 	\[ f(x) \in B - W_x \lor f(x) \in W_x - B \]
 \end{definition}
@@ -199,7 +199,7 @@
 	neboli funkce je $id$.
 \end{example}
 
-\begin{theorem}[Uplna produktivita]
+\begin{theorem}[Úplna produktivita ekvivalence]
 	B je úplně produktivní $\iff$ B je produktivní.
 \end{theorem}
 \begin{proof}
@@ -263,7 +263,7 @@
 	\[ F(x) = \max_{j \in \{ 1, \ldots, x \} } (\varphi_{a_j}(x)) + 1 \]
 \end{proof}
 
-\begin{consequence}
+\begin{consequence}[Omezení logiky]
 	Z věty plyne omezení logiky.
 
 	Vezmeme třeba Peano aritmetiku (PA).

@@ -164,5 +164,31 @@
 \end{proof}
 
 \subsection{Algoritmická náhodnost}
+% prednaska 12 od 40:00
 
-\subsection{Kolmogorovská složitost, Martingale}
+Historicky existovali následující přístupy ve zkoumaní algoritmické náhodnosti:
+\begin{itemize}
+	\item frekvenční stabilita, tzv. v limitě v posloupnosti $\{ a_n \}$ musí být stejně 0 a 1.
+		Pak ještě musíme modifikovat: pro každou r.s. vybranou část.
+	\item Kolmogorovská složitost (vice variant)
+	\item Teorie míry (Martingale nebo Martin-Lof testy, jsou ekvivalentní).
+\end{itemize}
+
+\subsection{Kolmogorovská složitost}
+
+Složitost napřed pro konečné řetízky $2^{< \omega}$ pak rozšíření na $2^{\omega}$ neboli množiny.
+\begin{note}[Kolmogorovské náhodné řetízky]
+	Náhodné jsou nestlačitelné: nejde popsat kratším způsoben než délka.
+
+	"Popis" ale není přesně definovaný: polynomiální čas, ČRF, s orákulem atd.
+	Čim máme silnější rozpoznávací mechanizmus, tím více nenáhodných řetízku rozpoznáme.
+\end{note}
+
+Zvolíme přístup s ČRF (v literatuře spíš TM).
+
+\begin{definition}[Kolmogorov complexity]
+	\[ C_f(x) = \min \{ |y|, y \in \{ 0, 1 \}^{\ast}: f(y) \downarrow \land f(y) = x \} \]
+	Délka nejkratší
+\end{definition}
+
+\subsection{Martingale}

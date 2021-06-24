@@ -31,10 +31,10 @@ Zobecnění 1-převoditelnosti na relativný výpočet (s Orákulem).
 	Což je omezení.
 \end{note}
 
-\subsection{Formalizace relativného vypočtu}
+\subsection{Formalizace relativního vypočtu}
 
 Existuje několik možnosti formalizace:
-\begin{definition}
+\begin{definition}[Formalizace relativního vypočtu]
 	\begin{enumerate}
 		\item TS s orákulem. Přidáme další pasku, kde TS bude umisťovat slova pro dotazy k orákulu.
 			Pak množina $B$ (asi jazyk orákula) je dalším vstupem programu.
@@ -60,7 +60,7 @@ Existuje několik možnosti formalizace:
 	Tento přistup formalizace není nejvýhodnější, protože body na které se ptáme netvoří souvislý počátek přirozených čísel.
 \end{note}
 
-\begin{agreement}
+\begin{agreement}[Strings]
 	Nadále pracujeme s konečné binární řetízky (string), které značíme buď $\{ 0, 1 \}^{\ast}$, nebo $2^{<w}$.
 
 	Operace:
@@ -73,7 +73,7 @@ Existuje několik možnosti formalizace:
 	\end{itemize}
 \end{agreement}
 
-\begin{definition}
+\begin{definition}[Částečně rekurzívní funkcionál]
 	Částečně rekurzívní funkcionál je r.s. množina $\Phi$ trojic taková, že pokud platí:
 	\begin{gather*}
 		\langle \sigma, x, y \rangle \in \Phi \\
@@ -94,7 +94,7 @@ Q: co přesně znamená $y^{\ast}$.
 	Program má na vstupu $x$, na vystup vypíše $y$ s použití $\alpha \preccurlyeq B$.
 \end{example}
 
-\begin{definition}
+\begin{definition}[ČRF-nál zobrazení]
 	Částečně rekurzívní funkcionál určuje částečné zobrazení:
 	\begin{gather*}
 		\Phi(\sigma)(x) \simeq y \iff \langle \sigma, x, y \rangle \in \Phi \\
@@ -110,7 +110,7 @@ Q: proč funkcionál místo zobrazení s 2ma parametry?
 	Tím dostaneme funkční term. Aplikace funkčního termu na číselný term může ale nemusí davat číselnou hodnotu.
 \end{note}
 
-\begin{properties}
+\begin{properties}[Částečně rekurzívní funkcionál]
 	\begin{enumerate}
 		\item $\Phi(B)$ je korektně definováno.
 		\item $\Phi(B)$ je intuitivně efektivně vyčíslitelné pomoci B.
@@ -155,17 +155,19 @@ Q: proč funkcionál místo zobrazení s 2ma parametry?
 \end{proof}
 
 \begin{definition}[Numerace funkcionálu]
-	$W_{\rho(x)}$ z lemmatu je $e$-tý ČRFunkcionál, značíme $\Phi_e$.
+	$W_{\rho(x)}$ z lemmatu je $e$-tý ČRF-nál, značíme $\Phi_e$.
 	\[ \Phi_e(B)(x) \simeq y \iff \langle \sigma, x, y \rangle \in W_{\rho(x)}: \sigma \prec B \]
 	Taky za s kroků: $\Phi_{e, s}(B)(x)$.
 \end{definition}
 
-\begin{observation}
-	$\Phi_e(\sigma)(X) \downarrow$ je r.s. v B.
-\end{observation}
+\begin{observation}[ČRF-nál r.s.]
+	$\Phi_e(\sigma)(X) \downarrow$ je r.s.
 
-\begin{observation}
 	$\Phi_{e, s}(\sigma)(X) \downarrow$ je rekurzívní.
+
+	$\Phi_e(B)(X) \downarrow$ je r.s. v $B$.
+
+	$\Phi_{e, s}(B)(X) \downarrow$ je rekurzívní v $B$.
 \end{observation}
 
 \begin{theorem}[s-m-n pro Relativní]\label{s_m_n_rel}
@@ -194,8 +196,7 @@ Q: proč funkcionál místo zobrazení s 2ma parametry?
 	\[ \Phi_e(B)(\langle x, y \rangle) \simeq \Phi_{\overline{s_2}(e, x)}(B)(y) \]
 \end{proof}
 
-
-\begin{note}
+\begin{properties}[Turingovská převoditelnost]
 	\begin{enumerate}
 		\item $\leq_T$ je reflexivní, tranzitivní.
 		\item A rekurzívní $\Rightarrow \forall B: A \leq_T B$.
@@ -204,13 +205,13 @@ Q: proč funkcionál místo zobrazení s 2ma parametry?
 			Pro dotazy k orákulu $B$ použijeme TS který rozhoduje $B$.
 			Jako vnoření vypočtu v složitosti.
 	\end{enumerate}
-\end{note}
+\end{properties}
 
 \begin{definition}[Turingovská ekvivalence]
 	\[ A =_T B \iff A \leq_T \land B \leq_T A \]
 \end{definition}
 
-\begin{definition}[Stupně převoditelnosti]
+\begin{definition}[T Stupně převoditelnosti]
 	\[ deg_T(A) = \{ B: B \leq_T A \} \]
 \end{definition}
 
@@ -224,9 +225,8 @@ Q: proč funkcionál místo zobrazení s 2ma parametry?
 	\[ A = dom(\Phi_e(B)) \]
 \end{definition}
 
-\begin{notation}
+\begin{notation}[e-ta B-r.s. množina]
 	\[ W^B_e = dom(\Phi_e(B)) \]
-	e-ta B-r.s.
 
 	Podobně za $s$ kroků:
 	\[ W^B_{e, s} = dom(\Phi_e(B)) \]
@@ -242,8 +242,9 @@ Q: proč funkcionál místo zobrazení s 2ma parametry?
 
 \subsection{Struktura T-stupňu}
 
-T-stupně tvoří horní polosvaz (upper semilattice), označuji se $\mathcal{D}(\leq)$.
-\begin{definition}
+\begin{definition}[T stupně struktura]
+	T-stupně tvoří horní polosvaz (upper semilattice), označuji se $\mathcal{D}(\leq)$.
+
 	Nechť $a, b$ třídy ekvivalence v $\mathcal{D}(\leq)$.
 	Pak
 	\[ a \leq b \iff \exists A \in a, \exists B \in b: A \leq_T B \]
@@ -253,8 +254,7 @@ T-stupně tvoří horní polosvaz (upper semilattice), označuji se $\mathcal{D}
 	\[ A \ \text{join}\ B = A \oplus B = \{ 2x: x \in A, 2x + 1: x \in B \} \]
 \end{definition}
 
-\begin{properties}
-	Join:
+\begin{properties}[Join]
 	\begin{itemize}
 		\item $A \leq_T A \oplus B$.
 		\item $B \leq_T A \oplus B$.
@@ -264,7 +264,7 @@ T-stupně tvoří horní polosvaz (upper semilattice), označuji se $\mathcal{D}
 
 \subsection{Relativizace dřívějších výsledků}
 
-\begin{properties}\label{rel_prop}
+\begin{observation}\label{rel_prop}
 \begin{itemize}
 	\item Postová věta:
 		$A$ je $B$-rekurzívní $\iff A, \overline{A}$ jsou $B$-r.s.
@@ -273,7 +273,7 @@ T-stupně tvoří horní polosvaz (upper semilattice), označuji se $\mathcal{D}
 	\item r.s. množiny jsou právě ty, které lze vyjádřit pomoci $\exists ($ rekurzívní podmínka $)$.
 		Podobně: $B$-r.s. množiny jsou právě ty, které lze vyjádřit pomoci $\exists (B-$rekurzívní podmínka $)$.
 \end{itemize}
-\end{properties}
+\end{observation}
 
 Q: co je $B$-rekurzívní podmínka? Zahrnuje taky $y \in B$?
 
@@ -319,7 +319,7 @@ Q: co je $B$-rekurzívní podmínka? Zahrnuje taky $y \in B$?
 			% todo nechapu tento krok, proč potřebujeme x_0??
 			Zvolme $x = x_0$, pak $h(x_0, y)$ 1-převádí $W_x$ na $K$.
 
-			V relatívném případě máme $W_x^A$ a $A^{\prime}$ místo $K$.
+			V relativním případě máme $W_x^A$ a $A^{\prime}$ místo $K$.
 		\item Když $B$ je $A$-r.s. a $A \leq_T C$. Víme:
 			\[ B = dom(\Phi_e(A)) \]
 			v průběhu vypočtu se objeví dotazy $z \in A$?
@@ -380,15 +380,15 @@ Q: co je $B$-rekurzívní podmínka? Zahrnuje taky $y \in B$?
 	\[ \underline{a}^0 = \underline{a}, (\underline{a})^{(n + 1)} = (\underline{a}^{(n)})^{\prime} \]
 \end{note}
 
-\begin{observation}
+\begin{observation}[$deg_T(\emptyset)$]
 	\[ \underline{0} = deg_T(\emptyset) \]
 	Což jsou právě všechny rekurzívní množiny.
 \end{observation}
 
-\begin{observation}
+\begin{lemma}[$K$ a $\emptyset^{\prime}$]
 	$K$ a $\emptyset^{\prime}$ jsou různá vyjádření Halting problému.
 	Jsou rekurzivně izomorfní: máme efektivní překladač mezi těmito systémy.
-\end{observation}
+\end{lemma}
 \begin{proof}
 	Protože $\emptyset^{\prime}$ je $\emptyset$-r.s. $\Rightarrow \emptyset^{\prime}$-r.s. $\Rightarrow \emptyset^{\prime}  \leq_1 K $.
 
@@ -398,7 +398,7 @@ Q: co je $B$-rekurzívní podmínka? Zahrnuje taky $y \in B$?
 \subsection{Stejnoměrnost}
 Tvrzení o skoku platí stejnoměrně (jako v analýze).
 
-\begin{theorem}
+\begin{theorem}[Stejnoměrnost skoku]
 	\[ \exists z_0 \forall A (W_{z_0}^A = A^{\prime}) \]
 	Existuje pevný program, který funguje pro všechny množiny.
 \end{theorem}

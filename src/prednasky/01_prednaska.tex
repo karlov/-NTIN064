@@ -23,7 +23,7 @@
 Hilbertův 10. problém, úplnost aritmetiky 1900.
 G\"{o}del dokázal že nejde. V prvním větě použil \emph{Primitivně rekurzivní funkce}.
 
-\begin{definition}
+\begin{definition}[Primitivně rekurzivní funkce]
 	Primitivně rekurzivní funkce - podmnožina efektivně vyčíslitelných funkci, jsou všude definované.
 \end{definition}
 
@@ -31,11 +31,11 @@ Tyto ale nestačí pro hlavní problém dokazatelnosti.
 
 Při dalším vývoje se vyvinul kalkulus tzv obecně rekurzivních funkci ORF a částečně rekurzivních funkci ČRF.
 
-\begin{definition}
+\begin{definition}[Částečně rekurzivní funkce]
 	Částečně rekurzivní funkce - efektivně vyčíslitelné funkce.
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Obecné rekurzivní funkce]
 	Obecné rekurzivní funkce - ČRF které jsou všude definované.
 \end{definition}
 
@@ -50,9 +50,7 @@ Při dalším vývoje se vyvinul kalkulus tzv obecně rekurzivních funkci ORF a
 	Pak ostatní prohlásili Church-Turing teze, že všechno co je efektivně vyčíslitelné je Turingovský nebo $\lambda$-konverzi vyčíslitelné.
 \end{note}
 
-\begin{definition}
-	$\lambda$-calculus:
-
+\begin{definition}[$\lambda$-calculus]
 	Nechť $C$ je množina konstant, nechť $V$ je (spočetná) množina proměnných.
 	Množina tzv $\lambda$ terms $\Lambda$ je nejmenší množina tž:
 	\begin{itemize}
@@ -102,12 +100,12 @@ Q: Teorie vyčíslitelnosti zkoumá $\N$ jako analýza začinala zkoumaním $\R$
 
 Přibližně do roku 1990 převládala terminologie ORF, ČRF zavedená Kleene.
 Pak byla snaha změnit na \textbf{computable functions} - efektivně vyčíslitelné.
-\begin{definition}
+\begin{definition}[Rekurzivní množina]
 	Množina je rekurzivní, neboli rozhodnutelná (decidable, computable) - efektivně rozhodnutelná.
 	Jednoduše řečeno, máme program, který na každém vstupu se vždy zastaví a rozhodne ANO nebo NE (jestli slovo patří do ni).
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Rekurzivní spočetná množina]
 	Množina je rekurzivní spočetná (částečně rozhodnutelná), nebo computably enumerable.
 	Formálně je definičním oborem nějakého programu (tzn částečně rekurzivní funkce, TS etc.).
 \end{definition}
@@ -127,7 +125,7 @@ Pak byla snaha změnit na \textbf{computable functions} - efektivně vyčíslite
 	Je znamá jako \href{https://en.wikipedia.org/wiki/Pairing_function}{Cantorová metoda parovaní}.
 \end{note}
 
-\begin{notation}
+\begin{notation}[Konvergence]
 	Program \textbf{konverguje} - znamená že se zastaví za konečný počet kroků.
 \end{notation}
 
@@ -156,8 +154,8 @@ $ \Leftarrow $. Nechť $L(M) = L \land L(B) = \bar{L} $, pak sestavíme TS pro r
 Pokud se aspoň 1 zacykli - reject. Paralelní spuštění lze implementovat pomoci 2 pasek, případně je slepit do 1.
 \end{proof}
 
-\begin{definition}
-	G\"{o}delové číslo - index programu.
+\begin{definition}[G\"{o}delové číslo]
+	Index programu.
 	Nechť $\varphi$ je ČRF, $P_e$ je program který ji vyčísluje.
 	Pak index funkce $\varphi$ je $e$.
 \end{definition}
@@ -173,14 +171,13 @@ Pokud se aspoň 1 zacykli - reject. Paralelní spuštění lze implementovat pom
 Q: pokud zafixujeme "jazyk programování" má program jednoznačné očíslovaní?
 Q: jaký z jazyků programování" je nejbližší k ČRF? Asi $\lambda$-calculus.
 
-\begin{reminder}
-	Univerzální TS - dostane program $M$ a data $x$, simuluje výpočet $M(x)$.
+\begin{reminder}[Univerzální TS]
+	Dostane program $M$ a data $x$, simuluje výpočet $M(x)$.
 
 	Pro nás to bude \emph{univerzální ČRF}.
 \end{reminder}
 
-\begin{definition}
-	Univerzální ČRF je
+\begin{definition}[Univerzální ČRF]
 	\[ \Psi_n(e, x_1, x_2, \ldots, x_n) \]
 	kde $e$ je index programu, $x_i$ jsou data.
 
@@ -188,7 +185,7 @@ Q: jaký z jazyků programování" je nejbližší k ČRF? Asi $\lambda$-calculu
 	\[ \varphi_e^n(x_1, \ldots, x_n) \simeq {e}(x_1, \ldots, x_n) \]
 \end{definition}
 
-\begin{notation}
+\begin{notation}[Univerzální ČRF]
 	\[ \varphi_e^n(x_1, \ldots, x_n) \simeq U(\mu_y(T_n(x_1, \ldots, x_n, y))) \]
 
 	\begin{itemize}
@@ -210,15 +207,14 @@ Q: jaký z jazyků programování" je nejbližší k ČRF? Asi $\lambda$-calculu
 	Je to pouze syntaktická manipulace dat.
 \end{theorem}
 
-\begin{notation}
+\begin{notation}[Definiční obor]
 	$dom(\varphi)$ - definiční obor.
 \end{notation}
-\begin{notation}
+\begin{notation}[Obor hodnot]
 	$range(\varphi)$ - obor hodnot.
 \end{notation}
 
-\begin{definition}
-	$e$-ta rekurzivně spočetná množina.
+\begin{definition}[$e$-ta rekurzivně spočetná množina]
 	\[ W_e = dom(\varphi_e) = \{ x: \varphi_e(x) \downarrow \} = \{ \Psi_1(e, x) \downarrow \} \]
 \end{definition}
 
@@ -232,12 +228,12 @@ Q: jaký z jazyků programování" je nejbližší k ČRF? Asi $\lambda$-calculu
 	Rozdíl v definici souvisí s Halting problémem.
 \end{note}
 
-\begin{definition}
+\begin{definition}[1 převoditelnost]
 	$A \leq_1 B \iff \exists$ ORF $f$ (všude definovaná, efektivně vyčíslitelná):
 	\[ x \in A \iff f(x) \in B \]
 \end{definition}
 
-\begin{notation}
+\begin{notation}[DIAG, K]
 	\[ K = \{ x: x \in W_x \} = \{ x: \varphi_x(x) \downarrow \} = \{ x: \Psi_1(x, x) \downarrow \} \]
 	Taky
 	\[ K_0 = \{ \langle x, y \rangle: \varphi_x(y) \downarrow \} \]
@@ -245,11 +241,11 @@ Q: jaký z jazyků programování" je nejbližší k ČRF? Asi $\lambda$-calculu
 	\[ DIAG = \{ \langle M \rangle: M \in L(M) \} = \{ \langle M \rangle: M(\langle M \rangle) \} \]
 \end{notation}
 
-\begin{note}
+\begin{lemma}[DIAG, K]
 	DIAG je rekurzivně spočetný (částečně rozhodnutelný) ale není rekurzivní (rozhodnutelný).
 
 	Důkaz pomoci Cantorové diagonální metody.
-\end{note}
+\end{lemma}
 \begin{proof}
 	\[ \overline{K} = \{ x: x \notin W_x \} \]
 	$W_x$ ale jsou všechny rekurzivně spočetné.
@@ -276,10 +272,11 @@ Q: jaký z jazyků programování" je nejbližší k ČRF? Asi $\lambda$-calculu
 	\[ x \in W_y \iff s_2^1(e, x, y) \in K \]
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}[Rozšiření $\Psi_n$]
 	$\Psi_n$ nemá obecně rekurzivní rozšíření.
-	Jinými slovy neexistuje ORF $h$ rozšíření $\Psi$ tž
-	$\Psi_n(x) = h(x)$ pro $x \in dom(\Psi_n)$ a $h$ je definovaná pro vstupy mimo $dom(\Psi_n)$.
+	Jinými slovy neexistuje ORF $h$ rozšíření $\Psi$ takové že
+	\[ \forall x \in dom(\Psi_n): \Psi_n(x) = h(x) \]
+	a $h$ je definovaná pro vstupy mimo $dom(\Psi_n)$.
 
 	Dokonce, pokud $\alpha$ částečně rekurzivně rozšiřuje $\Psi_n$, tak najdeme vstup na kterém diverguje
 	\[ \exists x_1: \alpha(x_1, x_1) \uparrow \]

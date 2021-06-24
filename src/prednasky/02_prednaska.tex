@@ -6,7 +6,7 @@
 	R.s. množiny a predikáty je jedno a totéž protože obor pravdivostí predikátu je množina a naležení do množiny je predikát.
 \end{note}
 
-\begin{lemma}
+\begin{lemma}[$\exists Q$ r.s]
 	Pokud $Q$ je rekurzivní $\Rightarrow \exists y Q(...)$ je rekurzivně spočetný.
 \end{lemma}
 \begin{proof}
@@ -27,7 +27,7 @@
 	\[ \exists y T_n(e, x_1, \ldots, x_n, y) \]
 \end{theorem}
 
-\begin{consequence}
+\begin{consequence}[Index r.s. predikátů]
 	Lze definovat index rekurzivně spočetných predikátů.
 \end{consequence}
 
@@ -35,7 +35,7 @@
 	s-m-n věta \cref{s_m_n} platí i pro predikáty $T_n$.
 \end{note}
 
-\begin{theorem}
+\begin{theorem}[Uzavřenost RS]
 	Rekurzivní spočetnost je uzavřená na $\cup, \cap$.
 	Dokonce efektivně z indexu.
 
@@ -65,14 +65,12 @@
 
 Otázka: pokud všude použijeme omezené kvantifikátory s $y =$ velikost částic ve vesmíru, dostaneme upravenou logiku pro počítače?
 
-\begin{definition}
-	Omezený existenční kvantifikátor
+\begin{definition}[Omezený existenční kvantifikátor]
 	\[ \exists_{y < z} Q \]
 	Jmenuje se konečná dizjunkce.
 \end{definition}
 
-\begin{definition}
-	Omezený všeobecný kvantifikátor
+\begin{definition}[Omezený všeobecný kvantifikátor]
 	\[ \forall_{y < z} Q \]
 	Jmenuje se konečná konjunkce.
 \end{definition}
@@ -116,7 +114,7 @@ Nejprve dáme záporné koeficienty na pravou stranu, pak aplikujeme Lagrangeovo
 		\[ \exists x_1, \ldots, x_k \in \N: (p_1(x_1, \ldots, x_k, y_1, \ldots, y_n) = p_2(x_1, \ldots, x_k, y_1, \ldots, y_n)) \]
 \end{theorem}
 
-\begin{consequence}
+\begin{consequence}[10. Hilbertův problém]
 	10. Hilbertův problém má negativní odpověď.
 
 	Protože máme množiny které nejsou rozhodnutelné, třeba DIAG.
@@ -158,11 +156,10 @@ Pak selektor vybírá $y$ pro $\forall x$.
 	indexy vydělí $y$.
 \end{proof}
 
-\begin{definition}
-	Graf ČRF je
+\begin{definition}[Graf ČRF]
 	\[ graph(\varphi) = \{ \langle x, y \rangle |\ \varphi(x) = y \} \]
 \end{definition}
-\begin{consequence}
+\begin{consequence}[Graf ČRF]
 	$\varphi$ je ČRF $\iff graph(\varphi)$ je r.s.
 \end{consequence}
 \begin{proof}
@@ -185,7 +182,7 @@ Pak selektor vybírá $y$ pro $\forall x$.
 
 \subsection{Imunní množiny}
 
-\begin{definition}
+\begin{definition}[Imunní množina]
 	A je \emph{imunní} pokud je nekonečná a neobsahuje nekonečnou rekurzivní spočetnou podmnožinu.
 	\[ W_x \subseteq A \Rightarrow |W_x| < \infty \]
 
@@ -193,7 +190,7 @@ Pak selektor vybírá $y$ pro $\forall x$.
 	Protože veškeré algoritmický zkontrolovatelné podmnožiny jsou konečné.
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Simple]
 	A je \emph{simple} pokud je rekurzivní spočetná a $\overline{A}$ je imunní.
 \end{definition}
 
