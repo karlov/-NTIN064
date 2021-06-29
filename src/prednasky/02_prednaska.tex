@@ -162,7 +162,7 @@ Pak selektor vybírá $y$ pro $\forall x$.
 	$\varphi$ je ČRF $\iff graph(\varphi)$ je r.s.
 \end{consequence}
 \begin{proof}
-	"$\Rightarrow \langle x, y \rangle \in graph(\varphi) \Rightarrow \exists s$ (za $s$ kroků $\varphi(x) = y$).
+	"$\Rightarrow$" $\langle x, y \rangle \in graph(\varphi) \Rightarrow \exists s$ (za $s$ kroků $\varphi(x) = y$).
 
 	Což je r.s. predikát.
 
@@ -175,8 +175,9 @@ Pak selektor vybírá $y$ pro $\forall x$.
 
 \begin{theorem}[Postova podruhe]
 	\[ Q(x,y) = (x \in M \land y = 1) \lor (x \in \overline{M} \land y = 0) \]
-
-	Neboli $\varphi$ je charakteristická funkce množiny $M$.
+	Což je rekurzivně spočetný predikát.
+	Selektor $\varphi$ pro $Q$ je ORF.
+	$\varphi$ je charakteristická funkce množiny $M$.
 \end{theorem}
 
 \subsection{Imunní množiny}

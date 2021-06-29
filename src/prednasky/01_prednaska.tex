@@ -31,12 +31,17 @@ Tyto ale nestačí pro hlavní problém dokazatelnosti.
 
 Při dalším vývoje se vyvinul kalkulus tzv obecně rekurzivních funkci ORF a částečně rekurzivních funkci ČRF.
 
-\begin{definition}[Částečně rekurzivní funkce]
-	Částečně rekurzivní funkce - efektivně vyčíslitelné funkce.
-\end{definition}
+\begin{notation}[Definiční obor]
+	$dom(\varphi)$ - definiční obor.
+\end{notation}
+\begin{notation}[Obor hodnot]
+	$range(\varphi)$ - obor hodnot.
+\end{notation}
 
-\begin{definition}[Obecné rekurzivní funkce]
-	Obecné rekurzivní funkce - ČRF které jsou všude definované.
+\begin{definition}[Rekurzivní funkce]
+    Funkce $f: \Sigma^*\rightarrow\Sigma^*$ je \emph{částečně rekurzivní}, pokud je turingovsky vyčíslitelná (tedy existuje Turingův stroj $M$ takový, že $\forall x: x\in dom(f)\Leftrightarrow M(x)\downarrow \land f(x)$ odpovídá obsahu pásky $M(x)$ na konci výpočtu).
+
+    Funkce $f: \Sigma^*\to \Sigma^*$ je \emph{obecně rekurzivní}, je-li částečně rekurzivní a $dom(f)=\Sigma^*$ (všude definovaná).
 \end{definition}
 
 \begin{note}[Church-Turing teze]
@@ -207,13 +212,6 @@ Q: jaký z jazyků programování" je nejbližší k ČRF? Asi $\lambda$-calculu
 	Je to pouze syntaktická manipulace dat.
 \end{theorem}
 
-\begin{notation}[Definiční obor]
-	$dom(\varphi)$ - definiční obor.
-\end{notation}
-\begin{notation}[Obor hodnot]
-	$range(\varphi)$ - obor hodnot.
-\end{notation}
-
 \begin{definition}[$e$-ta rekurzivně spočetná množina]
 	\[ W_e = dom(\varphi_e) = \{ x: \varphi_e(x) \downarrow \} = \{ \Psi_1(e, x) \downarrow \} \]
 \end{definition}
@@ -228,18 +226,25 @@ Q: jaký z jazyků programování" je nejbližší k ČRF? Asi $\lambda$-calculu
 	Rozdíl v definici souvisí s Halting problémem.
 \end{note}
 
-\begin{definition}[1 převoditelnost]
-	$A \leq_1 B \iff \exists$ ORF $f$ (všude definovaná, efektivně vyčíslitelná):
+\begin{definition}[1,m převoditelnost]
+	$A \leq_1 B \iff \exists$ ORF $f$ prostá:
+	\[ x \in A \iff f(x) \in B \]
+
+	$A \leq_m B \iff \exists$ ORF $f$ (ne nutně prostá):
 	\[ x \in A \iff f(x) \in B \]
 \end{definition}
 
-\begin{notation}[DIAG, K]
+\begin{definition}[1-úplnost]
+	Množina $M$ je 1-úplná jestliže je rekurzivně spočetná každá rekurzivní spočetná je 1-převoditelná na $M$.
+\end{definition}
+
+\begin{definition}[K, DIAG]
 	\[ K = \{ x: x \in W_x \} = \{ x: \varphi_x(x) \downarrow \} = \{ x: \Psi_1(x, x) \downarrow \} \]
 	Taky
-	\[ K_0 = \{ \langle x, y \rangle: \varphi_x(y) \downarrow \} \]
+	\[ K_0 = \{ \langle x, y \rangle: \varphi_x(y) \downarrow \} = \{ \langle x, y \rangle: y \in W_x \} \]
 	Značení z ZSV
 	\[ DIAG = \{ \langle M \rangle: M \in L(M) \} = \{ \langle M \rangle: M(\langle M \rangle) \} \]
-\end{notation}
+\end{definition}
 
 \begin{lemma}[DIAG, K]
 	DIAG je rekurzivně spočetný (částečně rozhodnutelný) ale není rekurzivní (rozhodnutelný).
@@ -255,7 +260,7 @@ Q: jaký z jazyků programování" je nejbližší k ČRF? Asi $\lambda$-calculu
 	Dle Postové věty \cref{post} K není rozhodnutelná.
 \end{proof}
 
-\begin{theorem}[K 1-complete]
+\begin{theorem}[K 1-úplná]
 	K (taky $K_0$) je 1-úplná.
 \end{theorem}
 \begin{proof}
