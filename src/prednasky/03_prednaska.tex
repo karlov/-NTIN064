@@ -14,7 +14,7 @@ Taky se jmenuji věty o pevném bodě. Používá se self-refrenční trik
 	Pokud ale $f(a) \uparrow \Rightarrow \forall x: \varphi_a(x) \uparrow$.
 \end{theorem}
 \begin{proof}
-	\[ \varphi_{f(s_1(z, z))} (x) \simeq \Psi_2(e, z, n) \]
+	\[ \varphi_{f(s_1(z, z))} (x) \simeq \Psi_2(e, z, x) \]
 	Protože levá strana je efektivně vyčíslitelná. $e$ je program který počítá levou stranu.
 
 	Pak dle s-m-n věty \cref{s_m_n}
@@ -108,9 +108,10 @@ Taky se jmenuji věty o pevném bodě. Používá se self-refrenční trik
 	použijeme s-m-n \cref{s_m_n}
 	\[ \alpha(n, w) \simeq \varphi_{f(n)} (w) \]
 	Kde
-	\[ \alpha(n, w) \simeq \Psi(e, n, w) \simeq \varphi_{s_1(e, n)} (w) \]
+	\[ \alpha(n, w) \simeq \Psi(e, n, w) \simeq \varphi_{s_1(e, n)} (w)  \]
+	TODO Pak $f(x) = s_1(x, x)$???
 	Stačí použít Větu o rekurzi \cref{rek_1} k $f$
-	\[ \varphi_{n_0} (n) \simeq \varphi_{f(n_0)} (w) = n_0 \]
+	\[ \varphi_{f(n_0)} (w) \simeq \varphi_{n_0} (w) = n_0 \]
 \end{proof}
 
 \begin{theorem}[Rekurze v indexech (BD)]

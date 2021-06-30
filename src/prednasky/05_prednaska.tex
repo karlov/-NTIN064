@@ -69,7 +69,7 @@
 	Kdyby $\alpha(x, y)$ padlo do $W_x$, potom zřejmě padne dříve do $W_x$ než do $W_y$.
 	Pak
 	\[ \varphi_{\alpha(x, y)}(\alpha(x, y)) = 1 \]
-	a tedy by muselo $\alpha(x, y)$ padnout do $B$. To nelze.
+	a tedy by muselo $\alpha(x, y)$ padnout do $F$. To nelze.
 
 	Symetricky $\alpha(x, y)$ nemůže padnout do $W_y$ neboli
 	\[ \alpha(x, y) \notin W_x \cup W_y \]
@@ -116,13 +116,13 @@
 	Položme $m = h(n)$.
 \end{proof}
 
-\begin{theorem}[Existence efektivní neoddělitelné]
+\begin{theorem}[Efektivní neoddělitelné, 1-úplnost]
 	Disjunktní r.s dvojice množin jsou efektivně neoddělitelné $\iff$ jsou 1-úplné.
 \end{theorem}
 \begin{proof}
 	"1-úplnost $\Rightarrow$ efektivní neoddělitelnost".
 
-	Nechť $(C, D)$ efektivně neoddělitelné s funkci $f$ a $(C, D) \leq_1 (A, B)$ s funkci $h$, neboli $(C, D)$ je 1-úplná.
+	Nechť $(C, D)$ efektivně neoddělitelné s funkci $f$ a $(C, D) \leq_1 (A, B)$ s funkci $g$, neboli $(C, D)$ je 1-úplná.
 
 	Vezmeme vzory r.s. obalů $A \subseteq W_x, B \subseteq W_y$:
 	\[ W_{\alpha(x)} = g^{-1}(W_x), W_{\alpha(y)} = g^{-1}(W_y) \]
@@ -151,7 +151,7 @@
 
 	Zkontrolujeme 2 případy:
 	\[ x \notin C \cup D \Rightarrow W_{w_1(x)} = A, W_{w_2(x)} = B \Rightarrow f(w_1(x), w_2(x)) \notin A \cup B \]
-	jinak např $x \in C \Rightarrow x \notin D$ protože jsou disjunkci dle předpokladu.
+	jinak např $x \in C \Rightarrow x \notin D$ protože jsou disjunktní dle předpokladu.
 	Pak
 	\[ W_{w_1(x)} = A, W_{w_2(x)} = B \cup \{ f(w_1(x), w_2(x)) \} \]
 	Pokud $f(w_1(x), w_2(x)) \notin A$ tak množiny $W_{w_1(x)}, W_{w_2(x)}$ jsou obaly $A, B$.
