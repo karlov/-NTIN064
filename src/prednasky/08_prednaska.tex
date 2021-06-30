@@ -24,8 +24,8 @@
 	\[ \exists f \in ORF, \forall x: A(x) = \lim_s f(x, s) \]
 	Hledáme místo, od kterého se hodnota funkce nemění:
 	\[ \mu_s(\forall j \geq s:(f(x, j) = f(x, y))) \]
-	$\forall j \geq s:(f(x, j) = f(x, y)$ je $\emptyset^{\prime}$-rekurzívní, protože negace je
-	\[ \exists j \geq s:(f(x, j) \neq f(x, y)) \]
+	$\forall j \geq s: f(x, j) = f(x, s)$ je $\emptyset^{\prime}$-rekurzívní, protože negace je
+	\[ \exists j \geq s:(f(x, j) \neq f(x, s)) \]
 	Vnitřek je rekurzívní + existenční kvantifikátor dává r.s. (while cyklus).
 	R.S. jsou $\geq_1 \empPr$, což implikuje taky $\geq_T \emptyset^{\prime}$.
 	Pokud vrátíme negaci, tak je formule je r.s. (rekurzivita je uzavřená na negaci).
@@ -57,11 +57,11 @@
 
 	Ověříme existence limity.
 	Pro dané $x$:
-	\[ \Phi_{z}(\empPr)(x) = A(x) (\downarrow) \]
+	\[ \Phi_{z}(\empPr)(x) = A(x) \downarrow \]
 	Neboli musí existovat konečný začátek, pomoci kterého počítáme:
 	\[ \exists \sigma \prec \empPr \Phi_{z}(\sigma)(x) = A(x)\]
 	Taky počet kroků je konečný:
-	\[ \exists s_1: \Phi_{z, s_1}(\empPr)(x) = A(x) \]
+	\[ \exists s_1: \Phi_{z, s_1}(\sigma)(x) = A(x) \]
 
 	$\sigma$ je konečný začátek $\empPr$
 	\[ \sigma \prec \empPr \Rightarrow \forall j < |\sigma|: \sigma(j) = 1 \iff j \in \empPr \]

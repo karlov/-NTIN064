@@ -290,8 +290,8 @@ Q: co je $B$-rekurzívní podmínka? Zahrnuje taky $y \in B$?
 		\item $A^{\prime}$ není $A$-rekurzívní \& $\overline{A^{\prime}}$ není $A$-r.s.
 		\item $B$ je $A$-r.s $\iff B \leq_1 A^{\prime}$.
 		\item $B$ je $A$-r.s \& $A \leq_1 C \Rightarrow B$ je $C$-r.s.
-		\item \[ A \leq_T B \iff A^{\prime} \leq_1 B^{\prime} \]
-		\item \[ A \equiv_T B \iff A^{\prime} \equiv_1 B^{\prime} \]
+		\item $A \leq_T B \iff A^{\prime} \leq_1 B^{\prime}$
+		\item $A \equiv_T B \iff A^{\prime} \equiv_1 B^{\prime}$
 	\end{enumerate}
 
 	Kde $\equiv$ je znak rekurzívní izomorfie.
@@ -404,6 +404,7 @@ Tvrzení o skoku platí stejnoměrně (jako v analýze).
 \end{theorem}
 \begin{proof}
 	\[ W_{z_0} = \{ \langle \sigma, x, y \rangle: \langle \sigma, x, y \rangle \in W_{\rho(x)} \} \]
+	Protože chceme $\Phi_x(A)(x)$.
 	Pak $W_{z_0}$ je regulární, protože prvky bereme z regulární množiny $W_{\rho(x)}$.
 	Dal
 	\[ x \in A^{\prime} \iff \Phi_x(A)(x) \downarrow \iff \exists \sigma, \exists y(\langle \sigma, x, y \rangle \in W_{\rho(x)} \land \sigma \prec A) \iff x \in W_{z_0}^A \]
