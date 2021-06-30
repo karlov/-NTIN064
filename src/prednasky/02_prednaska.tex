@@ -44,7 +44,7 @@
 \end{theorem}
 \begin{proof}
 	Formálně pro $\cap$:
-	\[ \exists s_1 T_1(a, x, s_1) \land \exists s_2 T_1(a, x, s_2) \iff \exists w(T_1(a, x, (w)_{2,1}) \land T_1(b, x, (w)_{2,2})) \]
+	\[ \exists s_1 T_1(a, x, s_1) \land \exists s_2 T_1(b, x, s_2) \iff \exists w(T_1(a, x, (w)_{2,1}) \land T_1(b, x, (w)_{2,2})) \]
 	kde $w$ koduje dvojici $s_1, s_2$.
 	\[ (w)_{2,1} \]
 	říká, že $w$ je n-tice velikosti 2, vezmi 1. složku.
@@ -184,7 +184,7 @@ Pak selektor vybírá $y$ pro $\forall x$.
 
 \begin{definition}[Imunní množina]
 	A je \emph{imunní} pokud je nekonečná a neobsahuje nekonečnou rekurzivní spočetnou podmnožinu.
-	\[ W_x \subseteq A \Rightarrow |W_x| < \infty \]
+	\[ \forall W_x \subseteq A : |W_x| < \infty \]
 
 	Je nekonečná, ale nemůžeme to efektivně zkontrolovat.
 	Protože veškeré algoritmický zkontrolovatelné podmnožiny jsou konečné.

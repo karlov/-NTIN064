@@ -39,7 +39,7 @@ Při dalším vývoje se vyvinul kalkulus tzv obecně rekurzivních funkci ORF a
 \end{notation}
 
 \begin{definition}[Rekurzivní funkce]
-    Funkce $f: \Sigma^*\rightarrow\Sigma^*$ je \emph{částečně rekurzivní}, pokud je turingovsky vyčíslitelná (tedy existuje Turingův stroj $M$ takový, že $\forall x: x\in dom(f)\Leftrightarrow M(x)\downarrow \land f(x)$ odpovídá obsahu pásky $M(x)$ na konci výpočtu).
+    Funkce $f: \Sigma^*\rightarrow\Sigma^*$ je \emph{částečně rekurzivní}, pokud je turingovsky vyčíslitelná (tedy existuje Turingův stroj $M$ takový, že $\forall x \in dom(f)\Leftrightarrow M(x)\downarrow \land f(x)$ odpovídá obsahu pásky $M(x)$ na konci výpočtu).
 
     Funkce $f: \Sigma^*\to \Sigma^*$ je \emph{obecně rekurzivní}, je-li částečně rekurzivní a $dom(f)=\Sigma^*$ (všude definovaná).
 \end{definition}
@@ -202,7 +202,7 @@ Q: jaký z jazyků programování" je nejbližší k ČRF? Asi $\lambda$-calculu
 \end{notation}
 
 \begin{theorem}[s-m-n (BD)]\label{s_m_n}
-	\[ \varphi_e^{m + n}(x_1, \ldots, x_n, y_1, \ldots, y_m) \simeq \varphi_{s_n^m(e, y_1, \ldots, y_m)}^n(x_1, \ldots, x_n) \]
+	\[ \varphi_e^{m + n}(x_1, \ldots, x_n, y_1, \ldots, y_m) \simeq \varphi_{s_n^m(e, x_1, \ldots, x_n)}^n(y_1, \ldots, y_m) \]
 	V $\Psi$ notace
 	\[ \Psi_{n + m}(e, \bar{x}, \bar{y}) \simeq \Psi_m(s_n^m(e, \bar{x}, \bar{y})) \]
 	kde $\bar{x}, \bar{y}$ jsou vektory pro kratší zápis.
