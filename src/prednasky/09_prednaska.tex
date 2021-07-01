@@ -75,7 +75,7 @@ Na vyšších úrovních neplatí protože...??
 	Množina Tot \cref{tot_mn} je v $\Pi_2^0$.
 \end{example}
 \begin{proof}
-	\[ x \in Tot \iff \forall y \exists x: \varphi_{x, s}(y) \downarrow \]
+	\[ x \in Tot \iff \forall y \exists s: \varphi_{x, s}(y) \downarrow \]
 	Máme 2 střídavé kvantifikátory, $\varphi_{x, s}(y) \downarrow$ je rekurzivní.
 \end{proof}
 
@@ -262,12 +262,12 @@ Na vyšších úrovních neplatí protože...??
 			Kde $\varphi$ je $\emptyset^{(n)}$-ČRF.
 			Dále
 			\[ x \in A \iff \varphi(x) \downarrow \Rightarrow \Phi(\emptyset^{(n)})(x) \downarrow \]
-			Kde $f = \Phi(\emptyset^{(n)})$ je %TODO
-			Je to ekvivalentní
+			Kde $f = \Phi(\emptyset^{(n)})$ je $\emptyset^{(n)}$-ČRF.
+			Jelikož, $\exists s:\Phi(\sigma)(x) \simeq y$ je taky existenční, je to ekvivalentní
 			\[ \exists \sigma \exists y(\Phi(\sigma)(x) \simeq y \land \sigma \prec \emptyset^{(n)}) \]
 			Máme následující kvantifikátory:
 			\[ \exists (\exists \land \sigma \prec \emptyset^{(n)}) \]
-			Tvrdíme, že $\sigma \prec \emptyset^{(n)})$ je $\Sigma_n^0 \land \Pi_n^0$.
+			Tvrdíme, že $(\sigma \prec \emptyset^{(n)})$ je $\Sigma_n^0 \land \Pi_n^0$.
 			Protože pro $j \leq |\sigma|$:
 			\[ \sigma(j) = 1 \Rightarrow j \in \emptyset^{(n)} \]
 			což dle i.p. je $\Sigma_n^0$.
@@ -284,7 +284,7 @@ Na vyšších úrovních neplatí protože...??
 			\[ A = dom(\varphi) \]
 			Kde $\varphi$ je $\emptyset^{(n)}$-ČRF.
 
-			Dle věty o limitní vyčíslitelnosti %todo link
+			Dle věty o limitní vyčíslitelnosti \cref{lim_comp}
 			\[ \varphi(x) \simeq \lim_s F(x, s) \]
 			kde $F$ je $\emptyset^{(n - 1)}$-ORF. Pak
 			\[ x \in A \iff \varphi(x) \downarrow = \exists \lim_s F(x, s) \]
@@ -337,7 +337,7 @@ Z 1) bodů předchozí věty:
 	\[ x \in B \Rightarrow \alpha(x) \in Tot \]
 	Protože program najde $s$ pro všechna $y$.
 	Opačně:
-	\[ x \notin B \Rightarrow \alpha(x) \in Tot \]
+	\[ x \notin B \Rightarrow \alpha(x) \notin Tot \]
 	Protože $\exists y \forall s: \neg Q(x, y, s)$.
 	Dokonce $\alpha$ lze udělat prostou.
 
@@ -345,11 +345,8 @@ Z 1) bodů předchozí věty:
 	\[ B \leq_1 Tot \]
 \end{proof}
 
-\begin{definition}[Fin]
+\begin{definition}[Fin, Inf]
 	\[ Fin = \{ x: |W_x| < \infty \} \]
-\end{definition}
-
-\begin{definition}[Inf]
 	\[ Inf = \{ x: |W_x| = \infty \} \]
 \end{definition}
 
