@@ -23,7 +23,7 @@
 \end{note}
 
 \begin{theorem}[Efektivní neoddělitelné (BD)]
-	Existuji rekurzivně neoddělitelné které nejsou efektivně neoddělitelné.
+	Existují rekurzivně neoddělitelné které nejsou efektivně neoddělitelné.
 \end{theorem}
 \begin{proof}
 	Podobná konstrukce jako u Simple.
@@ -60,9 +60,9 @@
 	Formálně (dříve než ...)
 	\[ \exists j (T_1(x, w, j) \land \forall i \leq j: \neg T_1(y, w, i)) \]
 
-	Pokud oba dva programy skonči za stejný počet kroků, tak vezmeme libovolný.
+	Pokud oba dva programy skončí za stejný počet kroků, tak vezmeme libovolný.
 
-	Nechť $W_x \supseteq E$ je rekurzivní obal $E$, nápodobně $W_y \supseteq F$.
+	Nechť $W_x \supseteq E$ je r.s. obal $E$, nápodobně $W_y \supseteq F$, které jsou disjunktní.
 
 	Uvažme
 	\[ \varphi_{\alpha(x, y)}(\alpha(x, y)) \]
@@ -122,11 +122,11 @@
 \begin{proof}
 	"1-úplnost $\Rightarrow$ efektivní neoddělitelnost".
 
-	Nechť $(C, D)$ efektivně neoddělitelné s funkci $f$ a $(C, D) \leq_1 (A, B)$ s funkci $g$, neboli $(C, D)$ je 1-úplná.
+	Nechť $(C, D)$ efektivně neoddělitelné s funkcí $f$ a $(C, D) \leq_1 (A, B)$ s funkcí $g$, neboli $(A, B)$ je 1-úplná.
 
-	Vezmeme vzory r.s. obalů $A \subseteq W_x, B \subseteq W_y$:
+	Vezmeme vzory disjunktních r.s. obalů $A \subseteq W_x, B \subseteq W_y$:
 	\[ W_{\alpha(x)} = g^{-1}(W_x), W_{\alpha(y)} = g^{-1}(W_y) \]
-	Jelikož, $(C, D)$ efektivně neoddělitelné $\Rightarrow W_{\alpha(x)} \cap W_{\alpha(y)} = \emptyset$.
+	Jelikož, $(C, D)$ efektivně neoddělitelné a platí $W_{\alpha(x)} \cap W_{\alpha(y)} = \emptyset$.
 	Taky funkce $f$ dá bod
 	\[ new = f(\alpha(x), \alpha(y)): new \notin W_{\alpha(x)} \cup W_{\alpha(y)} \]
 	Zobrazíme $new$ pomoci $g$ zpátky. Pak
@@ -138,13 +138,13 @@
 
 	"1-úplnost $\Leftarrow$ efektivní neoddělitelnost".
 
-	Nechť $(A, B)$ efektivně neoddělitelné s funkci $f \in ČRF$.
-	Nechť $(C, D)$ libovolné disjunktní množiny.
+	Nechť $(A, B)$ efektivně neoddělitelné s funkcí $f \in ČRF$.
+	Nechť $(C, D)$ libovolné disjunktní r.s. množiny.
 
 	Sestavíme množiny
 	\[ W_{w_1(x)} = \twopartdef { A \cup \{ f(w_1(x), w_2(x)) \} } { x \in D } { A } { x \notin D } \]
 	\[ W_{w_2(x)} = \twopartdef { B \cup \{ f(w_1(x), w_2(x)) \} } { x \in C } { B } { x \notin C } \]
-	Které dostaneme pomoci dvojné věty o rekurzi \cref{rek_2x}
+	Které dostaneme pomocí dvojné věty o rekurzi \cref{rek_2x}
 	\[ W_{\alpha(y_1, y_2, x)} = \twopartdef { A \cup \{ f(y_1(x), y_2(x)) \} } { x \in D } { A } { x \notin D } \]
 	\[ W_{\beta(y_1, y_2, x)} = \twopartdef { B \cup \{ f(y_1(x), y_2(x)) \} } { x \in C } { B } { x \notin C } \]
 

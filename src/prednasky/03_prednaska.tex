@@ -2,14 +2,14 @@
 \vspace{5mm}
 \large
 
-Taky se jmenuji věty o pevném bodě. Používá se self-refrenční trik
+Taky se jmenují věty o pevném bodě. Používá se self-refrenční trik
 
 \begin{theorem}[O rekurzi 1]\label{rek_1}
 	Pokud $f$ je ČRF (pro jednoduchost 1 proměnné) $\Rightarrow$ (efektivně z indexů)
 	\[ \exists a\ \forall x: \varphi_a(x) \simeq \varphi_{f(a)} (x) \]
 
 	Jinými slovy: pokud $f(a) \downarrow \Rightarrow \varphi_a$ a $\varphi_{f(a)}$ jsou stejné funkce.
-	Programy nejsou stejné, ale vyčísluji stejnou funkci.
+	Programy nejsou stejné, ale vyčíslují stejnou funkci.
 
 	Pokud ale $f(a) \uparrow \Rightarrow \forall x: \varphi_a(x) \uparrow$.
 \end{theorem}
@@ -27,24 +27,24 @@ Taky se jmenuji věty o pevném bodě. Používá se self-refrenční trik
 
 	Který program počítá déle?
 
-	Program $e = f(s_1(z, z))$:
+	Program $e = f(s_1(z, z))$, vstup $\langle z, x \rangle$:
 	\begin{enumerate}
 		\item spočítej $s_1(z, z)$.
 		\item spočítej $f(s_1(z, z))$.\\
 			který ale nemusí konvergovat
 		\item $if(f(s_1(z, z)) \downarrow)$\\
-			spust $e$ na vstup $x$.
+			spusť $e$ na vstup $x$.
 	\end{enumerate}
 
-	Program $a = s_1(z, z)$:
+	Program $a = s_1(e, e)$:
 	\begin{enumerate}
 		\item dostane $x$ na vstupu, kvůli s-m-n přidá $e$ ke vstupu
 		\item spustí program $e$ na vstup $\langle e, x \rangle$.
-		\item spočítej $a = s_1(z, z)$.\\
+		\item spočítej $a = s_1(e, e)$.\\
 			Tady spočítal svůj vlastní index.
-		\item spočítej $f(s_1(z, z))$ tzn $f(a)$.\\
+		\item spočítej $f(s_1(e, e))$ tzn $f(a)$.\\
 			který ale nemusí konvergovat
-		\item $if(f(s_1(z, z)) \downarrow)$ then \\
+		\item $if(f(s_1(e, e)) \downarrow)$ then \\
 			spust $f(a)$ na vstup $x$.
 	\end{enumerate}
 
@@ -55,7 +55,7 @@ Taky se jmenuji věty o pevném bodě. Používá se self-refrenční trik
 	Pokud $f$ je ČRF $(n + 1)$ proměnných $\Rightarrow$ ORF (dokonce PRF)
 	\[ \varphi_{h(y_1, \ldots, y_n)}(x) \simeq \varphi_{f(h(y_1, \ldots, y_n, y_1, \ldots, y_n))} (x) \]
 
-	Pokud smažeme $y$-ny, tak dostaneme právě Větu o rekurzi 1 \cref{rek_1}.
+	Pokud smažeme $y_1, \ldots, y_n$, tak dostaneme právě Větu o rekurzi 1 \cref{rek_1}.
 
 	Pevné body efektivně na parametrech.
 \end{theorem}
@@ -99,7 +99,7 @@ Taky se jmenuji věty o pevném bodě. Používá se self-refrenční trik
 
 \begin{theorem}[Program vlastní kod]
 	Existuje $n_0$:
-	\[ \varphi_{n_0} (n_0) = n_0 \]
+	\[ \varphi_{n_0} (w) = n_0\ \text{pro libovolné}\ w \]
 	Program který vypíše svůj vlastní kód.
 \end{theorem}
 \begin{proof}
@@ -109,7 +109,7 @@ Taky se jmenuji věty o pevném bodě. Používá se self-refrenční trik
 	\[ \alpha(n, w) \simeq \varphi_{f(n)} (w) \]
 	Kde
 	\[ \alpha(n, w) \simeq \Psi(e, n, w) \simeq \varphi_{s_1(e, n)} (w)  \]
-	TODO Pak $f(x) = s_1(x, x)$???
+	Tzn. $f(n) = s_1(e, n)$.
 	Stačí použít Větu o rekurzi \cref{rek_1} k $f$
 	\[ \varphi_{f(n_0)} (w) \simeq \varphi_{n_0} (w) = n_0 \]
 \end{proof}
@@ -125,7 +125,7 @@ Taky se jmenuji věty o pevném bodě. Používá se self-refrenční trik
 
 \begin{theorem}[Rice podruhe]
 	Pokud $F$ je netriviální třída ČRF (nebo r.s množin).
-	Není prázdná, nebo má všechny.
+	Není prázdná, nebo nemá všechny.
 	Pak indexová množina
 	\[ A_F = \{ x |\ \varphi_x \in F \} \]
 	Je nerekurzivní.
@@ -148,23 +148,22 @@ Taky se jmenuji věty o pevném bodě. Používá se self-refrenční trik
 	\[ \varphi_{n_0} = \varphi_{h(n_0)} \]
 	takže $n_0, h(n_0)$ musí být ve stejné množině.
 
-	Z toho $A$ nené rekurzivní.
+	Z toho $A$ není rekurzivní.
 \end{proof}
 
 \begin{theorem}[O rekurzi (BD)]
-	Nechť $f \in ČRF$ pak
-	//TODO
+	Nechť $f \in ČRF$ pak:
+	\[ \exists a \forall x: \varphi_a(x) = \varphi_{f(a)}(x) \]
 \end{theorem}
 \begin{proof}
 	\[ \varphi_{\varphi_u(u)} (z) \simeq \Psi_2(a, u, z) \stackrel{\text{s-m-n}}{\simeq} \varphi_{s_1(a, u)} (z) \simeq \varphi_{d(u)} (z) \simeq \varphi_{\varphi_e(u)} (z) \]
 	Všimneme si, že
 	\[ \varphi_u(x) \]
-	je \emph{matice} funkci. Implikace nahoře ukazuje, že její diagonála $\varphi_u(u)$ se rovná řádku $\varphi_e$.
+	je \emph{matice} funkcí. Implikace nahoře ukazuje, že její diagonála $\varphi_u(u)$ se rovná řádku $\varphi_e$.
 
 	Ukážeme, že $f$ permutuje řádky.
 	\[ \varphi_{f \circ \varphi_u (x)} (z) \simeq \varphi_{\beta(u, x)} \stackrel{\text{s-m-n}}{\simeq} \varphi_{\varphi_{H(u)}(x)} (z) \]
-	Kde
-	\[ H(u) = s_1(b, u) \]
+	Kde $H(u) = s_1(b, u)$, kde $b$ je index fince $\beta$.
 	Z toho u-tý řádek se zobrazí na $H(u)$-tý.
 	Speciálně
 	\[ e \to H(e) \]

@@ -6,6 +6,7 @@
 
 \begin{definition}[Postův problém podruhe]
 	\[ \exists A: \emptyset <_T A <_T \emptyset^{\prime} \]
+	a $A$ je r.s.
 
 	Byl vyřešen nezávislé Friedberg-Mučník pomoci tzv. prioritních metod.
 	\begin{enumerate}
@@ -18,7 +19,7 @@
 \subsection{Forcing}
 
 \begin{definition}[Cantor space]
-	Hlavní myšlenka je použit tzv \href{https://en.wikipedia.org/wiki/Cantor_space}{Cantorův prostor} $2^{\omega}$.
+	Hlavní myšlenka je použít tzv \href{https://en.wikipedia.org/wiki/Cantor_space}{Cantorův prostor} $2^{\omega}$.
 	Což je prostor všech zobrazení
 	\[ f:\N \to \{ 0, 1 \} \]
 
@@ -29,7 +30,7 @@
 	Okolí v Cantorovém prostoru je
 	\[ o_{\sigma} = \{ B: \sigma \prec B \} \]
 	Pak vzdálenost
-	\[ \rho(\ldots) \leq 2^{-\sigma} \]
+	\[ \rho(\ldots) \leq 2^{-|\sigma|} \]
 \end{note}
 
 \begin{definition}[Finite extension method (Cohen)]
@@ -47,7 +48,7 @@
 
 	Nechť první bod je $A_0$ leží v otevřené husté množině.
 	Jelikož je otevřená, existuje okolí $A_0$ které je uvnitř množiny.
-	Z hustoty v tomto okolí je další bod, je taky s okolím atd.
+	Z hustoty v tomto okolí je další bod z další otevřené husté množiny, je taky s okolím atd.
 
 	Takovým postupem vytvoříme Cauchy posloupnost, která kvůli úplnosti má limitu.
 	Tato limita leží v průniku.
@@ -78,7 +79,7 @@
 	Používá se finite extension method.
 
 	Pomoci $\emptyset^{\prime}$ vytvoříme $\emptyset^{\prime}$-posloupnost $\{\sigma_n\}_n$:
-	\[ \sigma_{n + 1} \preccurlyeq \sigma_n \]
+	\[ \sigma_n \preccurlyeq \sigma_{n + 1} \]
 
 	Pak
 	\[ A = \bigcup \sigma_n \]
@@ -104,7 +105,7 @@
 	BUNO: $\alpha_0 = \beta_0 = \emptyset$.
 
 	Indukční krok: 2 podkroky, protože potřebujeme zajistit
-	\[ (A \nleq_T B \simeq \Phi_e(B) \neq A) \land (B \nleq_T A \simeq \Phi_e(A) \neq B) \]
+	\[ \forall e: (A \nleq_T B \simeq \Phi_e(B) \neq A) \land (B \nleq_T A \simeq \Phi_e(A) \neq B) \]
 	Stačí jedná z podmínek, druhá symetricky.
 
 	Otázka
@@ -112,15 +113,15 @@
 	kde $x_0 = |\alpha_e|$, $\alpha_e(x_0)$ není definované.
 
 	Pokud ANO, tak
-	\[ \alpha_{e + 1} = \alpha_e + 1, \beta_{e + 1} = \tau \]
+	\[ \alpha_{e + 1} = \alpha_{e + 1}, \beta_{e + 1} = \tau \]
 	S tím, že $\tau$ první které padlo.
 	Pak pro libovolnou $\beta_{e + 1} \preccurlyeq B$ platí
-	\[ \Phi_e(B)(x_0) = 0 \land A(x_0) = 1 (A \preccurlyeq \alpha_{e + 1})\]
+	\[ \Phi_e(B)(x_0) = 0 \land A(x_0) = 1 (\alpha_{e + 1} \preccurlyeq A)\]
 
 	Jinak
-	\[ \alpha_{e + 1} = \alpha_e + 0, \beta_{e + 1} = \beta_e \]
+	\[ \alpha_{e + 1} = \alpha_{e + 0}, \beta_{e + 1} = \beta_e \]
 	Pak
-	\[ A(x_0) = 0 \land (B(x_0) \downarrow = 1 \lor B(x_0) \uparrow) \]
+	\[ A(x_0) = 0 \land (\Phi_e(B)(x_0) \downarrow = 1 \lor \Phi_e(B)(x_0) \uparrow) \]
 \end{proof}
 
 \begin{theorem}[R.S. a 1-generické]
@@ -157,7 +158,7 @@
 	A je 1-generická a $A \leq_T \emptyset^{\prime} \Rightarrow A$ je tzv. low.
 	\[ A^{\prime} \equiv_T \emptyset^{\prime} \]
 
-	Libovolný skok \cref{jump} je $\emptyset^{\prime}$.
+	Skok libovolné množiny $B$ je $\geq_T \emptyset^{\prime}$.
 \end{theorem}
 \begin{proof}
 	% todo prednaska 12, od 1:07:00
@@ -166,19 +167,19 @@
 \subsection{Algoritmická náhodnost}
 % prednaska 12 od 40:00
 
-Historicky existovali následující přístupy ve zkoumaní algoritmické náhodnosti:
+Historicky existovaly následující přístupy ve zkoumaní algoritmické náhodnosti:
 \begin{itemize}
 	\item frekvenční stabilita, tzv. v limitě v posloupnosti $\{ a_n \}$ musí být stejně 0 a 1.
 		Pak ještě musíme modifikovat: pro každou r.s. vybranou část.
 	\item Kolmogorovská složitost (vice variant)
-	\item Teorie míry (Martingale nebo Martin-Lof testy, jsou ekvivalentní).
+	\item Teorie míry (Martingale nebo Martin-L\"{o}f testy, jsou ekvivalentní).
 \end{itemize}
 
 \subsection{Kolmogorovská složitost}
 
 Složitost napřed pro konečné řetízky $2^{< \omega}$ pak rozšíření na $2^{\omega}$ neboli množiny.
 \begin{note}[Kolmogorovské náhodné řetízky]
-	Náhodné jsou nestlačitelné: nejde popsat kratším způsoben než délka.
+	Náhodné jsou nestlačitelné: nejde popsat kratším způsobem než délka.
 
 	"Popis" ale není přesně definovaný: polynomiální čas, ČRF, s orákulem atd.
 	Čim máme silnější rozpoznávací mechanizmus, tím více nenáhodných řetízku rozpoznáme.
@@ -188,7 +189,7 @@ Zvolíme přístup s ČRF (v literatuře spíš TM).
 
 \begin{definition}[Kolmogorov complexity]
 	\[ C_f(x) = \min \{ |y|, y \in \{ 0, 1 \}^{\ast}: f(y) \downarrow \land f(y) = x \} \]
-	Délka nejkratší
+	Délka nejkratšího popisu x pomocí funkce $f$.
 \end{definition}
 
 \subsection{Martingale}

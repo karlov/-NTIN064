@@ -2,7 +2,7 @@
 \vspace{5mm}
 \large
 
-Zobecnění 1-převoditelnosti na relativný výpočet (s Orákulem).
+Zobecnění 1-převoditelnosti na relativní výpočet (s Orákulem).
 
 \begin{definition}[tt-Převoditelnost]
 	Tzv tt (truth table) převoditelnost znamená, že existuje $f \in ORF$ která vrátí:
@@ -11,12 +11,12 @@ Zobecnění 1-převoditelnosti na relativný výpočet (s Orákulem).
 		\begin{array}{lll}
 			n_x \\
 			\alpha_x & \text{n-arní booleovskou funkci} \\
-			y_1, \ldots, y_n & \text{body}
+			y_1, \ldots, y_{x_n} & \text{body}
 		\end{array}
 		\right.
 	\]
 	Pro niž platí:
-	\[ C_A(x) = \alpha_x(C_B(y_1), \ldots, C_B(y_n))\]
+	\[ C_A(x) = \alpha_x(C_B(y_1), \ldots, C_B(y_{n_x}))\]
 	Kde $C_i$ je charakteristická funkce.
 
 	Neboli
@@ -33,10 +33,10 @@ Zobecnění 1-převoditelnosti na relativný výpočet (s Orákulem).
 
 \subsection{Formalizace relativního vypočtu}
 
-Existuje několik možnosti formalizace:
-\begin{definition}[Formalizace relativního vypočtu]
+Existuje několik možností formalizace:
+\begin{definition}[Formalizace relativního vypočtu]~
 	\begin{enumerate}
-		\item TS s orákulem. Přidáme další pasku, kde TS bude umisťovat slova pro dotazy k orákulu.
+		\item TS s orákulem. Přidáme další pásku, kde TS bude umisťovat slova pro dotazy k orákulu.
 			Pak množina $B$ (asi jazyk orákula) je dalším vstupem programu.
 		\item ČRF. Přidáme charakteristické funkce $C_B$, kde $B$ je proměnná.
 		\item Programovací jazyk. Přidáme funkci $B$, v console se objeví dotaz, jestli slovo patří nebo nepatří do jazyka.
@@ -48,20 +48,20 @@ Existuje několik možnosti formalizace:
 	Pro konkretní vstup $x$ vzniká tzv výpočtový strom.
 
 	Důležité je, že množina konečných větví je r.s.
-	Každou z větvi lze charakterizovat pomoci
+	Každou z větví lze charakterizovat pomocí
 	\[ \langle x, v, y, n \rangle \]
-	Kde $x$ je vstup, $v$ je vystup, $y$ je index konečné množiny kladně zodpovězených orákulem dotazů, $n$ je index množiny negativních dotazů.
+	Kde $x$ je vstup, $v$ je výstup, $y$ je index konečné množiny kladně zodpovězených orákulem dotazů, $n$ je index množiny negativních dotazů.
 	Přitom
 	\[ D_y \subseteq B, D_n \subseteq \overline{B} \]
 
 	Předpokládáme, že jazyk orákula je korektní, neboli
 	\[ D_y \cap D_n = \emptyset \]
 
-	Tento přistup formalizace není nejvýhodnější, protože body na které se ptáme netvoří souvislý počátek přirozených čísel.
+	Tento přístup formalizace není nejvýhodnější, protože body na které se ptáme netvoří souvislý počátek přirozených čísel.
 \end{note}
 
 \begin{agreement}[Strings]
-	Nadále pracujeme s konečné binární řetízky (string), které značíme buď $\{ 0, 1 \}^{\ast}$, nebo $2^{<w}$.
+	Nadále pracujeme s konečnými binárními řetízky (string), které značíme buď $\{ 0, 1 \}^{\ast}$, nebo $2^{<w}$.
 
 	Operace:
 	\begin{itemize}
@@ -73,8 +73,8 @@ Existuje několik možnosti formalizace:
 	\end{itemize}
 \end{agreement}
 
-\begin{definition}[Částečně rekurzívní funkcionál]
-	Částečně rekurzívní funkcionál je r.s. množina $\Phi$ trojic taková, že pokud platí:
+\begin{definition}[Částečně rekurzivní funkcionál]
+	Částečně rekurzivní funkcionál je r.s. množina $\Phi$ trojic taková, že pokud platí:
 	\begin{gather*}
 		\langle \sigma, x, y \rangle \in \Phi \\
 		\langle \sigma^{\ast}, x, y^{\ast} \rangle \in \Phi \\
@@ -82,16 +82,18 @@ Existuje několik možnosti formalizace:
 	\end{gather*}
 	Tak $y = y^{\ast}$.
 
-	Funkcionál je funkce vyššího řadu, vrací funkce.
+	Funkcionál je funkce vyššího řádu, vrací funkce.
+
+	Význam: k danému $x$ a s kompatibilní orákulovou informací je výstup jednoznačně určen.
 \end{definition}
-Q: co přesně znamená $y^{\ast}$.
+%Q: co přesně znamená $y^{\ast}$.
 
 \begin{note}
-	Přístupy jsou ekvivalentní, protože v případě Částečně rekurzívního funkcionálu číslo na které se orákula neptáme označíme nulou v řetízku.
+	Přístupy jsou ekvivalentní, protože v případě Částečně rekurzivního funkcionálu číslo na které se orákula neptáme označíme nulou v řetízku.
 \end{note}
 
 \begin{example}
-	Program má na vstupu $x$, na vystup vypíše $y$ s použití $\alpha \preccurlyeq B$.
+	Program má na vstupu $x$, na výstup vypíše $y$ s použitím $\alpha \preccurlyeq B$.
 \end{example}
 
 \begin{definition}[ČRF-nál zobrazení]
@@ -103,14 +105,14 @@ Q: co přesně znamená $y^{\ast}$.
 	\end{gather*}
 \end{definition}
 
-Q: proč funkcionál místo zobrazení s 2ma parametry?
+%Q: proč funkcionál místo zobrazení s 2ma parametry?
 
 \begin{note}
 	Máme funkcionální term, který aplikujeme na $0,1$ (charakteristickou) funkci.
 	Tím dostaneme funkční term. Aplikace funkčního termu na číselný term může ale nemusí davat číselnou hodnotu.
 \end{note}
 
-\begin{properties}[Částečně rekurzívní funkcionál]
+\begin{properties}[Částečně rekurzívní funkcionál]~
 	\begin{enumerate}
 		\item $\Phi(B)$ je korektně definováno.
 		\item $\Phi(B)$ je intuitivně efektivně vyčíslitelné pomoci B.
@@ -125,7 +127,7 @@ Q: proč funkcionál místo zobrazení s 2ma parametry?
 	\[ A \leq_T B \]
 	Pokud existuje nějaký ČRFunkcionál $\Phi$:
 	\[ \Phi(B) = A, \forall x( A(x) = \Phi(B)(x)) \]
-	Taky se říká: A je B-rekurzívní, A je reflexivní vzhledem k B.
+	Taky se říká: A je B-rekurzívní, A je rekurzivní vzhledem k B.
 \end{definition}
 
 \begin{definition}[T-Převoditelnost pro funkce]
@@ -134,7 +136,7 @@ Q: proč funkcionál místo zobrazení s 2ma parametry?
 \end{definition}
 
 \begin{lemma}[Regularizační funkce]\label{reg_func}
-	Existuje ORF (dokonce PRF) $\rho$ regulárizační funkce.
+	Existuje ORF (dokonce PRF) $\rho$ regularizační funkce.
 	Splňující:
 	\begin{enumerate}
 		\item $W_{\rho(x)} \subseteq W_x$.
@@ -154,16 +156,16 @@ Q: proč funkcionál místo zobrazení s 2ma parametry?
 	\end{enumerate}
 \end{proof}
 
-\begin{definition}[Numerace funkcionálu]
+\begin{definition}[Numerace funkcionálů]
 	$W_{\rho(x)}$ z lemmatu je $e$-tý ČRF-nál, značíme $\Phi_e$.
 	\[ \Phi_e(B)(x) \simeq y \iff \langle \sigma, x, y \rangle \in W_{\rho(x)}: \sigma \prec B \]
 	Taky za s kroků: $\Phi_{e, s}(B)(x)$.
 \end{definition}
 
 \begin{observation}[ČRF-nál r.s.]
-	$\Phi_e(\sigma)(X) \downarrow$ je r.s.
+	$\Phi_e(\sigma)(x) \downarrow$ je r.s.
 
-	$\Phi_{e, s}(\sigma)(X) \downarrow$ je rekurzívní.
+	$\Phi_{e, s}(\sigma)(x) \downarrow$ je rekurzívní.
 
 	$\Phi_e(B)(X) \downarrow$ je r.s. v $B$.
 
@@ -171,11 +173,12 @@ Q: proč funkcionál místo zobrazení s 2ma parametry?
 \end{observation}
 
 \begin{theorem}[s-m-n pro Relativní]\label{s_m_n_rel}
-	// todo zneni
+	Existují ORF (dokonce PRF) $\overline s_m$ takové, že
+	\[ \forall B, \forall x_1, \ldots, x_m, y_1, \ldots, y_n: \Phi_e(B)(x_1, \ldots, x_m, y_1, \ldots, y_n) \simeq \Phi_{\overline{s_m}(e, x_1, \ldots, x_m)}(B)(y_1, \ldots, y_n) \]
 \end{theorem}
 \begin{proof}
 	%7. predn od 44:00
-	Nemůžeme rovnou použit standardní s-m-n větu, protože ne každá $W_x$ splňuje funkční vlastnost.
+	Nemůžeme rovnou použít standardní s-m-n větu, protože ne každá $W_x$ splňuje funkční vlastnost.
 	Proto potřebujeme Regularizační funkce \cref{reg_func}.
 
 	Pak $\Phi_e(B)(x)$ je univerzální $B$-ČRF.
@@ -184,19 +187,20 @@ Q: proč funkcionál místo zobrazení s 2ma parametry?
 	Kde $\overline{s_m}$ jsou ORF (dokonce PRF).
 
 	Formálně, uděláme ČRF takovou, že
-	\[ \alpha(e, x, w) \downarrow \iff w = \langle \sigma, y, t \rangle: \langle \sigma, \langle x, y \rangle, t \rangle \in W_{\rho(x)} \]
+	\[ \alpha(e, x, w) \downarrow \iff w = \langle \sigma, y, t \rangle: \langle \sigma, \langle x, y \rangle, t \rangle \in W_{\rho(e)} \]
 	S tím, že
 	\[ \alpha(e, x, w) \simeq \varphi_{s_2(a, e, x)}(w) \]
+	kde $a$ je index $\alpha$.
 	Položme
 	\[ \overline{s_2}(e, x) = s_2(a, e, x) \]
 
-	Rozbor: s pomoci $\sigma$ orákulu a vstupu $y$ vypočti $t$ jestliže
+	Rozbor: s pomocí $\sigma$ orákulu a vstupu $y$ vypočti $t$ jestliže
 	\[ \Phi_e(\sigma)(\langle x, y \rangle) = t \]
 	Což znamená (pro jednoduchost pro 2 proměnné):
 	\[ \Phi_e(B)(\langle x, y \rangle) \simeq \Phi_{\overline{s_2}(e, x)}(B)(y) \]
 \end{proof}
 
-\begin{properties}[Turingovská převoditelnost]
+\begin{properties}[Turingovská převoditelnost]~
 	\begin{enumerate}
 		\item $\leq_T$ je reflexivní, tranzitivní.
 		\item A rekurzívní $\Rightarrow \forall B: A \leq_T B$.
@@ -225,7 +229,7 @@ Q: proč funkcionál místo zobrazení s 2ma parametry?
 	\[ A = dom(\Phi_e(B)) \]
 \end{definition}
 
-\begin{notation}[e-ta B-r.s. množina]
+\begin{notation}[e-tá B-r.s. množina]
 	\[ W^B_e = dom(\Phi_e(B)) \]
 
 	Podobně za $s$ kroků:
@@ -240,7 +244,7 @@ Q: proč funkcionál místo zobrazení s 2ma parametry?
 	\[ A <_T B \iff A \leq_T B \land B \nleq_T A \]
 \end{definition}
 
-\subsection{Struktura T-stupňu}
+\subsection{Struktura T-stupňů}
 
 \begin{definition}[T stupně struktura]
 	T-stupně tvoří horní polosvaz (upper semilattice), označuji se $\mathcal{D}(\leq)$.
@@ -266,16 +270,16 @@ Q: proč funkcionál místo zobrazení s 2ma parametry?
 
 \begin{observation}\label{rel_prop}
 \begin{itemize}
-	\item Postová věta:
+	\item Postova věta:
 		$A$ je $B$-rekurzívní $\iff A, \overline{A}$ jsou $B$-r.s.
 	\item r.s. které mají enumerator jsou efektivně generovatelné.
-		Podobně, $B$-r.s která má enumerator je efektivně generovatelná relativně k $B$.
+		Podobně, $B$-r.s která má enumerator relativní v $B$ je efektivně generovatelná relativně k $B$.
 	\item r.s. množiny jsou právě ty, které lze vyjádřit pomoci $\exists ($ rekurzívní podmínka $)$.
 		Podobně: $B$-r.s. množiny jsou právě ty, které lze vyjádřit pomoci $\exists (B-$rekurzívní podmínka $)$.
 \end{itemize}
 \end{observation}
 
-Q: co je $B$-rekurzívní podmínka? Zahrnuje taky $y \in B$?
+%Q: co je $B$-rekurzívní podmínka? Zahrnuje taky $y \in B$?
 
 \subsection{Operace skoku}
 
@@ -289,7 +293,7 @@ Q: co je $B$-rekurzívní podmínka? Zahrnuje taky $y \in B$?
 		\item $A^{\prime}$ je r.s.
 		\item $A^{\prime}$ není $A$-rekurzívní \& $\overline{A^{\prime}}$ není $A$-r.s.
 		\item $B$ je $A$-r.s $\iff B \leq_1 A^{\prime}$.
-		\item $B$ je $A$-r.s \& $A \leq_1 C \Rightarrow B$ je $C$-r.s.
+		\item $B$ je $A$-r.s \& $A \leq_T C \Rightarrow B$ je $C$-r.s.
 		\item $A \leq_T B \iff A^{\prime} \leq_1 B^{\prime}$
 		\item $A \equiv_T B \iff A^{\prime} \equiv_1 B^{\prime}$
 	\end{enumerate}
@@ -299,16 +303,17 @@ Q: co je $B$-rekurzívní podmínka? Zahrnuje taky $y \in B$?
 \begin{proof}
 	\begin{enumerate}
 		\item z definice, $A^{\prime}$ je definičním oborem programu $\Phi_x(A)(x)$.
-		\item Cantorová diagonální metoda. Formálně:
+		\item Cantorova diagonální metoda. Formálně:
 			\[ \overline{A^{\prime}} = \{ x : x \notin W_x^A \} \Rightarrow \forall x: \overline{A^{\prime}} \neq W_x^A \]
 			Pak z relativní Postové věty \cref{rel_prop}: $A^{\prime}$ není $A$-rekurzívní.
 		% 8 predn od 41:00
 		\item "$\Leftarrow$". Nechť $B \leq_1 A^{\prime}$.Pak
 			\[ \exists f \in ORF: x \in B \iff f(x) \in A^{\prime} \]
-			Z toho můžeme spočítat $f(x)$ a pokud $f(x) \in A$ tak $x \in B$.
+			Z toho můžeme spočítat $f(x)$ a pokud $f(x) \in A^{\prime}$ tak $x \in B$.
+			Ale $A^{\prime}$ je $A$-r.s. a tedy i $B$ je $A$-r.s.
 			Což je program pro rozhodnutí $B$.
 
-			"$\Rightarrow$" Pomoci fiktivní proměnné.
+			"$\Rightarrow$" Pomocí fiktivní proměnné.
 			Sestavíme
 			\[ \alpha(x, y, w) \downarrow \iff y \in W_x \]
 			Dle s-m-n věty \cref{s_m_n_rel}
@@ -365,7 +370,7 @@ Q: co je $B$-rekurzívní podmínka? Zahrnuje taky $y \in B$?
 
 \begin{definition}[Jump na T-stupních]\label{jump_T}
 	$\underline{a}^{\prime}$ skok T-stupně $\underline{a}$ je třída
-	\[ \{ B: B \geq_T A^{\prime}, A \in a \} \]
+	\[ \{ B: B \equiv_T A^{\prime}, A \in a \} \]
 	Na volbě $A$ nezáleží protože relace $\equiv_T$ je ekvivalence.
 \end{definition}
 
@@ -392,7 +397,7 @@ Q: co je $B$-rekurzívní podmínka? Zahrnuje taky $y \in B$?
 \begin{proof}
 	Protože $\emptyset^{\prime}$ je $\emptyset$-r.s. $\Rightarrow \emptyset^{\prime}$-r.s. $\Rightarrow \emptyset^{\prime}  \leq_1 K $.
 
-	Opačně $K$ je r.s. (absolutně) $\Rightarrow \emptyset$-r.s. $\Rightarrow K \leq_1 \emptyset$.
+	Opačně $K$ je r.s. (absolutně) $\Rightarrow \emptyset$-r.s. $\Rightarrow K \leq_1 \emptyset^{\prime}$.
 \end{proof}
 
 \subsection{Stejnoměrnost}

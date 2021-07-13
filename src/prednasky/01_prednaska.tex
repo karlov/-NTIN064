@@ -7,29 +7,29 @@
 	\item ORF - obecně rekurzivní funkce.
 	\item PRF - primitivně rekurzivní funkce.
 	\item r.s. - rekurzivně spočetná.
-	\item ZAS - zakladní aritmetika síla.
-	\item PA - Peano Aritmetika.
+	\item ZAS - zakladní aritmetická síla.
+	\item PA - Peanova Aritmetika.
 	\item ORP - obecně rekurzivní predikát.
 	\item PNF - prenexní normální tvar.
 \end{enumerate}
 
-\section{\texorpdfstring{Uvod}{Uvod}}
+\section{\texorpdfstring{Úvod}{Úvod}}
 \vspace{5mm}
 \large
 
 
 \subsection{Historická vsuvka}
 
-Hilbertův 10. problém, úplnost aritmetiky 1900.
+1900: 10. Hilbertův problém, úplnost aritmetiky.
 G\"{o}del dokázal že nejde. V prvním větě použil \emph{Primitivně rekurzivní funkce}.
 
 \begin{definition}[Primitivně rekurzivní funkce]
-	Primitivně rekurzivní funkce - podmnožina efektivně vyčíslitelných funkci, jsou všude definované.
+	Primitivně rekurzivní funkce - podmnožina efektivně vyčíslitelných funkcí, jsou všude definované.
 \end{definition}
 
 Tyto ale nestačí pro hlavní problém dokazatelnosti.
 
-Při dalším vývoje se vyvinul kalkulus tzv obecně rekurzivních funkci ORF a částečně rekurzivních funkci ČRF.
+Při dalším vývoji se vyvinul kalkulus tzv. obecně rekurzivních funkcí ORF a částečně rekurzivních funkcí ČRF.
 
 \begin{notation}[Definiční obor]
 	$dom(\varphi)$ - definiční obor.
@@ -49,15 +49,15 @@ Při dalším vývoje se vyvinul kalkulus tzv obecně rekurzivních funkci ORF a
 	\begin{itemize}
 		\item A. Church vyvinul $\lambda$-konverze ($\lambda$-calculus) a dokázal, že neexistuje algoritmus tzv "rozhodovací".
 		Lambda konverze jsou poměrně obtížné.
-		\item Turing, nezávislé na Churchoví v roce 36 vyvinul Turing Machines a dokázal nevyčíslitelnost Halting problému.
+		\item Turing, nezávislé na Churchovi v roce 1936 vyvinul Turing Machines a dokázal nevyčíslitelnost Halting problému.
 	\end{itemize}
 
-	Pak ostatní prohlásili Church-Turing teze, že všechno co je efektivně vyčíslitelné je Turingovský nebo $\lambda$-konverzi vyčíslitelné.
+	Pak ostatní prohlásili Church-Turing tezi, že všechno, co je efektivně vyčíslitelné je Turingovsky nebo $\lambda$-konverzi vyčíslitelné.
 \end{note}
 
 \begin{definition}[$\lambda$-calculus]
 	Nechť $C$ je množina konstant, nechť $V$ je (spočetná) množina proměnných.
-	Množina tzv $\lambda$ terms $\Lambda$ je nejmenší množina tž:
+	Množina tzv. $\lambda$ terms $\Lambda$ je nejmenší množina tž:
 	\begin{itemize}
 		\item $C \subseteq \Lambda$.
 		\item $V \subseteq \Lambda$
@@ -74,18 +74,18 @@ Jako závěr, formální, efektivně dokazovací systém nemůže uplně popsat 
 \begin{note}[System PRF(odbočka)]
 	Funkcionální systém, postavený na axiomech:
 	\begin{itemize}
-		\item Základní funkce: 0, +1, id (resp vydělení i-té složky)
+		\item Základní funkce: 0, +1, id (resp. vydělení i-té složky)
 		\item 2 Odvozovací pravidla:\\
 			1) substituce \\
 			2) operátor primitivní rekurze.
 			Jednoduše řečeno, výpočet v bode $(y + 1)$ uděláme rekurzivně z bodu "$y$".
 	\end{itemize}
 
-	Pak se vezme \emph{tranzitivní uzávěr} - všechno co jde odvodit ze základních funkci pomoci odvozovacích pravidel.
+	Pak se vezme \emph{tranzitivní uzávěr} - všechno co jde odvodit ze základních funkci pomocí odvozovacích pravidel.
 	Na rozdíl od ČRF nemáme \textbf{while}, čímž dostaneme jenom podmnožinu ČRF.
 
 	Substituce:
-	\[ S(f, g_1, \ldots, g_n) = f(g_1(y_1, \ldots, y_n), \ldots, g_n(y_1, \ldots, y_n)) \]
+	\[ S_n^m(f, g_1, \ldots, g_n) = f(g_1(y_1, \ldots, y_n), \ldots, g_m(y_1, \ldots, y_n)) \]
 
 	Primitivní rekurze:
 	%todo 2nd lecture od 09:00
@@ -93,13 +93,12 @@ Jako závěr, formální, efektivně dokazovací systém nemůže uplně popsat 
 \end{note}
 
 \begin{note}[Kleeneho system ČRF]
-	Pak přidáním operátoru $\mu$ a \textbf{while} k předchozímu systému dostaneme ČRF (znovu \emph{tranzitivní uzávěr}).
+	Pak přidáním operátoru $\mu$ tzn. \textbf{while} k předchozímu systému dostaneme ČRF (znovu \emph{tranzitivní uzávěr}).
 	Je komplikovaný, je lepší používat nějaké dokazování.
 \end{note}
 
-Q: je možné, že existuje mnohem komplikovanější systém než všechny které máme v Church-Turingové téze, který by byl silnější z pohledu vyčíslitelnosti?
-
-Q: Teorie vyčíslitelnosti zkoumá $\N$ jako analýza začinala zkoumaním $\R$?
+%Q: je možné, že existuje mnohem komplikovanější systém než všechny které máme v Church-Turingové téze, který by byl silnější z pohledu vyčíslitelnosti?
+%Q: Teorie vyčíslitelnosti zkoumá $\N$ jako analýza začinala zkoumaním $\R$?
 
 \subsection{Terminologie}
 
@@ -110,9 +109,9 @@ Pak byla snaha změnit na \textbf{computable functions} - efektivně vyčíslite
 	Jednoduše řečeno, máme program, který na každém vstupu se vždy zastaví a rozhodne ANO nebo NE (jestli slovo patří do ni).
 \end{definition}
 
-\begin{definition}[Rekurzivní spočetná množina]
-	Množina je rekurzivní spočetná (částečně rozhodnutelná), nebo computably enumerable.
-	Formálně je definičním oborem nějakého programu (tzn částečně rekurzivní funkce, TS etc.).
+\begin{definition}[Rekurzivně spočetná množina]
+	Množina je rekurzivně spočetná (částečně rozhodnutelná), nebo computably enumerable.
+	Formálně je definičním oborem nějakého programu (tzn. částečně rekurzivní funkce, TS etc.).
 \end{definition}
 
 \begin{note}
@@ -127,7 +126,7 @@ Pak byla snaha změnit na \textbf{computable functions} - efektivně vyčíslite
 
 \begin{note}
 	Formálně nemáme klasické k-tice jako vektory, ale kodujeme všechno do přirozených čísel.
-	Je znamá jako \href{https://en.wikipedia.org/wiki/Pairing_function}{Cantorová metoda parovaní}.
+	Je známá jako \href{https://en.wikipedia.org/wiki/Pairing_function}{Cantorova metoda párování}.
 \end{note}
 
 \begin{notation}[Konvergence]
@@ -137,15 +136,15 @@ Pak byla snaha změnit na \textbf{computable functions} - efektivně vyčíslite
 \begin{reminder}
 	Rekurzivita, rekurzivní spočetnost se zachovává na $\cup, \cap$.
 
-	Rekurzivita je taky zachovaná při $\neg$ (doplněk).
+	Rekurzivita se taky zachovaná při $\neg$ (doplněk).
 	Rekurzivní spočetnost nikoliv.
 \end{reminder}
 
 \begin{theorem}[Postova]\label{post}
-	$L$ je rozhodnutelný $ \iff L \land \bar{L} $ jsou c.r.
+	$L$ je rozhodnutelný $ \iff L \land \bar{L} $ jsou r.s. (c.e.).
 \end{theorem}
 \begin{proof}
-$ \Rightarrow $. Z TS pro $L$ sestavíme pro doplněk znegovaním všech odpovědi. \\
+$ \Rightarrow $. Z TS pro $L$ sestavíme pro doplněk znegovaním všech odpovědí. \\
 $ \Leftarrow $. Nechť $L(M) = L \land L(B) = \bar{L} $, pak sestavíme TS pro rozhodnutí $L$.
 
 \begin{alltt}
@@ -156,7 +155,8 @@ $ \Leftarrow $. Nechť $L(M) = L \land L(B) = \bar{L} $, pak sestavíme TS pro r
 5. reject
 \end{alltt}
 
-Pokud se aspoň 1 zacykli - reject. Paralelní spuštění lze implementovat pomoci 2 pasek, případně je slepit do 1.
+%Pokud se aspoň 1 zacykli - reject.
+Paralelní spuštění lze implementovat pomocí 2 pásek, případně je slepit do 1.
 \end{proof}
 
 \begin{definition}[G\"{o}delové číslo]
@@ -166,15 +166,15 @@ Pokud se aspoň 1 zacykli - reject. Paralelní spuštění lze implementovat pom
 \end{definition}
 
 \begin{note}
-	Každá ČRF má nekonečně mnoho programu, takže i nekonečně mnoho indexu.
-	Očíslovaní programu generuje očíslovaní funkci.
+	Každá ČRF má nekonečně mnoho programů, takže i nekonečně mnoho indexů.
+	Očíslování programů generuje očíslování funkcí.
 
-	V jistém smyslu, nezáleží na konkretním očíslovaní pokud je efektivní (nemáme čas toto dokazovat).
-	2 různé indexace jsou \emph{efektivně ekvivalentní}.
+	V jistém smyslu, nezáleží na konkretním očíslování pokud je efektivní (nemáme čas toto dokazovat).
+	2 různé efektivní numerace jsou \emph{efektivně ekvivalentní}.
 \end{note}
 
-Q: pokud zafixujeme "jazyk programování" má program jednoznačné očíslovaní?
-Q: jaký z jazyků programování" je nejbližší k ČRF? Asi $\lambda$-calculus.
+%Q: pokud zafixujeme "jazyk programování" má program jednoznačné očíslovaní?
+%Q: jaký z jazyků programování" je nejbližší k ČRF? Asi $\lambda$-calculus.
 
 \begin{reminder}[Univerzální TS]
 	Dostane program $M$ a data $x$, simuluje výpočet $M(x)$.
@@ -187,7 +187,7 @@ Q: jaký z jazyků programování" je nejbližší k ČRF? Asi $\lambda$-calculu
 	kde $e$ je index programu, $x_i$ jsou data.
 
 	Občas se značí
-	\[ \varphi_e^n(x_1, \ldots, x_n) \simeq {e}(x_1, \ldots, x_n) \]
+	\[ \varphi_e^n(x_1, \ldots, x_n) \simeq \{e\}(x_1, \ldots, x_n) \]
 \end{definition}
 
 \begin{notation}[Univerzální ČRF]
@@ -195,8 +195,7 @@ Q: jaký z jazyků programování" je nejbližší k ČRF? Asi $\lambda$-calculu
 
 	\begin{itemize}
 		\item Kde $T_n$ je primitivně rekurzivní predikát, který říká "za $n$ kroků".
-		\item $U$ je primitivně rekurzivní funkce 1 proměnné.
-			Který "vydělí" výsledek z mezivýsledků (jelikož máme všechno zakodované jako přirozená čísla).
+		\item $U$ je primitivně rekurzivní funkce 1 proměnné, která "vydělí" výsledek z mezivýsledků (jelikož máme všechno zakodované jako přirozená čísla).
 		\item $\mu_y$ říká "nejmenší $y$".
 	\end{itemize}
 \end{notation}
@@ -207,23 +206,23 @@ Q: jaký z jazyků programování" je nejbližší k ČRF? Asi $\lambda$-calculu
 	\[ \Psi_{n + m}(e, \bar{x}, \bar{y}) \simeq \Psi_m(s_n^m(e, \bar{x}, \bar{y})) \]
 	kde $\bar{x}, \bar{y}$ jsou vektory pro kratší zápis.
 
-	Funkce $s_n^m: e, x_1, \ldots, x_n$ vyrobí nový program.
+	Funkce $s_n^m: e, x_1, \ldots, x_n$ vyrobý nový program.
 	Ten čeká na vstup $y_1, \ldots, y_m$, k tomu přidá zahardkodované data $x_1, \ldots, x_n$ a spustí na to $e$.
 	Je to pouze syntaktická manipulace dat.
 \end{theorem}
 
-\begin{definition}[$e$-ta rekurzivně spočetná množina]
+\begin{definition}[$e$-tá rekurzivně spočetná množina]
 	\[ W_e = dom(\varphi_e) = \{ x: \varphi_e(x) \downarrow \} = \{ \Psi_1(e, x) \downarrow \} \]
 \end{definition}
 
 \begin{note}
-	Rekurzivní spočetné funkce se definuji jako obor hodnot ČRF.
+	Rekurzivně spočetné množiny se někdy definují jako obor hodnot ČRF.
 
 	$M$ je rekurzivní množina $\iff$ je oborem hodnot \textbf{rostoucí} ČRF.
 
 	$M$ je rekurzivně spočetná množina $\iff$ je oborem hodnot \textbf{prosté} ČRF.
 
-	Rozdíl v definici souvisí s Halting problémem.
+	Rozdíl v obou ekvivalencích souvisí s Halting problémem.
 \end{note}
 
 \begin{definition}[1,m převoditelnost]
@@ -235,7 +234,7 @@ Q: jaký z jazyků programování" je nejbližší k ČRF? Asi $\lambda$-calculu
 \end{definition}
 
 \begin{definition}[1-úplnost]
-	Množina $M$ je 1-úplná jestliže je rekurzivně spočetná každá rekurzivní spočetná je 1-převoditelná na $M$.
+	Množina $M$ je 1-úplná jestliže je rekurzivně spočetná a každá rekurzivně spočetná je 1-převoditelná na $M$.
 \end{definition}
 
 \begin{definition}[K, DIAG]
@@ -249,15 +248,15 @@ Q: jaký z jazyků programování" je nejbližší k ČRF? Asi $\lambda$-calculu
 \begin{lemma}[DIAG, K]
 	DIAG je rekurzivně spočetný (částečně rozhodnutelný) ale není rekurzivní (rozhodnutelný).
 
-	Důkaz pomoci Cantorové diagonální metody.
+	Důkaz pomoci Cantorovy diagonální metody.
 \end{lemma}
 \begin{proof}
 	\[ \overline{K} = \{ x: x \notin W_x \} \]
 	$W_x$ ale jsou všechny rekurzivně spočetné.
 	Z toho
-	\[ \forall W_x: \overline{K} \neq W_x \]
+	\[ \forall x: \overline{K} \neq W_x \]
 	Takže $\overline{K}$ není částečně rekurzivní.
-	Dle Postové věty \cref{post} K není rozhodnutelná.
+	Dle Postovy věty \cref{post} K není rozhodnutelná.
 \end{proof}
 
 \begin{theorem}[K 1-úplná]
@@ -267,7 +266,7 @@ Q: jaký z jazyků programování" je nejbližší k ČRF? Asi $\lambda$-calculu
 	Zavedeme ČRF
 	\[ \alpha(x, y, w) \downarrow \iff \varphi_x(y) \downarrow\]
 	kde $w$ je fiktivní proměnná.
-	Je to ekvivalentní
+	$\alpha$ je ekvivalentní
 	\[ \Psi_1(e, x, y, w) \]
 	použijeme \cref{s_m_n}
 	\[ \Psi_1(e, x, y, w) \simeq \Psi_1(s_2^1(e, x, y), w) \simeq \varphi_{s_2^1(e, x, y)}(w) \]
@@ -280,21 +279,21 @@ Q: jaký z jazyků programování" je nejbližší k ČRF? Asi $\lambda$-calculu
 \begin{theorem}[Rozšiření $\Psi_n$]
 	$\Psi_n$ nemá obecně rekurzivní rozšíření.
 	Jinými slovy neexistuje ORF $h$ rozšíření $\Psi$ takové že
-	\[ \forall x \in dom(\Psi_n): \Psi_n(x) = h(x) \]
+	\[ \forall \overline{z}: \Psi_n(\overline{z}) = h(\overline{z}) \]
 	a $h$ je definovaná pro vstupy mimo $dom(\Psi_n)$.
 
-	Dokonce, pokud $\alpha$ částečně rekurzivně rozšiřuje $\Psi_n$, tak najdeme vstup na kterém diverguje
+	Dokonce, pokud $\alpha$ částečně rekurzivně rozšiřuje $\Psi_1$, tak najdeme vstup na kterém diverguje
 	\[ \exists x_1: \alpha(x_1, x_1) \uparrow \]
 \end{theorem}
 \begin{proof}
-	Použijeme Cantorovou diagonální metodu.
+	Použijeme Cantorovu diagonální metodu.
 	Definujme pomocnou ČRF:
 	\[ \beta(x) \simeq 1 \dotminus \alpha(x, x) \]
 	Kde $\dotminus$ je dodefinovaná operace odečítaní pro přirozená čísla.
 	Např $1 \dotminus 100 = 0$.
 	Jelikož je ČRF $\Rightarrow$ má index $e_{\beta}$, neboli
 	\[ \beta(e_{\beta}) \simeq \Psi_1(e_{\beta}, e_{\beta}) \simeq 1 \dotminus \alpha(e_{\beta}, e_{\beta}) \]
-	Nechť sporem $\alpha(e_{\beta}, e_{\beta}) \downarrow$, pak
+	Nechť sporem $\alpha(e_{\beta}, e_{\beta}) \downarrow$, pak $\beta(e_{\beta}) \downarrow$ a tedy
 	\[ \Psi_n(e_{\beta}, e_{\beta}) \downarrow \]
 	Protože $\alpha$ je rozšíření
 	\[ \Psi_n(e_{\beta}, e_{\beta}) = \alpha(e_{\beta}, e_{\beta})\]

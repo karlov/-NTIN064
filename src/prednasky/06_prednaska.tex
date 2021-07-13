@@ -7,27 +7,27 @@
 	\begin{itemize}
 		\item bezesporná
 		\item axiomatizovatelná
-		\item Základní aritmetické sily (adekvátní)
+		\item Základní aritmetické síly (adekvátní)
 	\end{itemize}
 \end{definition}
 
 \begin{definition}[Axiomatizovatelná teorie]
-	Axiomatizovatelná teorie je právě když množina dokazatelných formuli je r.s.
+	Axiomatizovatelná teorie je právě když množina dokazatelných formulí je r.s.
 \end{definition}
 
 Způsoby řešení paradoxu v teorii množin:
 \begin{itemize}
-	\item intuicionisty/kontruktivisti finitisty - odmítají nekonečno.
-		Jde vybudovat spoustu věci, ale vznikající teorie je kostrbatá a nepříjemná.
+	\item intuicionisty/kontruktivisty finitisty - odmítají nekonečno.
+		Jde vybudovat spoustu věcí, ale vznikající teorie je kostrbatá a nepříjemná.
 
 		Již Bolzano upozorňoval, že nekonečno je nevlastní pojem, překročující lidskou existenci. Viz ~\cite{bolzano2014paradoxes}
-	\item Hilbertův formalismus - vybudovat teorie z logiky 1. řadu a aby každé tvrzení šlo jednoznačně dokázat nebo vyvrátit + aby teorie byla bezesporná.
+	\item Hilbertův formalismus - vybudovat teorie z logiky 1. řádu a aby každé tvrzení šlo jednoznačně dokázat nebo vyvrátit + aby teorie byla bezesporná.
 \end{itemize}
 
 % todo Peano aritmetika
 
 \begin{note}
-	Tzv. \href{https://en.wikipedia.org/wiki/Presburger_arithmetic}{Presburgerová Aritmetika}  bez násobení je rekurzivní a konzistentní.
+	Tzv. \href{https://en.wikipedia.org/wiki/Presburger_arithmetic}{Presburgerova Aritmetika}  bez násobení je rekurzivní a konzistentní.
 \end{note}
 
 \begin{note}
@@ -53,8 +53,7 @@ Způsoby řešení paradoxu v teorii množin:
 	Z důsledku RDPM věty \cref{rdpm_am} máme
 	\[ \text{r.s.}\ \approx \exists(p_1(\ldots) = p_2(\ldots)) \]
 
-	Rovnost dvou polynomu je jednodušé formalizovatelné v teorii ZAS.
-
+	Rovnost dvou polynomů je jednodušé formalizovatelná v teorii ZAS.
 \end{observation}
 
 \begin{theorem}[Vztah $\N a\ T$]
@@ -68,13 +67,13 @@ Způsoby řešení paradoxu v teorii množin:
 	Od teorie $T$ chceme, aby formuli ověřila.
 
 	Pokud v $\N$ je pravdivá nějaká $\Sigma_1$ formule, tak existuje tzv. $\Sigma_1$ svědek.
-	Což je jedno nebo několik přirozených čísel které splňuji formuli po dosazení.
+	Což je jedno nebo několik přirozených čísel které splňují formuli po dosazení.
 	Teorie zkontroluje rovnost termu.
 \end{proof}
 
 \begin{lemma}[Disjunktní množiny formule(BD)]
 	Nechť $T$ je bezesporná, ZAS.
-	Pak $A, B$ jsou disjunktní r.s. tak existuje $\Sigma_1$-formule $G$:
+	Pokud $A, B$ jsou disjunktní r.s. tak existuje $\Sigma_1$-formule $G$:
 
 	\[ x \in A \Rightarrow \vdash_T G(\overline{x}) \]
 	\[ x \in B \Rightarrow \vdash_T \neg G(\overline{x}) \]
@@ -94,10 +93,10 @@ Způsoby řešení paradoxu v teorii množin:
 	\[ G(x) = F(x, \overline{0}) \]
 \end{proof}
 
-\begin{theorem}[G\"{o}delové věty]\label{godel}
+\begin{theorem}[G\"{o}delovy věty]\label{godel}
 	Jestliže teorie $T$ 1. řádu má základní aritmetickou sílu a je bezesporná, pak:
 	\begin{enumerate}
-		\item množina dokazatelných v $T$ formuli není rekurzivní
+		\item množina dokazatelných v $T$ formulí není rekurzivní
 		\item pokud je $T$ navíc axiomatizovatelná, tak existuje uzavřená formule (sentence) $F$ taková, že:
 			\[ T \nvdash F \land T \nvdash \neg F \]
 		\item (2. Věta) axiomatizovatelnost + Indukce $\Sigma_1$ (stačí i trochu méně) tak v $T$ nelze dokázat její bezespornost (consistency).
@@ -107,17 +106,18 @@ Způsoby řešení paradoxu v teorii množin:
 		\[ \neg \exists \text{proof}\ (\overline{0} = \overline{1}) \]
 	\end{enumerate}
 \end{theorem}
-\begin{proof}
+\begin{proof}~
 	\begin{enumerate}
-		\item Nechť $T$ ZAS, bezesporná. Nechť $(A, B)$-neoddělitelné.
+		\item Nechť $T$ ZAS, bezesporná. Nechť $(A, B)$ r.s. efektivně neoddělitelné.
 			\[ A_1 = \{ x: \vdash_T G(\overline{x}) \} \]
 			\[ B_1 = \{ x: \vdash_T \neg G(\overline{x}) \} \]
-			$A \subseteq A_1$ je obal, podobně $B \subseteq B_1$.
+			$A \subseteq A_1$ je r.s. obal, podobně $B \subseteq B_1$.
 
 			Jelikož $A, B$ jsou efektivně neoddělitelné $\Rightarrow$ jsou rekurzivně neoddělitelné.
-			Z toho $A_1, B_1$ nejsou rekurzivní. // TODO proč?
+			Z toho $A_1, B_1$ nejsou rekurzivní.
+			Kdyby byly rekurzivní, tak by každá z nich rekurzivně oddělovala $(A,B)$.
 
-			Q: protože jinak kdyby byly rekurzivní, tak by nevyplnili celý prostor?
+			%Q: protože jinak kdyby byly rekurzivní, tak by nevyplnili celý prostor?
 		\item Když přidáme axiomatizovatelnost, tak $A_1, B_1$  jsou r.s.
 
 			Pak z efektivní neoddělitelnosti efektivně najdeme takové $k \notin A_1 \cup B_1$ že:
@@ -138,10 +138,10 @@ Způsoby řešení paradoxu v teorii množin:
 
 \begin{note}
 	PA má sílu
-	\[ \varepsilon_0 = w^{w^{\ldots}} \]
-	kde exponent je dlouhý $w$.
+	\[ \varepsilon_0 = \omega^{\omega^{\ldots}} \]
+	kde exponent je dlouhý $\omega$.
 
-	Což je největší ordinál, který ještě dává dobré uspořádaní.
+	%Což je největší ordinál, který ještě dává dobré uspořádaní.
 
 	Zkoumá tuto oblast \emph{proof theory}.
 \end{note}

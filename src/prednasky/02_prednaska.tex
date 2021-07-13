@@ -18,7 +18,7 @@
 \end{proof}
 
 \begin{theorem}[Univerzální Kleeneho r.s. predikát]\label{univ_predic}
-	Každý rekurzivně spočetní predikát je tvaru:
+	Každý rekurzivně spočetný predikát je tvaru:
 	\[ \exists y Q(...) \]
 
 	Pak r.s. množiny jsou definiční obory ČRF.
@@ -54,16 +54,16 @@
 
 	Dohromady máme rekurzivně spočetný predikát. Takže
 	\[ \exists z T_3(e, a, b, x, z) \]
-	Což je program, který pouští oba dva programy a čeká až se jeden z nich zastaví.
+	Kde $e$ je program, který pouští oba dva programy a čeká až se jeden z nich zastaví.
 	Použijeme s-m-n \cref{s_m_n} pro predikáty
-	\[ \exists z T_3(e, a, b, x, z) \iff \exists z T_1(s_2(e, a, b), x , z) \]
+	\[ \exists z T_3(e, a, b, x, z) \iff \exists z T_1(s_2^1(e, a, b), x , z) \]
 	Pak definujme
-	\[ \alpha(a, b) := s_2(e, a, b) \]
+	\[ \alpha(a, b) := s_2^1(e, a, b) \]
 
 	Analogicky pro $\cup$.
 \end{proof}
 
-Otázka: pokud všude použijeme omezené kvantifikátory s $y =$ velikost částic ve vesmíru, dostaneme upravenou logiku pro počítače?
+%Q: pokud všude použijeme omezené kvantifikátory s $y =$ velikost částic ve vesmíru, dostaneme upravenou logiku pro počítače?
 
 \begin{definition}[Omezený existenční kvantifikátor]
 	\[ \exists_{y < z} Q \]
@@ -75,8 +75,8 @@ Otázka: pokud všude použijeme omezené kvantifikátory s $y =$ velikost čás
 	Jmenuje se konečná konjunkce.
 \end{definition}
 
-\begin{theorem}[Omezená kvantifikáce (BD)]\label{omez_kvant}
-	Rekurzivní spočetnost je uzavřená na omezené kvantifikáce.
+\begin{theorem}[Omezená kvantifikace (BD)]\label{omez_kvant}
+	Rekurzivní spočetnost je uzavřená na omezené kvantifikace.
 	Dokonce efektivně na indexech.
 \end{theorem}
 \begin{proof}
@@ -85,28 +85,27 @@ Otázka: pokud všude použijeme omezené kvantifikátory s $y =$ velikost čás
 	Pro všeobecný spustíme paralelně a čekáme jestli všechny přijmou.
 \end{proof}
 
-\begin{theorem}[Neomezená kvantifikáce]\label{neomez_kvant}
-	Rekurzivní spočetnost je uzavřená na existenční kvantifikáce.
+\begin{theorem}[Neomezená kvantifikace]\label{neomez_kvant}
+	Rekurzivní spočetnost je uzavřená na existenční kvantifikace.
 \end{theorem}
 \begin{proof}
-	Analogicky jako důkaz pro $\cap$, nahradíme dva existenční kvantifikátory jediným s dvojici.
+	Analogicky jako důkaz pro $\cap$, nahradíme dva existenční kvantifikátory jediným s dvojicí.
 	\[ \exists y \exists s: T_n(...) \simeq \exists k = \langle y, s \rangle ... \]
 \end{proof}
 
 \begin{note}
-	Pro všeobecnou již neplatí (ani pro částečně rozhodnutelné).
-	Protipříkladem je $\overline{K}$ která není č.r.
-	Již lze zapsat pomoci všeobecného kvantifikátory
+	Pro všeobecnou kvantifikaci již neplatí (ani pro částečně rozhodnutelné).
+	Protipříkladem je $\overline{K}$ která není č.r. (tzn. r.s.), kterou lze zapsat pomocí všeobecného kvantifikátoru
 	\[ x \in \overline{K} \iff \forall s \neg T_1(x, x, s) \]
-	Kde $T_1$ je částečně rozhodnutelný predikát, negace taky.
+	Kde $T_1$ je částečně rozhodnutelný predikát (dokonce PRP), negace taky.
 \end{note}
 
-\subsection{10 Hilbertův problém}
+\subsection{10. Hilbertův problém}
 
-V moderní terminologií 10. Hilbertův problém zni: "zda existuje algoritmus, který by pro libovolný celočíselný polynom rozhodnul jestli existuje řešení v celých číslech.
+V moderní terminologii 10. Hilbertův problém zní: "zda existuje algoritmus, který by pro libovolný celočíselný polynom rozhodnul jestli existuje řešení v celých číslech.
 
 Libovolný celočíselný polynom je ekvivalentní 2 polynomům v $\N$, řešení pak taky hledáme v $\N$.
-Nejprve dáme záporné koeficienty na pravou stranu, pak aplikujeme Lagrangeovou větu o 4 $\square$.
+Nejprve dáme záporné koeficienty na pravou stranu, pak aplikujeme Lagrangeovou větu o 4 čtvercích.
 
 \begin{theorem}[RDPM (BD)]\label{rdpm}
 	Predikát Q je rekurzivně spočetný $\iff$ je tzv diofantický:
@@ -124,25 +123,25 @@ Nejprve dáme záporné koeficienty na pravou stranu, pak aplikujeme Lagrangeovo
 	% todo PRP = primitivně rekurzivní predikát??
 	\[ \exists(PRP) \iff \exists(p_1(\ldots) = p_2(\ldots)) \]
 	Bez existenčního kvantifikátoru vůbec není pravda.
-	V aritmetice lze vytvořit i superexponenxielu $e^{n^n}$ atd, polynomy jsou ale omezené.
-	Taky polynomy lze elementárně vyjádřit pomoci Robinsonové aritmetiky.
+	V aritmetice lze vytvořit i superexponencielu $e^{n^n}$ atd, polynomy jsou ale omezené.
+	Taky polynomy lze elementárně vyjádřit pomocí Robinsonovy aritmetiky.
 \end{amendment}
 
 \subsection{Selektory}
 
-Obecné, Selektor je definovaný pro "hezké relace", např $Q(x, y)$.
-Pak selektor vybírá $y$ pro $\forall x$.
+Obecné, Selektor je definovaný pro "hezké relace", např. r.s. $Q(x, y)$.
+Pak selektor vybírá $y$ pro každé $x$ pokud existuje takové.
 
 \begin{theorem}[O selektoru]\label{selector}
-	Nechť $Q(x, y)$ je rekurzivně spočetný $($resp $Q(x_1, \ldots, x_n, y))$, pak $\exists \varphi \in$ CŘF:
+	Nechť $Q(x, y)$ je rekurzivně spočetný $($resp $Q(x_1, \ldots, x_n, y))$, pak $\exists \varphi \in$ ČRF:
 	\[ \varphi(x) \downarrow \iff \exists y: Q(x, y) \]
 		\[ \varphi(x) \downarrow \Rightarrow Q(x, \varphi(x)) \]
 	Jinými slovy vybere $y$ pokud existuje.
 \end{theorem}
 \begin{proof}
-	Pozor, nemůžeme vzít nejmenší, musíme vzít první protože lepší už třeba nebude.
+	Pozor, nemůžeme vzít nejmenší, musíme vzít první které najdeme, protože lepší už třeba nebude.
 
-	Q je r.s. $\Rightarrow$ má index $e$, napíšeme pomoci univerzálního predikátu
+	$Q$ je r.s. $\Rightarrow$ má index $e$, napíšeme pomocí univerzálního predikátu
 	\[ \exists s: T_2(e, x, y, s) \]
 	Predikát zapíšeme jako množinu
 	\[ dom(\varphi_e(x, y)) \]
@@ -152,7 +151,7 @@ Pak selektor vybírá $y$ pro $\forall x$.
 
 	Formálně:
 	\[ \varphi(x) \simeq (\mu_{\langle y, s \rangle} T_2(e, x, y, s))_{2,1} \]
-	indexy vydělí $y$.
+	%indexy vydělí $y$.
 \end{proof}
 
 \begin{definition}[Graf ČRF]
@@ -170,10 +169,10 @@ Pak selektor vybírá $y$ pro $\forall x$.
 \end{proof}
 
 \begin{note}
-	Při zobecněních vyčíslitelnost do vyšších hierarchii, definujme vyčíslitelnost tak, že graf je rozumný.
+	Při zobecněních vyčíslitelnosti do vyšších hierarchií, definujme vyčíslitelnost tak, že graf je rozumný.
 \end{note}
 
-\begin{theorem}[Postova podruhe]
+\begin{theorem}[Postova věta podruhe]
 	\[ Q(x,y) = (x \in M \land y = 1) \lor (x \in \overline{M} \land y = 0) \]
 	Což je rekurzivně spočetný predikát.
 	Selektor $\varphi$ pro $Q$ je ORF.
@@ -187,7 +186,7 @@ Pak selektor vybírá $y$ pro $\forall x$.
 	\[ \forall W_x \subseteq A : |W_x| < \infty \]
 
 	Je nekonečná, ale nemůžeme to efektivně zkontrolovat.
-	Protože veškeré algoritmický zkontrolovatelné podmnožiny jsou konečné.
+	Protože veškeré algoritmicky zkontrolovatelné podmnožiny jsou konečné.
 \end{definition}
 
 \begin{definition}[Simple]
@@ -195,7 +194,7 @@ Pak selektor vybírá $y$ pro $\forall x$.
 \end{definition}
 
 \begin{note}
-	Postův problém: co je mezí Rekurzivní množiny a nerekurzivní množinou K?
+	Postův problém: co je mezí rekurzivními množinami a nerekurzivními r.s. množinami ve smyslu T-převoditelnosti (viz později)?
 
 	Definoval Simple, hypersimple, hyper-hyper ... atd až do Maximalní.
 	Ale tato klasifikace neuspěla.
@@ -208,7 +207,7 @@ Pak selektor vybírá $y$ pro $\forall x$.
 	Uděláme predikát
 	\[ Q(x, y) \iff y \in W_x \land y > 2x \]
 	je rekurzivně spočetný protože nalezení je r.s. a druhá podmínka taky.
-	Nechť $\varphi \in $ CŘF je selektor pro Q.
+	Nechť $\varphi \in $ ČRF je selektor pro $Q$.
 	Pak
 	\[ A = range(\varphi) \]
 
@@ -217,7 +216,7 @@ Pak selektor vybírá $y$ pro $\forall x$.
 	Neboli $\overline{A}$ neobsahuje nekonečnou r.s. množinu.
 
 	$\overline{A}$ nekonečná? \\
-	Do $\{ 0, \ldots, 2x \}$ mohou přispět nejvýše $W_0, \ldots, W_{x - 1}$ množin.
+	Do $\{ 0, \ldots, 2x \}$ mohou přispět nejvýše $W_0, \ldots, W_{x - 1}$ množiny.
 	Neboli nejvýše $x$ čísel.
 	Pak ale v $\overline{A}$ zůstane nejméně $(x + 1)$ čísel, neboli $\overline{A}$ je nekonečná.
 

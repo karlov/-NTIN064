@@ -2,10 +2,10 @@
 \vspace{5mm}
 \large
 
-Q: k čemu je dobrá aritmetická hierarchie? Kde se používá/aplikuje? Totiž všechno nad Halting problémem není efektivně vyčíslitelné.
+%Q: k čemu je dobrá aritmetická hierarchie? Kde se používá/aplikuje? Totiž všechno nad Halting problémem není efektivně vyčíslitelné.
 
 \begin{note}
-	Aritmetická hierarchie je v jistém smyslu efektivní verzi \href{https://en.wikipedia.org/wiki/Borel_hierarchy}{Borelovské hierarchie}. Vezmeme konečně mnoho intervalu, budeme střidat $\cup, \cap$.
+	Aritmetická hierarchie je v jistém smyslu efektivní verzí \href{https://en.wikipedia.org/wiki/Borel_hierarchy}{Borelovské hierarchie}. Vezmeme konečně mnoho intervalu, budeme střidat $\cup, \cap$.
 
 	$\cup$ odpovídá $\exists$ a $\cap - \forall$.
 \end{note}
@@ -15,7 +15,7 @@ Q: k čemu je dobrá aritmetická hierarchie? Kde se používá/aplikuje? Totiž
 \end{note}
 
 \begin{definition}[$\Sigma_n, \Pi_n$]
-	$\Sigma_n$ resp $\Pi_n$ prefix je skupina (aritmetických kvantifikátoru). $\Sigma_n$ začíná $\exists$, $\Pi_n$ naopak $\forall$.
+	$\Sigma_n$ resp $\Pi_n$ prefix je skupina $n$ aritmetických kvantifikátorů. $\Sigma_n$ začíná $\exists$, $\Pi_n$ naopak $\forall$.
 
 	Každá ze skupin je homogenní - několik kvantifikátoru stejného typu, např $\exists\exists\exists$ nebo $\forall\forall$.
 \end{definition}
@@ -47,8 +47,7 @@ Q: k čemu je dobrá aritmetická hierarchie? Kde se používá/aplikuje? Totiž
 \begin{observation}
 	$\Sigma_0^0 = \Pi_0^0$ jsou právě rekurzivní predikáty.
 
-Q: rovnost plyne z toho, že můžeme prohodit kvantifikace?
-Na vyšších úrovních neplatí protože...??
+	Rovnost protože nultá úroveň nemá vůbec kvantifikátory, má tedy pouze rekurzivní relace.
 \end{observation}
 
 \begin{definition}[Aritmetický predikát]
@@ -66,7 +65,8 @@ Na vyšších úrovních neplatí protože...??
 \end{proof}
 
 \begin{note}
-	Pokračováním do rekurzívních ordinálu lze studovat hyperaritmetickou hierarchii. Dal analytická hierarchie.
+	Pokračováním do rekurzívních ordinálů lze studovat hyperaritmetickou hierarchii.
+	Dál analytická hierarchie.
 
 	V rámci kurzu končíme u konečných, neboli $\omega$.
 \end{note}
@@ -87,7 +87,7 @@ Na vyšších úrovních neplatí protože...??
 
 	BUNO máme formuli v PNF:
 	\[ \forall_{x \leq t} \exists y (\ldots) \]
-	vezmeme $w$ jako kodovaní $(t + 1)$-tice, pak formuli lze ekvivalentně upravit na následující tvar
+	vezmeme $w$ jako kódování $(t + 1)$-tice, pak formuli lze ekvivalentně upravit na následující tvar
 	\[ \exists w \forall_{x \leq t}(\ldots (w)_{t + 1, x} \ldots)\]
 	Protože existence svědka pro všechny $x \leq t$ je stejný jako říct, že existuje skupina $(t + 1)$ svědků.
 
@@ -119,14 +119,14 @@ Na vyšších úrovních neplatí protože...??
 	Množina Rec $= \{ x : W_x\ \text{je rekurzivní}\ \} \in \Sigma_3^0$.
 \end{example}
 \begin{proof}
-	Dle Postové věty \cref{post}:
+	Dle Postovy věty \cref{post}:
 	\[ x \in Rek \iff \exists y(W_x \cup W_y = W \land W_x \cap W_y = \emptyset) \]
 	Neboli $W_y = \overline{W_x}$, dohromady vyplní celý prostor, ale průnik je prázdný.
 
 	Přepíšeme formuli:
-	\[ \forall y(\forall z (z \in W_x \cup W_y) \land \forall z (z \notin W_x \cap W_y)) \]
+	\[ \exists y(\forall z (z \in W_x \cup W_y) \land \forall z (z \notin W_x \cap W_y)) \]
 	Po krocích:
-	\[ \forall y(\forall z \exists s(z \in W_{x, s} \cup W_{y, s}) \land \forall z \forall s(z \notin W_{x, s} \cap W_{y, s})) \]
+	\[ \exists y(\forall z \exists s(z \in W_{x, s} \cup W_{y, s}) \land \forall z \forall s(z \notin W_{x, s} \cap W_{y, s})) \]
 	Pak šikovně vytáhneme jeden všeobecný kvantifikátor z levé části a 2 všeobecné z pravé části.
 	V posledním kroku vytáhneme existenční kvantifikátor z levé části. Čímž dostaneme
 	\[ \exists \forall \exists (\ldots) \in \Sigma_3^0 \]
@@ -149,7 +149,7 @@ Na vyšších úrovních neplatí protože...??
 			Opačně $\Sigma_n \to \Pi_{n + 1}$, přidáme kvantifikátor na začátek prefixe.
 		\item dle definice $\leq_m \exists f \in ORF$:
 			\[ x \in A \iff f(x) \in B \]
-			$f(x)$ můžeme jednodušé kvantifikovat.
+			$f(x)$ můžeme jednoduše kvantifikovat.
 	\end{enumerate}
 \end{proof}
 
@@ -159,7 +159,7 @@ Na vyšších úrovních neplatí protože...??
 	Třída $\Sigma_0^0 = \Pi_0^0$ nemá univerzální ORP (rekurzivní numerace).
 \end{theorem}
 \begin{proof}
-	Pomoci Cantorové diagonální metody.
+	Pomoci Cantorovy diagonální metody.
 	Nechť $R(e, x)$ je ORP.
 
 	Pak musí platit:
@@ -174,7 +174,7 @@ Na vyšších úrovních neplatí protože...??
 \begin{theorem}[O numeraci, univerzálním predikátu]\label{aritm_numer}
 	Pro $(n \geq 1)$ třída $\Sigma_n(\Pi_n)$ má univerzální $\Sigma_n(\Pi_n)$ predikát.
 
-	Tedy máme $\Sigma_n(\Pi_n)$-indexu.
+	Tedy máme pojem $\Sigma_n(\Pi_n)$-indexu.
 \end{theorem}
 \begin{proof}
 	Pro $\Sigma_n$, $\Pi_n$ analogicky.
@@ -190,7 +190,7 @@ Na vyšších úrovních neplatí protože...??
 	Pokud $n$ je sudé, tak máme predikát:
 	\[ \exists \forall \ldots \forall Q(\ldots) \]
 	Znovu použijeme negaci na
-	\[ \forall Q(\ldots) = \exists \neg Q(\ldots) \]
+	\[ \neg \forall Q(\ldots) = \exists \neg Q(\ldots) \]
 	Což je r.s., proto se rovná univerzálnímu predikátu:
 	\[ \exists \neg Q(\ldots) = \exists T_n(e, \ldots) \]
 	zpět negace:
@@ -222,7 +222,7 @@ Na vyšších úrovních neplatí protože...??
 \end{definition}
 
 \begin{definition}[$\Sigma_n^0$-úplnost]
-	$B$ je $\Sigma_n^0$-úplná právě když $B \in \Sigma_n^0$ a
+	Pro $n \geq 1, B$ je $\Sigma_n^0$-úplná právě když $B \in \Sigma_n^0$ a
 	\[ \forall A \in \Sigma_n^0: A \leq_1 B \]
 \end{definition}
 
@@ -233,10 +233,10 @@ Na vyšších úrovních neplatí protože...??
 		\item $A \leq_T \emptyset^{(n)} \iff A \in \Delta_{n + 1}$.
 	\end{enumerate}
 
-	Tato věta propojuje skok \cref{jump} s aritmetickou hierarchii a vyjádřitelnosti v PA.
+	Tato věta propojuje skok \cref{jump} s aritmetickou hierarchií a vyjádřitelnosti v PA.
 \end{theorem}
 \begin{proof}
-	Indukci, pro $n = 0$ platí, protože
+	Indukcí, pro $n = 0$ platí, protože
 	\[ A\ \text{je r.s.} \iff A \in \Sigma_1^0 \]
 	\begin{enumerate}
 		\item z vlastnosti operace skoku \cref{jump} je $\emptyset^{(n + 1)}$ r.s. v $\emptyset^{(n)}$.
@@ -248,14 +248,14 @@ Na vyšších úrovních neplatí protože...??
 			\[ \exists \forall \ldots Q(\ldots) \]
 			Ořízneme od prvního kvantifikátoru
 			\[ \forall \ldots Q(\ldots) \in \Pi_n^0 \]
-			Použijeme trik s negaci jako ve větě o numeraci \cref{aritm_numer}.
+			Použijeme trik s negací jako ve větě o numeraci \cref{aritm_numer}.
 			Čímž dostaneme predikát $P \in \Sigma_{n}^0$ který je dle i.p. $P \leq_1 \emptyset^{(n)}$.
 			Tedy i $P \leq_T \emptyset^{(n)}$.
 			Dáme zpět negace a dostaneme predikát tvaru
 			\[ \exists (\emptyset^{(n)}\ \text{rekurzivní relace}) \]
 			Z toho $A$ je r.s. v $\emptyset^{(n)}$.
 
-		"$\Rightarrow$". Lze dokázat 2ma způsoby:
+		"$\Rightarrow$". Lze dokázat dvěma způsoby:
 
 			a) Jelikož $A$ je r.s. v $\emptyset^{(n)}$. Tak
 			\[ A = dom(\varphi) \]
@@ -263,7 +263,7 @@ Na vyšších úrovních neplatí protože...??
 			Dále
 			\[ x \in A \iff \varphi(x) \downarrow \Rightarrow \Phi(\emptyset^{(n)})(x) \downarrow \]
 			Kde $f = \Phi(\emptyset^{(n)})$ je $\emptyset^{(n)}$-ČRF.
-			Jelikož, $\exists s:\Phi(\sigma)(x) \simeq y$ je taky existenční, je to ekvivalentní
+			Jelikož, $\exists y:\Phi(\sigma)(x) \simeq y$ je taky existenční, je to ekvivalentní
 			\[ \exists \sigma \exists y(\Phi(\sigma)(x) \simeq y \land \sigma \prec \emptyset^{(n)}) \]
 			Máme následující kvantifikátory:
 			\[ \exists (\exists \land \sigma \prec \emptyset^{(n)}) \]
@@ -296,10 +296,8 @@ Na vyšších úrovních neplatí protože...??
 			Vezmeme jen $\Pi_n^0$ a dostaneme predikát:
 			\[ \exists \forall(\Pi_n^0) \in \Sigma_{n + 1}^0 \]
 
-		\item "$\Leftarrow$". Podle 2) $A$ je r.s. v $\emptyset^{(n)}$.
-			Pak z vlastnosti hierarchie \cref{aritm_hier_prop}: $\overline{A} \in \Pi_n$.
-			Takže $\overline{A}$ je r.s. v $\emptyset^{(n)}$.
-			Dohromady dle Postové Věty \cref{rel_prop} A je rekurzivní v $\emptyset^{(n)}$.
+		\item "$\Leftarrow$". Podle 2) $A$ i $\overline{A}$ jsou r.s. v $\emptyset^{(n)}$.
+			Tedy dle Postovy Věty \cref{rel_prop} $A \leq_T \emptyset^{(n)}$.
 
 			% TODO kde formálně indukční předpoklad?
 			"$\Rightarrow$". Pokud $A \leq_T \emptyset^{(n)}$ tak podle indukčního předpokladu $A, \overline{A}$ je r.s. v $\emptyset^{(n)}$.
@@ -316,7 +314,7 @@ Na vyšších úrovních neplatí protože...??
 Z 1) bodů předchozí věty:
 \begin{consequence}[$K, \overline{K}$]
 	\begin{enumerate}
-		\item $K, \emptyset^{\prime}$ jsou 1-úplné neboli $\Sigma_1^0$-úplné.
+		\item $K, \emptyset^{\prime}$ jsou $\Sigma_1^0$-úplné.
 		\item $\overline{K}, \overline{\emptyset^{\prime}}$ jsou 1-úplné neboli $\Pi_1^0$-úplné.
 	\end{enumerate}
 \end{consequence}
@@ -354,9 +352,9 @@ Z 1) bodů předchozí věty:
 	Množina Fin je $\Sigma_2^0$-úplná.
 \end{theorem}
 \begin{proof}
-	\[ x \in Fin \iff \exists y \forall z, s (z \notin W_{x, s} \land z > y) \]
+	\[ x \in Fin \iff \exists y \forall z, s (z > y \Rightarrow z \notin W_{z, s}) \]
 	Pokud je konečná, tak od určitého místa do ní nepadne žádný prvek.
-	$y$ je buď maksimalní, nebo větší než max.
+	%$y$ je buď maksimalní, nebo větší než max.
 
 	Formule je $\Sigma_2^0$.
 
@@ -364,7 +362,7 @@ Z 1) bodů předchozí věty:
 	\[ \varphi_{\beta(x)}(y) \downarrow \iff \forall j \leq y (\varphi_x(j) \downarrow) \]
 	Pak
 	\[ x \in Tot \iff \beta(x) \in Inf \]
-	Protože pokud není nekonečná, tak na nějakém vstupu nekonverguje a totiž není všude definováná.
+	Protože pokud není nekonečná, tak na nějakém vstupu nekonverguje a totiž není všude definovaná.
 	Taky opačně:
 	\[ x \notin Tot \iff \beta(x) \notin Inf \]
 	Alternativně:

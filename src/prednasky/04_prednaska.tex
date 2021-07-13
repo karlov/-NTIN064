@@ -6,7 +6,7 @@
 	B je \emph{produktivní} pokud
 	\[ \exists \varphi \in ČRF: W_x \subseteq B \Rightarrow (\varphi(x) \downarrow) \land \varphi(x) \in B \setminus W_x \]
 
-	Jinými slovy: non-rekurzivní spočetnost. Pokud máme uvnitř množinu $W_x$ tak se nemůže rovnat B.
+	Jinými slovy: efektivní non-rekurzivní spočetnost. Pokud máme uvnitř množinu $W_x$ tak se nemůže rovnat B.
 	Taky máme stroječek který najde $\varphi(x)$ který leží mimo danou $W_x$.
 \end{definition}
 
@@ -60,22 +60,23 @@
 
 	Hledaná funkce je $\varphi \circ h$.
 
-	Ziskáme funkci $h$ pomoci věty o rekurzi \cref{rek_1}.
+	Získáme funkci $h$ pomoci věty o rekurzi \cref{rek_1}.
 	Vezmeme pomocnou $f \in ORF$:
 	\[ W_{f(x, y)} = \twopartdef { W_y } { \varphi(x) \downarrow } { \emptyset } { \varphi(x) \uparrow } \]
 	f pomoci s-m-n \cref{s_m_n}
-	\[ f \simeq \alpha(x, y, w) \downarrow \iff w \in W_y \land \varphi(x) \downarrow \]
+	\[ f(x, y, w) \simeq \alpha(x, y, w) \downarrow \iff w \in W_y \land \varphi(x) \downarrow \]
 	Taky
 	\[ \alpha(x, y, w) \simeq \varphi_{f(x, y)} (w) \]
 	kde
 	\[ f(x, y) = s_2(a, x, y) \]
+	kde $a$ je index $\alpha$.
 	Pak dle věty of rekurze:
 	\[ W_{h(y)} = W_{f(h(y), y)} = \twopartdef { W_y } { \varphi_{h(y)} \downarrow } { \emptyset } { \varphi_{h(y)} \uparrow } \]
 
 \end{proof}
 
 \begin{theorem}[Produktivní funkce ORF prostá(BD)]
-	Každá produktivní množina má dokonce prostou ORF produktivní funkce.
+	Každá produktivní množina má dokonce prostou ORF produktivní funkci.
 
 	Dokonce rekurzivní permutace.
 \end{theorem}
@@ -123,7 +124,7 @@
 	Máme ORF funkce $g$ z převoditelnosti.
 	Pak nechť $W_x \subseteq B$, najdeme její preimage v A
 	\[ P = g^{-1}(W_x) \subseteq A \]
-	Z toho že A je kreativní, pomoci kreativní funkce $f$ najdeme bod $f(y) \notin P$.
+	Z toho že A je kreativní, pomocí kreativní funkce $f$ najdeme bod $f(y) \notin P$, kde $y$ je index $P$.
 	Zobrazíme pomoci $g(f(y))$, tím dostaneme bod $\in B - W_x$.
 
 	Formálně:
@@ -136,16 +137,16 @@
 \end{proof}
 
 \begin{theorem}[Ekvivalence Kreativní]
-	Nechť $M$ množina.
+	Nechť $M$ je r.s. množina.
 	Následující tvrzení jsou ekvivalentní:
 	\begin{enumerate}[label=(\alph*)]
 	    	\item $M$ je kreativní $\iff \overline{M}$ produktivní.
 		\item $M$ je 1-úplná $\iff \overline{K} \leq_1 \overline{M}$
 		\item $M$ je m-úplná $\iff \overline{K} \leq_m \overline{M}$
 	\end{enumerate}
-	Každý z pojmu zahrnuje rekurzivní spočetnost.
+	Každý z pojmů zahrnuje rekurzivní spočetnost.
 
-	Ekvivalence mezi totálně různými pojmy. 1-úplnost jako u NP znamená, že je to nejtěžší ze všech takových množin.
+	Ekvivalence mezi totálně různými pojmy. 1-úplnost jako u NP znamená, že je to nejtěžší ze všech r.s. množin při 1-převoditelnosti.
 \end{theorem}
 \begin{proof}
 	$(b) \Rightarrow (c)$ z vlastnosti 1 a $m$ převoditelnosti.
@@ -167,7 +168,7 @@
 	\[ W_{g(x, y)} = \twopartdef { \{ f(x) \} } { y \in K } { \emptyset } { y \notin K } \]
 	$g$ dostaneme pomoci s-m-n věty \cref{s_m_n}:
 	\[ \alpha(x, y, w) \simeq \varphi_{g(x, y)} (w) \downarrow \iff y \in K \land w = f(x) \]
-	Strojil skripta chyba, rovnice č. 57.
+	%Strojil skripta chyba, rovnice č. 57.
 
 	Pak použijeme větu o rekurzi
 	\[ W_{h(y)} = W_{g(h(y), y)} \]
@@ -202,14 +203,14 @@
 	neboli funkce je $id$.
 \end{example}
 
-\begin{theorem}[Úplna produktivita ekvivalence]
+\begin{theorem}[Úplná produktivita ekvivalence]
 	B je úplně produktivní $\iff$ B je produktivní.
 \end{theorem}
 \begin{proof}
 	$\Rightarrow$ triviálně z definice.
 
-	$\Leftarrow$ lze dokázat 2ma způsoby.
-	První je inspekci minulého důkazu.
+	$\Leftarrow$ lze dokázat dvěma způsoby.
+	První je inspekce minulého důkazu.
 	Uděláme
 	\begin{enumerate}
 		\item $g^{-1}(W_x)$
@@ -224,7 +225,8 @@
 	\[ f \circ h(x) \notin W_y \Rightarrow W_{h(y)} = \emptyset \Rightarrow f \circ h(x) \in B \Rightarrow f \circ h(x) \in B - W_y \]
 	\[ f \circ h(x) \in W_y \Rightarrow W_{h(y)} = \{ f \circ h(x) \} \]
 	Kdyby $f \circ h(x) \in B$ tak
-	\[ \Rightarrow W_{h(y)} \in B \Rightarrow f \circ h(x) \in B - W_{h(y)} \]
+	\[ \Rightarrow W_{h(y)} \subseteq B \Rightarrow f \circ h(x) \in B - W_{h(y)} \]
+	to je spor.
 	Z toho
 	\[ f \circ h(x) \in W_y - B \]
 \end{proof}
@@ -232,11 +234,11 @@
 \begin{definition}[Totální množina]\label{tot_mn}
 	\[ Tot = \{ x |\ \varphi_x\ \text{totální} \} = \{ x |\ \exists y \varphi_x(y) \downarrow \} \]
 \end{definition}
-\begin{lemma}[Totalni je produktivni]
+\begin{lemma}[Totalní množina je produktivní]
 	Totální množina je produktivní.
 \end{lemma}
 \begin{proof}
-	Pomoci $m$-převodu na $\overline{K}$.
+	Pomoci $m$-převodu z $\overline{K}$.
 
 	\[ \varphi_{h(x)} (y) \downarrow \iff x \notin K_j \]
 	Kde $x \notin K_j$ znamená, že $x \notin K$ za $j$ kroků.
@@ -252,7 +254,7 @@
 
 	Dokážeme silnější tvrzení a konkretně vytvoříme novou funkci.
 	Máme
-	\[ W_y \in Tot \]
+	\[ W_y \subseteq Tot \]
 	uděláme novou $F \in ORF$ která roste rychleji než $\varphi_a: \forall a \in W_y$.
 	Jinými slovy
 	\[ \forall a \in W_y \exists z_0 \forall z \geq z_0: F(z) \geq \varphi_a(z) \]
@@ -263,13 +265,13 @@
 	\[ a_0, a_1, \ldots \]
 
 	Pak
-	\[ F(x) = \max_{j \in \{ 1, \ldots, x \} } (\varphi_{a_j}(x)) + 1 \]
+	\[ F(x) = \max_{j \in \{ 1, \ldots, x \} } (\varphi_{a_j}(x) + 1) \]
 \end{proof}
 
 \begin{consequence}[Omezení logiky]
 	Z věty plyne omezení logiky.
 
-	Vezmeme třeba Peano aritmetiku (PA).
+	Vezmeme třeba Peanovu aritmetiku (PA).
 	Můžeme efektivně generovat sentence které PA dokazuje, tudíž lze efektivně generovat ty $a: \varphi_a$ totální.
 
 	Pak můžeme dle předchozí věty můžeme najít $F$ která roste rychleji, než cokoliv co PA dokazuje.

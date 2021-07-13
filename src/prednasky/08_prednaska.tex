@@ -17,7 +17,7 @@
 
 \begin{theorem}[Limitní vyčíslitelnost]\label{lim_comp}
 	\[ A \leq_T \empPr \iff A\ \text{je limitně vyčíslitelná} \]
-	Věta je jednodušší verzi limitní vyčíslitelnosti, protože pro A máme všude definovanou charakteristickou funkce $C_A$.
+	Věta je jednodušší verzí limitní vyčíslitelnosti, protože pro A máme všude definovanou charakteristickou funkce $C_A$.
 \end{theorem}
 \begin{proof}
 	"$\Leftarrow$" Nechť
@@ -27,8 +27,8 @@
 	$\forall j \geq s: f(x, j) = f(x, s)$ je $\emptyset^{\prime}$-rekurzívní, protože negace je
 	\[ \exists j \geq s:(f(x, j) \neq f(x, s)) \]
 	Vnitřek je rekurzívní + existenční kvantifikátor dává r.s. (while cyklus).
-	R.S. jsou $\geq_1 \empPr$, což implikuje taky $\geq_T \emptyset^{\prime}$.
-	Pokud vrátíme negaci, tak je formule je r.s. (rekurzivita je uzavřená na negaci).
+	R.S. jsou $\leq_1 \empPr$, což implikuje taky $\leq_T \emptyset^{\prime}$.
+	Pokud vrátíme negaci, tak je formule je $\emptyset^{\prime}$-r.s. (rekurzivita je uzavřená na negaci).
 
 	Pak máme
 	\[ \mu_s(\empPr-\text{rekurzívní podmínka}) \]
@@ -69,13 +69,13 @@
 	\[ \sigma \prec \empPr_{s_2} \land \forall j \geq s_2 (\sigma \prec \empPr_j) \]
 	Tedy $\sigma \prec \empPr$.
 
-	Vezmeme $s:= \max(s_1, s_2)$, pak platí:
+	Vezmeme $s \geq \max(s_1, s_2)$, pak platí:
 	\[ f(x, s) = A(x) \]
 	$s_1$ nám stačí na generovaní $A(x)$, $s_2$ zaručí, že $\sigma$ je korektní aproximace $\empPr$.
 \end{proof}
 
 \begin{definition}[Modulus limity (P)]
-	\[ m(x) = \mu_s(\forall j \leq x, \forall t \leq s: f(j, t) = f(j, s)) \]
+	\[ m(x) = \mu_s(\forall j \leq x, \forall t \geq s: f(j, t) = f(j, s)) \]
 \end{definition}
 
 \begin{definition}[Weak Modulus(P)]
@@ -94,7 +94,7 @@
 	Podmínka se jmenuje \emph{definite stable}.
 \end{theorem}
 \begin{proof}
-	"$\Leftarrow$" Pokud $m(x) \leq_T A \Rightarrow g \geq_T A$.
+	"$\Leftarrow$" Pokud $m(x) \leq_T A \Rightarrow g \leq_T A$.
 	Plyne z vlastnosti modulu.
 
 	"$\Rightarrow$" Inspekce důkazu předchozí věty \cref{lim_comp}.
@@ -108,7 +108,7 @@
 	\begin{enumerate}
 		\item Pokud $f \in ORF \Rightarrow \lim_s f(x, s)$ je $\empPr$-ČRF.
 		\item Každá $\empPr$-ČRF je limitně vyčíslitelná:
-			\[ \exists h \in ORF: \Phi_{z}(\empPr)(x) \simeq \lim_x h(z, x, s) \]
+			\[ \exists h \in ORF: \Phi_{z}(\empPr)(x) \simeq \lim_s h(z, x, s) \]
 		Aproximace je \textbf{uniformní}.
 	\end{enumerate}
 \end{theorem}
@@ -126,12 +126,12 @@
 	V předchozím důkazu bylo možné dávat přímo hodnotu výstupu a čekat pokud se stabilizuje.
 	Nyní ale čekáme na stabilizaci celého aproximačního výpočtu.
 
-	V průběhy výpočtu si ukládáme nejen výstup $y$ ale i jak jsme se k tomu dostali.
+	V průběhu výpočtu si ukládáme nejen výstup $y$ ale i jak jsme se k tomu dostali.
 	Pak vydělíme $y$ pokud bude vyhovující:
 	\[ h(z, x, s) = \twopartdef { (h_0(z, x, s))_{3, 3} }{ h_0(z, x, s) = h_0(z, x, s - 1)}{s + 1}{\text{jinak}} \]
-	Q: proč je dostatečné zkontrolovat 2 body $s, s - 1$?
+	%Q: proč je dostatečné zkontrolovat 2 body $s, s - 1$?
 
-	Podobně jako v předchozím důkazu najdeme $s_1, s_2$:
+	Podobně jako v předchozím důkazu najdeme pokud $\Phi_z(\empPr)(x)\downarrow$, najdeme $\sigma$, $\Phi(\sigma)(x)\downarrow$ a $\sigma \prec \empPr$ a $s_1,s_2$  atd.
 	\[ \Phi_z(\empPr)(x) \downarrow \Rightarrow \exists s_2 \forall j \geq s_2: \sigma \prec \empPr_j \]
 
 	Pak pro $s = \max(s_1, s_2)$ se stabilizuje celý výpočet.
@@ -144,20 +144,20 @@
 	Dohromady:
 	\[ \Phi_z(\empPr)(x) \downarrow \land \Phi_z(\empPr)(x) = y \land \sigma \prec \empPr \]
 
-	Q: $(s + 1)$ je fiktivní hodnota, která rozhodí limitu?
+	%Q: $(s + 1)$ je fiktivní hodnota, která rozhodí limitu?
 \end{proof}
 
 \begin{theorem}[Limitní vyčíslitelnost relativní (P)]
 	\begin{enumerate}
 		\item Pokud $f \in A-ORF \Rightarrow \lim_s f(x, s)$ je $A^{\prime}$-ČRF.
 		\item Každá $A^{\prime}$-ČRF je limitně vyčíslitelná
-			\[ \exists l, \forall s \forall z \forall x: \Phi_z(A^{\prime})(x) \simeq \Phi_l(A)(z, x, s) \]
+			\[ \exists l, \forall s \forall z \forall x: \Phi_z(A^{\prime})(x) \simeq \lim_s \Phi_l(A)(z, x, s) \]
 			Na levé stráně je $A$-ČRF, na pravé je limita $A$-ORF.
 			Aproximace je \textbf{uniformní}.
 	\end{enumerate}
 \end{theorem}
 \begin{proof}
-	Relativizáce předchozího důkazu.
+	Relativizace předchozího důkazu.
 \end{proof}
 
 \begin{consequence}[Jump and lim]
@@ -165,19 +165,20 @@
 \end{consequence}
 
 \begin{theorem}[Limitní vyčíslitelnost relativní nejobecnější (P)]
-	Pokud $h \in ORF$:
+	Pokud $\exists h \in ORF$:
 	\[ \Phi_z(\emptyset^{(n + 1)})(x) \simeq \lim_{s_0} \ldots \lim_{s_n} h(z, x, s_0, \ldots, s_n) \]
 \end{theorem}
 
-\begin{note}[R.S. limitní hierarchie]
+\begin{note}[R.S. limitní hierarchie]~
 	\begin{itemize}
 		\item Pokud $A$ je rekurzívní, tak $f(x, 0) = f(x, s) = A(x)$.
-	Není potřeba aproximovat.
+	Není potřeba aproximovat, $f$ je ORF.
 	\item $A$ je r.s. tak $f(x, s) = 1 \iff x \in A_s$. BUNO $f(x, 0) = 0$.
 		Pak A je tzv 1-r.s., protože v každém sloupci dochází k nejvýš 1 změně.
+		$f$ je ORF.
 	\item 2-r.s. (2 změny) bude rozdílem dvou r.s. množin.
 	\item analogicky $n$-r.s. je booleovským rozdílem $n$ množin.
-	\item $\omega$-r.s. nejvýš $\omega$ změn v každém sloupci.
+	\item $\omega$-r.s. existuje efektivní odhad počtů změn v každém sloupci.
 		Ekvivalentně: $\exists h \in ORF:$ \# změn $\leq h(x)$.
 		Obecně limita existuje, ale nejde udělat žadný odhad počtu změn ve sloupci.
 	\end{itemize}
