@@ -89,7 +89,12 @@ Existuje několik možností formalizace:
 %Q: co přesně znamená $y^{\ast}$.
 
 \begin{note}
-	Přístupy jsou ekvivalentní, protože v případě Částečně rekurzivního funkcionálu číslo na které se orákula neptáme označíme nulou v řetízku.
+	Přístupy formalizace relativizovaného výpočtu pomoci čtveřic $\langle x, v, y, n \rangle$ a částečně rekurzivního funkcionálu jsou ekvivalentní, což není těžké dokázat.
+	%Idea: chcete vyčíslit hodnotu B(1), tzn. zda 1 patří do B nebo ne.
+	%Udělat částečně rekurzivní funkcionál lze např. takto: $\sigma_0 = 01, \sigma_1= 11, \sigma_2= 00, \sigma_3= 10$,
+	%funkcionál budou $\langle \sigma_j,1,1 \rangle$, pro j=0,1,  a  $\langle \sigma_j, 1,0 \rangle$, pro j=2,3, (na hodnotě B(0) nezáleží).
+
+	%tzn. máme čtyři orákulové řetízky, první dva vydají na vstupu x=1 výstup 1, druhé dva na vstupu x=1 vydají 0.
 \end{note}
 
 \begin{example}
@@ -109,13 +114,13 @@ Existuje několik možností formalizace:
 
 \begin{note}
 	Máme funkcionální term, který aplikujeme na $0,1$ (charakteristickou) funkci.
-	Tím dostaneme funkční term. Aplikace funkčního termu na číselný term může ale nemusí davat číselnou hodnotu.
+	Tím dostaneme funkční term. Aplikace funkčního termu na číselný term může ale nemusí dávat číselnou hodnotu.
 \end{note}
 
 \begin{properties}[Částečně rekurzívní funkcionál]~
 	\begin{enumerate}
 		\item $\Phi(B)$ je korektně definováno.
-		\item $\Phi(B)$ je intuitivně efektivně vyčíslitelné pomoci B.
+		\item $\Phi(B)$ je intuitivně efektivně vyčíslitelné pomoci $B$.
 			Postup: efektivně generuj trojice $\langle \sigma, x, y \rangle$.
 			Pak $\sigma \prec B$? Pokud ano, stop.
 			Jinak pokračuj dal.
@@ -305,7 +310,7 @@ Existuje několik možností formalizace:
 		\item z definice, $A^{\prime}$ je definičním oborem programu $\Phi_x(A)(x)$.
 		\item Cantorova diagonální metoda. Formálně:
 			\[ \overline{A^{\prime}} = \{ x : x \notin W_x^A \} \Rightarrow \forall x: \overline{A^{\prime}} \neq W_x^A \]
-			Pak z relativní Postové věty \cref{rel_prop}: $A^{\prime}$ není $A$-rekurzívní.
+			Pak z relativní Postovy věty \cref{rel_prop}: $A^{\prime}$ není $A$-rekurzívní.
 		% 8 predn od 41:00
 		\item "$\Leftarrow$". Nechť $B \leq_1 A^{\prime}$.Pak
 			\[ \exists f \in ORF: x \in B \iff f(x) \in A^{\prime} \]
@@ -345,7 +350,7 @@ Existuje několik možností formalizace:
 		\[ A^{\prime} \leq_1 B^{\prime} \]
 
 		"$\Leftarrow$". Nechť $A^{\prime} \leq_1 B^{\prime}$.
-		Triviálně: $A, \overline{A}$ jsou $A$-rekurzívní proto dle relativní Postové věty \cref{rel_prop}:
+		Triviálně: $A, \overline{A}$ jsou $A$-rekurzívní proto dle relativní Postovy věty \cref{rel_prop}:
 		$A, \overline{A}$ jsou $A$-r.s.
 
 		Pak dle 3) $A^{\prime}$ je 1-úplná pro všechny $A$-r.s.
@@ -353,7 +358,7 @@ Existuje několik možností formalizace:
 		Z předpokladu, relace je tranzitivní
 		\[ A, \overline{A} \leq_1 B^{\prime} \]
 		Proto $A, \overline{A}$ jsou $B$-r.s.
-		Konečně dle relativní Postové věty \cref{rel_prop} $A$ je rekurzívní v $B$:
+		Konečně dle relativní Postovy věty \cref{rel_prop} $A$ je rekurzívní v $B$:
 		\[ A \leq_T B \]
 
 		\item Přímý důsledek 5), aplikujeme relaci na obou stranách.

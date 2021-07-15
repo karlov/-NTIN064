@@ -113,13 +113,14 @@
 	kde $x_0 = |\alpha_e|$, $\alpha_e(x_0)$ není definované.
 
 	Pokud ANO, tak
-	\[ \alpha_{e + 1} = \alpha_{e + 1}, \beta_{e + 1} = \tau \]
+	\[ \alpha_{e + 1} = \alpha_{e} \ast 1, \beta_{e + 1} = \tau \]
+	Kde $\alpha_{e} \ast 1$ je konkatenace.
 	S tím, že $\tau$ první které padlo.
 	Pak pro libovolnou $\beta_{e + 1} \preccurlyeq B$ platí
 	\[ \Phi_e(B)(x_0) = 0 \land A(x_0) = 1 (\alpha_{e + 1} \preccurlyeq A)\]
 
-	Jinak
-	\[ \alpha_{e + 1} = \alpha_{e + 0}, \beta_{e + 1} = \beta_e \]
+	Pokud NE (Jinak):
+	\[ \alpha_{e + 1} = \alpha_{e} \ast 0, \beta_{e + 1} = \beta_e \]
 	Pak
 	\[ A(x_0) = 0 \land (\Phi_e(B)(x_0) \downarrow = 1 \lor \Phi_e(B)(x_0) \uparrow) \]
 \end{proof}
